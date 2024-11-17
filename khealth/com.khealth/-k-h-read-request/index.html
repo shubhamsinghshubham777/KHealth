@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KHReadRequest</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            khealth
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth:dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="khealth::com.khealth/KHReadRequest///PointingToDeclaration//1177961063">
+  <div class="breadcrumbs"><a href="../../../index.html">khealth</a><span class="delimiter">/</span><a href="../index.html">com.khealth</a><span class="delimiter">/</span><span class="current">KHReadRequest</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>KHRead</span><wbr></wbr><span><span>Request</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="index.html">KHReadRequest</a></div><p class="paragraph">Represents the kind of <a href="../-k-h-record/index.html">KHRecord</a> the app wants to read.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-blood-glucose/index.html">BloodGlucose</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-blood-pressure/index.html">BloodPressure</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-fat/index.html">BodyFat</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-temperature/index.html">BodyTemperature</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-water-mass/index.html">BodyWaterMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-bone-mass/index.html">BoneMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cervical-mucus/index.html">CervicalMucus</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-distance/index.html">Distance</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-elevation-gained/index.html">ElevationGained</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-floors-climbed/index.html">FloorsClimbed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-heart-rate/index.html">HeartRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-heart-rate-variability/index.html">HeartRateVariability</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-height/index.html">Height</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-hydration/index.html">Hydration</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-lean-body-mass/index.html">LeanBodyMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-menstruation-period/index.html">MenstruationPeriod</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-menstruation-flow/index.html">MenstruationFlow</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-ovulation-test/index.html">OvulationTest</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-oxygen-saturation/index.html">OxygenSaturation</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-power/index.html">Power</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-respiratory-rate/index.html">RespiratoryRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-resting-heart-rate/index.html">RestingHeartRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-sexual-activity/index.html">SexualActivity</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-sleep-session/index.html">SleepSession</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-speed/index.html">Speed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-running-speed/index.html">RunningSpeed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cycling-speed/index.html">CyclingSpeed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-step-count/index.html">StepCount</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-vo2-max/index.html">Vo2Max</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-weight/index.html">Weight</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1066605552%2FClasslikes%2F1177961063" anchor-label="ActiveCaloriesBurned" id="1066605552%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-active-calories-burned/index.html"><span>Active</span><wbr></wbr><span>Calories</span><wbr></wbr><span><span>Burned</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1066605552%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-energy/index.html">KHUnit.Energy</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-active-calories-burned/index.html">KHRecord.ActiveCaloriesBurned</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1665415765%2FClasslikes%2F1177961063" anchor-label="BasalMetabolicRate" id="1665415765%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-basal-metabolic-rate/index.html"><span>Basal</span><wbr></wbr><span>Metabolic</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1665415765%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-either/index.html">KHEither</a><span class="token operator">&lt;</span><a href="../-k-h-unit/-power/index.html">KHUnit.Power</a><span class="token punctuation">, </span><a href="../-k-h-unit/-energy/index.html">KHUnit.Energy</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-basal-metabolic-rate/index.html">KHRecord.BasalMetabolicRate</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1738916758%2FClasslikes%2F1177961063" anchor-label="BloodGlucose" id="1738916758%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-glucose/index.html"><span>Blood</span><wbr></wbr><span><span>Glucose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1738916758%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-blood-glucose/index.html">BloodGlucose</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-blood-glucose/index.html">KHUnit.BloodGlucose</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-blood-glucose/index.html">KHRecord.BloodGlucose</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="944712793%2FClasslikes%2F1177961063" anchor-label="BloodPressure" id="944712793%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-pressure/index.html"><span>Blood</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="944712793%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-blood-pressure/index.html">BloodPressure</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-pressure/index.html">KHUnit.Pressure</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-blood-pressure/index.html">KHRecord.BloodPressure</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="91888865%2FClasslikes%2F1177961063" anchor-label="BodyFat" id="91888865%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-fat/index.html"><span>Body</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="91888865%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-fat/index.html">BodyFat</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-body-fat/index.html">KHRecord.BodyFat</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1854999066%2FClasslikes%2F1177961063" anchor-label="BodyTemperature" id="-1854999066%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-temperature/index.html"><span>Body</span><wbr></wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1854999066%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-temperature/index.html">BodyTemperature</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-temperature/index.html">KHUnit.Temperature</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-body-temperature/index.html">KHRecord.BodyTemperature</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="712257743%2FClasslikes%2F1177961063" anchor-label="BodyWaterMass" id="712257743%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-water-mass/index.html"><span>Body</span><wbr></wbr><span>Water</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="712257743%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-water-mass/index.html">BodyWaterMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-body-water-mass/index.html">KHRecord.BodyWaterMass</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1349277010%2FClasslikes%2F1177961063" anchor-label="BoneMass" id="1349277010%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bone-mass/index.html"><span>Bone</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1349277010%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-bone-mass/index.html">BoneMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-bone-mass/index.html">KHRecord.BoneMass</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1554150698%2FClasslikes%2F1177961063" anchor-label="CervicalMucus" id="1554150698%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cervical-mucus/index.html"><span>Cervical</span><wbr></wbr><span><span>Mucus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1554150698%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cervical-mucus/index.html">CervicalMucus</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-cervical-mucus/index.html">KHRecord.CervicalMucus</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="942229892%2FClasslikes%2F1177961063" anchor-label="CyclingPedalingCadence" id="942229892%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-pedaling-cadence/index.html"><span>Cycling</span><wbr></wbr><span>Pedaling</span><wbr></wbr><span><span>Cadence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="942229892%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-cycling-pedaling-cadence/index.html">KHRecord.CyclingPedalingCadence</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="447541318%2FClasslikes%2F1177961063" anchor-label="CyclingSpeed" id="447541318%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-speed/index.html"><span>Cycling</span><wbr></wbr><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="447541318%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cycling-speed/index.html">CyclingSpeed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-velocity/index.html">KHUnit.Velocity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-cycling-speed/index.html">KHRecord.CyclingSpeed</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1401677781%2FClasslikes%2F1177961063" anchor-label="Distance" id="1401677781%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-distance/index.html"><span><span>Distance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1401677781%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-distance/index.html">Distance</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-distance/index.html">KHRecord.Distance</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-584139939%2FClasslikes%2F1177961063" anchor-label="ElevationGained" id="-584139939%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-elevation-gained/index.html"><span>Elevation</span><wbr></wbr><span><span>Gained</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-584139939%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-elevation-gained/index.html">ElevationGained</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-elevation-gained/index.html">KHRecord.ElevationGained</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="306054219%2FClasslikes%2F1177961063" anchor-label="FloorsClimbed" id="306054219%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-floors-climbed/index.html"><span>Floors</span><wbr></wbr><span><span>Climbed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="306054219%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-floors-climbed/index.html">FloorsClimbed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-floors-climbed/index.html">KHRecord.FloorsClimbed</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1096057298%2FClasslikes%2F1177961063" anchor-label="HeartRate" id="1096057298%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate/index.html"><span>Heart</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1096057298%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-heart-rate/index.html">HeartRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-heart-rate/index.html">KHRecord.HeartRate</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1294277560%2FClasslikes%2F1177961063" anchor-label="HeartRateVariability" id="-1294277560%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate-variability/index.html"><span>Heart</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Variability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1294277560%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-heart-rate-variability/index.html">HeartRateVariability</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-heart-rate-variability/index.html">KHRecord.HeartRateVariability</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="797206819%2FClasslikes%2F1177961063" anchor-label="Height" id="797206819%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-height/index.html"><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="797206819%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-height/index.html">Height</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-height/index.html">KHRecord.Height</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1759354590%2FClasslikes%2F1177961063" anchor-label="Hydration" id="-1759354590%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hydration/index.html"><span><span>Hydration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1759354590%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-hydration/index.html">Hydration</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-volume/index.html">KHUnit.Volume</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-hydration/index.html">KHRecord.Hydration</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1819784825%2FClasslikes%2F1177961063" anchor-label="IntermenstrualBleeding" id="1819784825%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-intermenstrual-bleeding/index.html"><span>Intermenstrual</span><wbr></wbr><span><span>Bleeding</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1819784825%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-intermenstrual-bleeding/index.html">KHRecord.IntermenstrualBleeding</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1868901358%2FClasslikes%2F1177961063" anchor-label="LeanBodyMass" id="1868901358%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lean-body-mass/index.html"><span>Lean</span><wbr></wbr><span>Body</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1868901358%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-lean-body-mass/index.html">LeanBodyMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-lean-body-mass/index.html">KHRecord.LeanBodyMass</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1943812735%2FClasslikes%2F1177961063" anchor-label="MenstruationFlow" id="-1943812735%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-flow/index.html"><span>Menstruation</span><wbr></wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1943812735%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-menstruation-flow/index.html">MenstruationFlow</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-menstruation-flow/index.html">KHRecord.MenstruationFlow</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1821354802%2FClasslikes%2F1177961063" anchor-label="MenstruationPeriod" id="-1821354802%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-period/index.html"><span>Menstruation</span><wbr></wbr><span><span>Period</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1821354802%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-menstruation-period/index.html">MenstruationPeriod</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-menstruation-period/index.html">KHRecord.MenstruationPeriod</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1186094641%2FClasslikes%2F1177961063" anchor-label="OvulationTest" id="-1186094641%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ovulation-test/index.html"><span>Ovulation</span><wbr></wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1186094641%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-ovulation-test/index.html">OvulationTest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-ovulation-test/index.html">KHRecord.OvulationTest</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1331088424%2FClasslikes%2F1177961063" anchor-label="OxygenSaturation" id="-1331088424%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-oxygen-saturation/index.html"><span>Oxygen</span><wbr></wbr><span><span>Saturation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1331088424%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-oxygen-saturation/index.html">OxygenSaturation</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-oxygen-saturation/index.html">KHRecord.OxygenSaturation</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="68421491%2FClasslikes%2F1177961063" anchor-label="Power" id="68421491%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-power/index.html"><span><span>Power</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="68421491%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-power/index.html">Power</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-power/index.html">KHUnit.Power</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-power/index.html">KHRecord.Power</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1878262066%2FClasslikes%2F1177961063" anchor-label="RespiratoryRate" id="-1878262066%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-respiratory-rate/index.html"><span>Respiratory</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1878262066%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-respiratory-rate/index.html">RespiratoryRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-respiratory-rate/index.html">KHRecord.RespiratoryRate</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1910133294%2FClasslikes%2F1177961063" anchor-label="RestingHeartRate" id="-1910133294%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-resting-heart-rate/index.html"><span>Resting</span><wbr></wbr><span>Heart</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1910133294%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-resting-heart-rate/index.html">RestingHeartRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-resting-heart-rate/index.html">KHRecord.RestingHeartRate</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1444231394%2FClasslikes%2F1177961063" anchor-label="RunningSpeed" id="1444231394%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-running-speed/index.html"><span>Running</span><wbr></wbr><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1444231394%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-running-speed/index.html">RunningSpeed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-velocity/index.html">KHUnit.Velocity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-running-speed/index.html">KHRecord.RunningSpeed</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1647107361%2FClasslikes%2F1177961063" anchor-label="SexualActivity" id="1647107361%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sexual-activity/index.html"><span>Sexual</span><wbr></wbr><span><span>Activity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1647107361%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-sexual-activity/index.html">SexualActivity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-sexual-activity/index.html">KHRecord.SexualActivity</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="506882763%2FClasslikes%2F1177961063" anchor-label="SleepSession" id="506882763%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sleep-session/index.html"><span>Sleep</span><wbr></wbr><span><span>Session</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="506882763%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-sleep-session/index.html">SleepSession</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-sleep-session/index.html">KHRecord.SleepSession</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="651484785%2FClasslikes%2F1177961063" anchor-label="Speed" id="651484785%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-speed/index.html"><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="651484785%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-speed/index.html">Speed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-velocity/index.html">KHUnit.Velocity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-speed/index.html">KHRecord.Speed</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1500477717%2FClasslikes%2F1177961063" anchor-label="StepCount" id="1500477717%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-step-count/index.html"><span>Step</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1500477717%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-step-count/index.html">StepCount</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-step-count/index.html">KHRecord.StepCount</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2076643519%2FClasslikes%2F1177961063" anchor-label="Vo2Max" id="2076643519%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vo2-max/index.html"><span><span>Vo2Max</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2076643519%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-vo2-max/index.html">Vo2Max</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-vo2-max/index.html">KHRecord.Vo2Max</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1764238578%2FClasslikes%2F1177961063" anchor-label="Weight" id="1764238578%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-weight/index.html"><span><span>Weight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1764238578%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-weight/index.html">Weight</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-weight/index.html">KHRecord.Weight</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1753020584%2FClasslikes%2F1177961063" anchor-label="WheelChairPushes" id="-1753020584%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wheel-chair-pushes/index.html"><span>Wheel</span><wbr></wbr><span>Chair</span><wbr></wbr><span><span>Pushes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1753020584%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHReadRequest</a></div><div class="brief "><p class="paragraph">Depicts that the app wants to read records of type <a href="../-k-h-record/-wheel-chair-pushes/index.html">KHRecord.WheelChairPushes</a> from the health store.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>(c) 2024 Shubham Singh</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

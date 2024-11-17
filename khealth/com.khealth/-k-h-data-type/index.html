@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KHDataType</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            khealth
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth:dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="khealth::com.khealth/KHDataType///PointingToDeclaration//1177961063">
+  <div class="breadcrumbs"><a href="../../../index.html">khealth</a><span class="delimiter">/</span><a href="../index.html">com.khealth</a><span class="delimiter">/</span><span class="current">KHDataType</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>KHData</span><wbr></wbr><span><span>Type</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">KHDataType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">KHDataType</a><span class="token operator">&gt; </span></div><p class="paragraph">Depicts what kind of values a <a href="../-k-h-record/index.html">KHRecord</a> refers to.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="ENTRY">
+        <h2 class="">Entries</h2>
+        <div class="table"><a data-name="-658406266%2FClasslikes%2F1177961063" anchor-label="ActiveCaloriesBurned" id="-658406266%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-658406266%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-active-calories-burned/index.html">KHRecord.ActiveCaloriesBurned</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="546257281%2FClasslikes%2F1177961063" anchor-label="BasalMetabolicRate" id="546257281%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="546257281%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-basal-metabolic-rate/index.html">KHRecord.BasalMetabolicRate</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1060101536%2FClasslikes%2F1177961063" anchor-label="BloodGlucose" id="1060101536%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-glucose/index.html">BloodGlucose</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1060101536%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-blood-glucose/index.html">BloodGlucose</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-blood-glucose/index.html">KHRecord.BloodGlucose</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1677233093%2FClasslikes%2F1177961063" anchor-label="BloodPressure" id="-1677233093%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-pressure/index.html">BloodPressure</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1677233093%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-blood-pressure/index.html">BloodPressure</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-blood-pressure/index.html">KHRecord.BloodPressure</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1753268237%2FClasslikes%2F1177961063" anchor-label="BodyFat" id="-1753268237%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-fat/index.html">BodyFat</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1753268237%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-body-fat/index.html">BodyFat</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-body-fat/index.html">KHRecord.BodyFat</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1744421106%2FClasslikes%2F1177961063" anchor-label="BodyTemperature" id="-1744421106%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-temperature/index.html">BodyTemperature</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1744421106%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-body-temperature/index.html">BodyTemperature</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-body-temperature/index.html">KHRecord.BodyTemperature</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="150589829%2FClasslikes%2F1177961063" anchor-label="BodyWaterMass" id="150589829%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-water-mass/index.html">BodyWaterMass</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="150589829%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-body-water-mass/index.html">BodyWaterMass</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-body-water-mass/index.html">KHRecord.BodyWaterMass</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1704091164%2FClasslikes%2F1177961063" anchor-label="BoneMass" id="-1704091164%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bone-mass/index.html">BoneMass</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1704091164%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-bone-mass/index.html">BoneMass</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-bone-mass/index.html">KHRecord.BoneMass</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-423816694%2FClasslikes%2F1177961063" anchor-label="CervicalMucus" id="-423816694%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cervical-mucus/index.html">CervicalMucus</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-423816694%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-cervical-mucus/index.html">CervicalMucus</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-cervical-mucus/index.html">KHRecord.CervicalMucus</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1296035022%2FClasslikes%2F1177961063" anchor-label="CyclingPedalingCadence" id="-1296035022%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1296035022%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-cycling-pedaling-cadence/index.html">KHRecord.CyclingPedalingCadence</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="532548929%2FClasslikes%2F1177961063" anchor-label="Distance" id="532548929%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-distance/index.html">Distance</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="532548929%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-distance/index.html">Distance</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-distance/index.html">KHRecord.Distance</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="362323959%2FClasslikes%2F1177961063" anchor-label="ElevationGained" id="362323959%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-elevation-gained/index.html">ElevationGained</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="362323959%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-elevation-gained/index.html">ElevationGained</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-elevation-gained/index.html">KHRecord.ElevationGained</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-392586359%2FClasslikes%2F1177961063" anchor-label="FloorsClimbed" id="-392586359%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-floors-climbed/index.html">FloorsClimbed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-392586359%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-floors-climbed/index.html">FloorsClimbed</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-floors-climbed/index.html">KHRecord.FloorsClimbed</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1958858210%2FClasslikes%2F1177961063" anchor-label="HeartRate" id="1958858210%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate/index.html">HeartRate</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1958858210%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-heart-rate/index.html">HeartRate</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-heart-rate/index.html">KHRecord.HeartRate</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-623684818%2FClasslikes%2F1177961063" anchor-label="HeartRateVariability" id="-623684818%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate-variability/index.html">HeartRateVariability</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-623684818%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-heart-rate-variability/index.html">HeartRateVariability</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-heart-rate-variability/index.html">KHRecord.HeartRateVariability</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1281927949%2FClasslikes%2F1177961063" anchor-label="Height" id="-1281927949%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-height/index.html">Height</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1281927949%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-height/index.html">Height</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-height/index.html">KHRecord.Height</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="845594770%2FClasslikes%2F1177961063" anchor-label="Hydration" id="845594770%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hydration/index.html">Hydration</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="845594770%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-hydration/index.html">Hydration</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-hydration/index.html">KHRecord.Hydration</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1598147747%2FClasslikes%2F1177961063" anchor-label="IntermenstrualBleeding" id="-1598147747%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1598147747%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-intermenstrual-bleeding/index.html">KHRecord.IntermenstrualBleeding</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="168692808%2FClasslikes%2F1177961063" anchor-label="LeanBodyMass" id="168692808%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lean-body-mass/index.html">LeanBodyMass</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="168692808%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-lean-body-mass/index.html">LeanBodyMass</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-lean-body-mass/index.html">KHRecord.LeanBodyMass</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2145735000%2FClasslikes%2F1177961063" anchor-label="MenstruationPeriod" id="-2145735000%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-period/index.html">MenstruationPeriod</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2145735000%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-menstruation-period/index.html">MenstruationPeriod</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-menstruation-period/index.html">KHRecord.MenstruationPeriod</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-59012587%2FClasslikes%2F1177961063" anchor-label="MenstruationFlow" id="-59012587%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-flow/index.html">MenstruationFlow</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-59012587%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-menstruation-flow/index.html">MenstruationFlow</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-menstruation-flow/index.html">KHRecord.MenstruationFlow</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739573627%2FClasslikes%2F1177961063" anchor-label="OvulationTest" id="-739573627%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ovulation-test/index.html">OvulationTest</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739573627%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-ovulation-test/index.html">OvulationTest</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-ovulation-test/index.html">KHRecord.OvulationTest</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-355381730%2FClasslikes%2F1177961063" anchor-label="OxygenSaturation" id="-355381730%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-oxygen-saturation/index.html">OxygenSaturation</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-355381730%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-oxygen-saturation/index.html">OxygenSaturation</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-oxygen-saturation/index.html">KHRecord.OxygenSaturation</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-970887071%2FClasslikes%2F1177961063" anchor-label="Power" id="-970887071%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-power/index.html">Power</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-970887071%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-power/index.html">Power</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-power/index.html">KHRecord.Power</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1442801446%2FClasslikes%2F1177961063" anchor-label="RespiratoryRate" id="1442801446%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-respiratory-rate/index.html">RespiratoryRate</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1442801446%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-respiratory-rate/index.html">RespiratoryRate</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-respiratory-rate/index.html">KHRecord.RespiratoryRate</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="370423908%2FClasslikes%2F1177961063" anchor-label="RestingHeartRate" id="370423908%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-resting-heart-rate/index.html">RestingHeartRate</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="370423908%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-resting-heart-rate/index.html">RestingHeartRate</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-resting-heart-rate/index.html">KHRecord.RestingHeartRate</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-84052299%2FClasslikes%2F1177961063" anchor-label="SexualActivity" id="-84052299%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sexual-activity/index.html">SexualActivity</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-84052299%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-sexual-activity/index.html">SexualActivity</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-sexual-activity/index.html">KHRecord.SexualActivity</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-939447413%2FClasslikes%2F1177961063" anchor-label="SleepSession" id="-939447413%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sleep-session/index.html">SleepSession</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-939447413%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-sleep-session/index.html">SleepSession</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-sleep-session/index.html">KHRecord.SleepSession</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-614027229%2FClasslikes%2F1177961063" anchor-label="Speed" id="-614027229%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-speed/index.html">Speed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-614027229%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-speed/index.html">Speed</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-speed/index.html">KHRecord.Speed</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1959815124%2FClasslikes%2F1177961063" anchor-label="RunningSpeed" id="1959815124%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-running-speed/index.html">RunningSpeed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1959815124%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-running-speed/index.html">RunningSpeed</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1535991536%2FClasslikes%2F1177961063" anchor-label="CyclingSpeed" id="1535991536%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-speed/index.html">CyclingSpeed</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1535991536%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-cycling-speed/index.html">CyclingSpeed</a></div></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1524681855%2FClasslikes%2F1177961063" anchor-label="StepCount" id="1524681855%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-step-count/index.html">StepCount</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1524681855%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-step-count/index.html">StepCount</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-step-count/index.html">KHRecord.StepCount</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-606642473%2FClasslikes%2F1177961063" anchor-label="Vo2Max" id="-606642473%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vo2-max/index.html">Vo2Max</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-606642473%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-vo2-max/index.html">Vo2Max</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-vo2-max/index.html">KHRecord.Vo2Max</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="884217476%2FClasslikes%2F1177961063" anchor-label="Weight" id="884217476%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-weight/index.html">Weight</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="884217476%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-weight/index.html">Weight</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-weight/index.html">KHRecord.Weight</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1764119906%2FClasslikes%2F1177961063" anchor-label="WheelChairPushes" id="-1764119906%2FClasslikes%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1764119906%2FClasslikes%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><div class="block"><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a></div></div><div class="brief "><p class="paragraph">For Android, add one or both the following permissions in <code class="lang-kotlin">AndroidManifest.xml</code> to be able to Read/Write <a href="../-k-h-record/-wheel-chair-pushes/index.html">KHRecord.WheelChairPushes</a> records:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="809339782%2FProperties%2F1177961063" anchor-label="entries" id="809339782%2FProperties%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entries.html"><span><span>entries</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809339782%2FProperties%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="entries.html">entries</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.enums/-enum-entries/index.html">EnumEntries</a><span class="token operator">&lt;</span><a href="index.html">KHDataType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a representation of an immutable list of all enum entries, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-372974862%2FProperties%2F1177961063" anchor-label="name" id="-372974862%2FProperties%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-k-h-sleep-stage/-unknown/index.html#-372974862%2FProperties%2F1177961063"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372974862%2FProperties%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-k-h-sleep-stage/-unknown/index.html#-372974862%2FProperties%2F1177961063">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739389684%2FProperties%2F1177961063" anchor-label="ordinal" id="-739389684%2FProperties%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-k-h-sleep-stage/-unknown/index.html#-739389684%2FProperties%2F1177961063"><span><span>ordinal</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739389684%2FProperties%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-k-h-sleep-stage/-unknown/index.html#-739389684%2FProperties%2F1177961063">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="2134883286%2FFunctions%2F1177961063" anchor-label="valueOf" id="2134883286%2FFunctions%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="value-of.html"><span>value</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2134883286%2FFunctions%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="value-of.html"><span class="token function">valueOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">KHDataType</a></div><div class="brief "><p class="paragraph">Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1573824670%2FFunctions%2F1177961063" anchor-label="values" id="-1573824670%2FFunctions%2F1177961063" data-filterable-set=":khealth:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth:dokkaHtml/commonMain" data-filterable-set=":khealth:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="values.html"><span><span>values</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1573824670%2FFunctions%2F1177961063"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="values.html"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="index.html">KHDataType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns an array containing the constants of this enum type, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>(c) 2024 Shubham Singh</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
