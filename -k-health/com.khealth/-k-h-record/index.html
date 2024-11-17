@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KHRecord</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../images/logo-icon.svg">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            KHealth
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KHealth::com.khealth/KHRecord///PointingToDeclaration//107750912">
+  <div class="breadcrumbs"><a href="../../../index.html">KHealth</a><span class="delimiter">/</span><a href="../index.html">com.khealth</a><span class="delimiter">/</span><span class="current">KHRecord</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>KHRecord</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="index.html">KHRecord</a></div><p class="paragraph">Represents a readable or writable entity.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-blood-glucose/index.html">BloodGlucose</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-blood-pressure/index.html">BloodPressure</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-fat/index.html">BodyFat</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-temperature/index.html">BodyTemperature</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-body-water-mass/index.html">BodyWaterMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-bone-mass/index.html">BoneMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cervical-mucus/index.html">CervicalMucus</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-distance/index.html">Distance</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-elevation-gained/index.html">ElevationGained</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-floors-climbed/index.html">FloorsClimbed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-heart-rate/index.html">HeartRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-heart-rate-variability/index.html">HeartRateVariability</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-height/index.html">Height</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-hydration/index.html">Hydration</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-lean-body-mass/index.html">LeanBodyMass</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-menstruation-period/index.html">MenstruationPeriod</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-menstruation-flow/index.html">MenstruationFlow</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-ovulation-test/index.html">OvulationTest</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-oxygen-saturation/index.html">OxygenSaturation</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-power/index.html">Power</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-respiratory-rate/index.html">RespiratoryRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-resting-heart-rate/index.html">RestingHeartRate</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-sexual-activity/index.html">SexualActivity</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-sleep-session/index.html">SleepSession</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-speed/index.html">Speed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-running-speed/index.html">RunningSpeed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-cycling-speed/index.html">CyclingSpeed</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-step-count/index.html">StepCount</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-vo2-max/index.html">Vo2Max</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-weight/index.html">Weight</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-181049844%2FClasslikes%2F107750912" anchor-label="ActiveCaloriesBurned" id="-181049844%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-active-calories-burned/index.html"><span>Active</span><wbr></wbr><span>Calories</span><wbr></wbr><span><span>Burned</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-181049844%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-active-calories-burned/index.html">ActiveCaloriesBurned</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-energy/index.html">KHUnit.Energy</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the estimated active energy burned by the user, excluding basal metabolic rate (BMR). Each record represents the total energy burned over a time interval, so both the start and end times should be set.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="703224689%2FClasslikes%2F107750912" anchor-label="BasalMetabolicRate" id="703224689%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-basal-metabolic-rate/index.html"><span>Basal</span><wbr></wbr><span>Metabolic</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="703224689%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-basal-metabolic-rate/index.html">BasalMetabolicRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-either/index.html">KHEither</a><span class="token operator">&lt;</span><a href="../-k-h-unit/-power/index.html">KHUnit.Power</a><span class="token punctuation">, </span><a href="../-k-h-unit/-energy/index.html">KHUnit.Energy</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the BMR of a user. Each record represents the energy a user would burn if at rest all day, based on their height and weight.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="693234098%2FClasslikes%2F107750912" anchor-label="BloodGlucose" id="693234098%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-glucose/index.html"><span>Blood</span><wbr></wbr><span><span>Glucose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="693234098%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-blood-glucose/index.html">BloodGlucose</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-blood-glucose/index.html">KHUnit.BloodGlucose</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the concentration of glucose in the blood. Each record represents a single instantaneous blood glucose reading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1406678595%2FClasslikes%2F107750912" anchor-label="BloodPressure" id="-1406678595%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-blood-pressure/index.html"><span>Blood</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1406678595%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-blood-pressure/index.html">BloodPressure</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-pressure/index.html">KHUnit.Pressure</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>systolicValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>diastolicValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the blood pressure of a user. Each record represents a single instantaneous blood pressure reading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-102918843%2FClasslikes%2F107750912" anchor-label="BodyFat" id="-102918843%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-fat/index.html"><span>Body</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-102918843%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-fat/index.html">BodyFat</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>percentage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the body fat percentage of a user. Each record represents a person's total body fat as a percentage of their total body mass.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1905642058%2FClasslikes%2F107750912" anchor-label="BodyTemperature" id="1905642058%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-temperature/index.html"><span>Body</span><wbr></wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1905642058%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-temperature/index.html">BodyTemperature</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-temperature/index.html">KHUnit.Temperature</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the body temperature of a user. Each record represents a single instantaneous body temperature measurement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1639133645%2FClasslikes%2F107750912" anchor-label="BodyWaterMass" id="-1639133645%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-body-water-mass/index.html"><span>Body</span><wbr></wbr><span>Water</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639133645%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-body-water-mass/index.html">BodyWaterMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Body water mass is the total amount of water in a person's body, typically comprising about 60% of their total body weight.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-394794642%2FClasslikes%2F107750912" anchor-label="BoneMass" id="-394794642%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bone-mass/index.html"><span>Bone</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-394794642%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-bone-mass/index.html">BoneMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Bone mass is the total weight of bones in the body, reflecting the amount of bone tissue and its density.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-797240690%2FClasslikes%2F107750912" anchor-label="CervicalMucus" id="-797240690%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cervical-mucus/index.html"><span>Cervical</span><wbr></wbr><span><span>Mucus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-797240690%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cervical-mucus/index.html">CervicalMucus</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>appearance<span class="token operator">: </span><a href="../-k-h-cervical-mucus-appearance/index.html">KHCervicalMucusAppearance</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Cervical mucus is a fluid produced by the cervix that changes in consistency throughout the menstrual cycle, aiding in fertility and sperm transport.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="241269920%2FClasslikes%2F107750912" anchor-label="CyclingPedalingCadence" id="241269920%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-pedaling-cadence/index.html"><span>Cycling</span><wbr></wbr><span>Pedaling</span><wbr></wbr><span><span>Cadence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241269920%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cycling-pedaling-cadence/index.html">CyclingPedalingCadence</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-cycling-pedaling-cadence-sample/index.html">KHCyclingPedalingCadenceSample</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">In cycling, cadence is a measure of rotational speed of the crank, expressed in revolutions per minute. In other words, it is the pedalling rate at which a cyclist is turning the pedals.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-598141342%2FClasslikes%2F107750912" anchor-label="CyclingSpeed" id="-598141342%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cycling-speed/index.html"><span>Cycling</span><wbr></wbr><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-598141342%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cycling-speed/index.html">CyclingSpeed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-speed-sample/index.html">KHSpeedSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Cycling speed is the rate at which a cyclist travels, usually measured in kilometers per hour (km/h) or miles per hour (mph).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-342393871%2FClasslikes%2F107750912" anchor-label="Distance" id="-342393871%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-distance/index.html"><span><span>Distance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-342393871%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-distance/index.html">Distance</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures distance travelled by the user since the last reading. The total distance over an interval can be calculated by adding together all the values during the interval. The start time of each record should represent the start of the interval in which the distance was covered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1118466111%2FClasslikes%2F107750912" anchor-label="ElevationGained" id="-1118466111%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-elevation-gained/index.html"><span>Elevation</span><wbr></wbr><span><span>Gained</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1118466111%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-elevation-gained/index.html">ElevationGained</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the elevation gained by the user since the last reading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2045337169%2FClasslikes%2F107750912" anchor-label="FloorsClimbed" id="-2045337169%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-floors-climbed/index.html"><span>Floors</span><wbr></wbr><span><span>Climbed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2045337169%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-floors-climbed/index.html">FloorsClimbed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>floors<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the number of floors climbed by the user since the last reading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1430556362%2FClasslikes%2F107750912" anchor-label="HeartRate" id="-1430556362%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate/index.html"><span>Heart</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1430556362%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-heart-rate/index.html">HeartRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-heart-rate-sample/index.html">KHHeartRateSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's heart rate. Each record represents a series of measurements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1753034340%2FClasslikes%2F107750912" anchor-label="HeartRateVariability" id="1753034340%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-heart-rate-variability/index.html"><span>Heart</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Variability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1753034340%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-heart-rate-variability/index.html">HeartRateVariability</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>heartRateVariabilityMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures user's heart rate variability (HRV) as measured by the root mean square of successive differences <code class="lang-kotlin">RMSSD</code> on Android and Standard Deviation of NN intervals <code class="lang-kotlin">SDNN</code> on Apple between normal heartbeats.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="375280703%2FClasslikes%2F107750912" anchor-label="Height" id="375280703%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-height/index.html"><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="375280703%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-height/index.html">Height</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-length/index.html">KHUnit.Length</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's height.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="8999046%2FClasslikes%2F107750912" anchor-label="Hydration" id="8999046%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hydration/index.html"><span><span>Hydration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8999046%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-hydration/index.html">Hydration</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-volume/index.html">KHUnit.Volume</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures how much water a user drank in a single drink.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1118824853%2FClasslikes%2F107750912" anchor-label="IntermenstrualBleeding" id="1118824853%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-intermenstrual-bleeding/index.html"><span>Intermenstrual</span><wbr></wbr><span><span>Bleeding</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1118824853%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-intermenstrual-bleeding/index.html">IntermenstrualBleeding</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures an instance of user's intermenstrual bleeding, also known as spotting.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="823218698%2FClasslikes%2F107750912" anchor-label="LeanBodyMass" id="823218698%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lean-body-mass/index.html"><span>Lean</span><wbr></wbr><span>Body</span><wbr></wbr><span><span>Mass</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="823218698%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-lean-body-mass/index.html">LeanBodyMass</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's lean body mass. Each record represents a single instantaneous measurement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1328054883%2FClasslikes%2F107750912" anchor-label="MenstruationFlow" id="-1328054883%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-flow/index.html"><span>Menstruation</span><wbr></wbr><span><span>Flow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1328054883%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-menstruation-flow/index.html">MenstruationFlow</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="../-k-h-menstruation-flow-type/index.html">KHMenstruationFlowType</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isStartOfCycle<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures a description of how heavy a user's menstrual flow was (light, medium, or heavy). Each record represents a description of how heavy the user's menstrual bleeding was.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1511421418%2FClasslikes%2F107750912" anchor-label="MenstruationPeriod" id="1511421418%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-menstruation-period/index.html"><span>Menstruation</span><wbr></wbr><span><span>Period</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1511421418%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-menstruation-period/index.html">MenstruationPeriod</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures user's menstruation periods.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="757481267%2FClasslikes%2F107750912" anchor-label="OvulationTest" id="757481267%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ovulation-test/index.html"><span>Ovulation</span><wbr></wbr><span><span>Test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="757481267%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-ovulation-test/index.html">OvulationTest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>result<span class="token operator">: </span><a href="../-k-h-ovulation-test-result/index.html">KHOvulationTestResult</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Each record represents the result of an ovulation test.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-715330572%2FClasslikes%2F107750912" anchor-label="OxygenSaturation" id="-715330572%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-oxygen-saturation/index.html"><span>Oxygen</span><wbr></wbr><span><span>Saturation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-715330572%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-oxygen-saturation/index.html">OxygenSaturation</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>percentage<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the amount of oxygen circulating in the blood, measured as a percentage of oxygen-saturated hemoglobin. Each record represents a single blood oxygen saturation reading at the time of measurement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-83736361%2FClasslikes%2F107750912" anchor-label="Power" id="-83736361%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-power/index.html"><span><span>Power</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-83736361%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-power/index.html">Power</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-power-sample/index.html">KHPowerSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the power generated by the user, e. g. during cycling or rowing with a power meter. Each record represents a series of measurements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1882379058%2FClasslikes%2F107750912" anchor-label="RespiratoryRate" id="1882379058%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-respiratory-rate/index.html"><span>Respiratory</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1882379058%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-respiratory-rate/index.html">RespiratoryRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>rate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's respiratory rate. Each record represents a single instantaneous measurement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1294375442%2FClasslikes%2F107750912" anchor-label="RestingHeartRate" id="-1294375442%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-resting-heart-rate/index.html"><span>Resting</span><wbr></wbr><span>Heart</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1294375442%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-resting-heart-rate/index.html">RestingHeartRate</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>beatsPerMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's resting heart rate. Each record represents a single instantaneous measurement. These are typically measured after waking up and before getting out of bed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="398548734%2FClasslikes%2F107750912" anchor-label="RunningSpeed" id="398548734%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-running-speed/index.html"><span>Running</span><wbr></wbr><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="398548734%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-running-speed/index.html">RunningSpeed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-speed-sample/index.html">KHSpeedSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Running speed is the rate at which a person moves while running, typically measured in meters per second or kilometers per hour.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1768418365%2FClasslikes%2F107750912" anchor-label="SexualActivity" id="1768418365%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sexual-activity/index.html"><span>Sexual</span><wbr></wbr><span><span>Activity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1768418365%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-sexual-activity/index.html">SexualActivity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>didUseProtection<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures an occurrence of sexual activity. Each record is a single occurrence.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-538799897%2FClasslikes%2F107750912" anchor-label="SleepSession" id="-538799897%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sleep-session/index.html"><span>Sleep</span><wbr></wbr><span><span>Session</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-538799897%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-sleep-session/index.html">SleepSession</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-sleep-stage-sample/index.html">KHSleepStageSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's sleep length and its stages. Each record represents a time interval for a full sleep session.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="499326933%2FClasslikes%2F107750912" anchor-label="Speed" id="499326933%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-speed/index.html"><span><span>Speed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="499326933%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-speed/index.html">Speed</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>samples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-k-h-speed-sample/index.html">KHSpeedSample</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's speed, e. g. during running or cycling. Each record represents a series of measurements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1026135943%2FClasslikes%2F107750912" anchor-label="StepCount" id="-1026135943%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-step-count/index.html"><span>Step</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1026135943%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-step-count/index.html">StepCount</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>count<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the number of steps taken since the last reading. Each step is only reported once so records shouldn't have overlapping time. The start time of each record should represent the start of the interval in which steps were taken.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1654717403%2FClasslikes%2F107750912" anchor-label="Vo2Max" id="1654717403%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vo2-max/index.html"><span><span>Vo2Max</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1654717403%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-vo2-max/index.html">Vo2Max</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>vo2MillilitersPerMinuteKilogram<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">VO2 max is the maximum amount of oxygen the body can utilize during intense exercise, indicating cardiovascular fitness and endurance capacity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1342312462%2FClasslikes%2F107750912" anchor-label="Weight" id="1342312462%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-weight/index.html"><span><span>Weight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1342312462%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-weight/index.html">Weight</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="../-k-h-unit/-mass/index.html">KHUnit.Mass</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the user's weight.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1137262732%2FClasslikes%2F107750912" anchor-label="WheelChairPushes" id="-1137262732%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-wheel-chair-pushes/index.html"><span>Wheel</span><wbr></wbr><span>Chair</span><wbr></wbr><span><span>Pushes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1137262732%2FClasslikes%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-wheel-chair-pushes/index.html">WheelChairPushes</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>count<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span> : <a href="index.html">KHRecord</a></div><div class="brief "><p class="paragraph">Captures the number of wheelchair pushes done since the last reading. Each push is only reported once so records shouldn't have overlapping time. The start time of each record should represent the start of the interval in which pushes were made.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>(c) 2024 Shubham Singh</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
