@@ -63,7 +63,42 @@ kotlin {
 
 ## ⚙️ Usage
 
-1. Add dependencies in AndroidManifest.xml (Android only)
+1. (Android only) Add the following code in your `AndroidManifest.xml`:
+   ```xml
+   <uses-permission android:name="..." />
+   
+   <!-- Check if Health Connect is installed -->
+   <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+   </queries>
+   
+   <application ...>
+        <!-- For supported versions through Android 13, create an activity to show the rationale
+        of Health Connect permissions once users click the privacy policy link. -->
+        <activity
+            android:name=".PermissionsRationaleActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+   
+        <!-- For versions starting Android 14, create an activity alias to show the rationale
+             of Health Connect permissions once users click the privacy policy link. -->
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE"
+            android:targetActivity=".PermissionsRationaleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
+   </application>
+   ```
+
+2. (Android only) Add the dependencies you require to use in `AndroidManifest.xml`
 
    | Type                    | Permissions                                                                                                        |
    |-------------------------|--------------------------------------------------------------------------------------------------------------------|
@@ -76,9 +111,9 @@ kotlin {
    | BODY_WATER_MASS         | android.permission.health.READ_BODY_WATER_MASS<br/>android.permission.health.WRITE_BODY_WATER_MASS                 |
    | BONE_MASS               | android.permission.health.READ_BONE_MASS<br/>android.permission.health.WRITE_BONE_MASS                             |
    | CERVICAL_MUCUS          | android.permission.health.READ_CERVICAL_MUCUS<br/>android.permission.health.WRITE_CERVICAL_MUCUS                   |
-   | EXERCISE                | android.permission.health.READ_EXERCISE<br/>android.permission.health.WRITE_EXERCISE                               |
    | DISTANCE                | android.permission.health.READ_DISTANCE<br/>android.permission.health.WRITE_DISTANCE                               |
    | ELEVATION_GAINED        | android.permission.health.READ_ELEVATION_GAINED<br/>android.permission.health.WRITE_ELEVATION_GAINED               |
+   | EXERCISE                | android.permission.health.READ_EXERCISE<br/>android.permission.health.WRITE_EXERCISE                               |
    | FLOORS_CLIMBED          | android.permission.health.READ_FLOORS_CLIMBED<br/>android.permission.health.WRITE_FLOORS_CLIMBED                   |
    | HEART_RATE              | android.permission.health.READ_HEART_RATE<br/>android.permission.health.WRITE_HEART_RATE                           |
    | HEART_RATE_VARIABILITY  | android.permission.health.READ_HEART_RATE_VARIABILITY<br/>android.permission.health.WRITE_HEART_RATE_VARIABILITY   |
@@ -88,6 +123,7 @@ kotlin {
    | LEAN_BODY_MASS          | android.permission.health.READ_LEAN_BODY_MASS<br/>android.permission.health.WRITE_LEAN_BODY_MASS                   |
    | MENSTRUATION            | android.permission.health.READ_MENSTRUATION<br/>android.permission.health.WRITE_MENSTRUATION                       |
    | MENSTRUATION            | android.permission.health.READ_MENSTRUATION<br/>android.permission.health.WRITE_MENSTRUATION                       |
+   | NUTRITION               | android.permission.health.READ_NUTRITION<br/>android.permission.health.WRITE_NUTRITION                             |
    | OVULATION_TEST          | android.permission.health.READ_OVULATION_TEST<br/>android.permission.health.WRITE_OVULATION_TEST                   |
    | OXYGEN_SATURATION       | android.permission.health.READ_OXYGEN_SATURATION<br/>android.permission.health.WRITE_OXYGEN_SATURATION             |
    | POWER                   | android.permission.health.READ_POWER<br/>android.permission.health.WRITE_POWER                                     |
@@ -101,7 +137,7 @@ kotlin {
    | WEIGHT                  | android.permission.health.READ_WEIGHT<br/>android.permission.health.WRITE_WEIGHT                                   |
    | WHEELCHAIR_PUSHES       | android.permission.health.READ_WHEELCHAIR_PUSHES<br/>android.permission.health.WRITE_WHEELCHAIR_PUSHES             |
 
-2. Instantiate
+3. Instantiate
 
     ```kotlin
     // On Apple (iOS, watchOS)
@@ -115,7 +151,7 @@ kotlin {
     }
     ```
 
-3. Initialise (only required on Android)
+4. Initialise (only required on Android)
 
     ```kotlin
     // Inside a `ComponentActivity`
@@ -126,53 +162,38 @@ kotlin {
     }
     ```
 
-4. Check Permission Status
+5. Check Permission Status
 
    ```kotlin
-    val permissionStatuses: Set<KHPermissionWithStatus> = kHealth.checkPermissions(
-        KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = true,
-        ),
-        KHPermission(
-            dataType = KHDataType.HeartRate,
-            read = true,
-            write = false,
-        ),
+    val permissionResponse: Set<KHPermission> = kHealth.checkPermissions(
+        KHPermission.ActiveCaloriesBurned(read = true, write = true),
+        KHPermission.HeartRate(read = true, write = false),
         // Add as many requests as you want
     )
    ```
 
-5. Request Permissions
+6. Request Permissions
 
    ```kotlin
-    val permissionStatuses: Set<KHPermissionWithStatus> = kHealth.requestPermissions(
-        KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = true,
-        ),
-        KHPermission(
-            dataType = KHDataType.HeartRate,
-            read = true,
-            write = false,
-        ),
+   // Same syntax as `checkPermissions`
+    val permissionResponse: Set<KHPermission> = kHealth.requestPermissions(
+        KHPermission.ActiveCaloriesBurned(read = true, write = true),
+        KHPermission.HeartRate(read = true, write = false),
         // Add as many requests as you want
     )
    ```
 
-6. Check if permission was granted
+7. Check if permission was granted
 
     ```kotlin
-    val caloriesWriteStatus = permissionStatuses.first {
-        it.permission.dataType == KHDataType.ActiveCaloriesBurned
+    val caloriesPermResponse = permissionResponse.first { response ->
+        response is KHPermission.ActiveCaloriesBurned
     }.writeStatus
 
-    val wasWritePermissionGranted = caloriesWriteStatus == KHPermissionStatus.Granted
+    val wasWritePermissionGranted = caloriesPermResponse.write == true 
     ```
 
-7. Write records
+8. Write records
 
    ```kotlin
    if (wasWritePermissionGranted) {
@@ -206,7 +227,7 @@ kotlin {
    }
    ```
 
-8. Read records
+9. Read records
    ```kotlin
     val heartRateRecords = kHealth.readRecords(
         KHReadRequest.HeartRate(
@@ -259,7 +280,7 @@ KHealth supports reading and writing the following data types on the following p
 | Weight                 | ✅       | ✅                     |
 | WheelChairPushes       | ✅       | ✅                     |
 
->[!NOTE]
+> [!NOTE]
 > The unsupported data types will simply be ignored by all platforms.
 
 ## 🤝 Contributing
