@@ -50,26 +50,10 @@ class KHealthTests {
     @OptIn(UnsafeNumber::class)
     @Test
     fun checkPermissionsWorksAsExpectedInAllScenarios() = runTest {
-        val allGrantedPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = true,
-        )
-        val readOnlyPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = false,
-        )
-        val writeOnlyPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = false,
-            write = true,
-        )
-        val noPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = false,
-            write = false,
-        )
+        val allGrantedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = true)
+        val readOnlyPermission = KHPermission.ActiveCaloriesBurned(read = true, write = false)
+        val writeOnlyPermission = KHPermission.ActiveCaloriesBurned(read = false, write = true)
+        val noPermission = KHPermission.ActiveCaloriesBurned(read = false, write = false)
         val grantStore = object : HKHealthStore() {
             override fun authorizationStatusForType(type: HKObjectType): HKAuthorizationStatus {
                 return HKAuthorizationStatusSharingAuthorized
@@ -88,167 +72,47 @@ class KHealthTests {
 
         // Case 1: When system grants WRITE permission
         sut = KHealth(store = grantStore, isHealthStoreAvailable = true)
-        // Then allGranted request results in NotDetermined-Granted response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Granted
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
-        // And read-only request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = readOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(readOnlyPermission)
-        )
-        // And write-only request results in NotDetermined-Granted response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = writeOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Granted
-                )
-            ),
-            sut.checkPermissions(writeOnlyPermission)
-        )
-        // And no-permission request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = noPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(noPermission)
-        )
+        // Then allGranted request results in Denied-Granted response
+        assertEquals(setOf(writeOnlyPermission), sut.checkPermissions(allGrantedPermission))
+        // And read-only request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(readOnlyPermission))
+        // And write-only request results in Denied-Granted response
+        assertEquals(setOf(writeOnlyPermission), sut.checkPermissions(writeOnlyPermission))
+        // And no-permission request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(noPermission))
 
         // Case 2: When system denies WRITE permission
         sut = KHealth(store = denyStore, isHealthStoreAvailable = true)
-        // Then allGranted request results in NotDetermined-Denied response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Denied
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
-        // And read-only request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = readOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(readOnlyPermission)
-        )
-        // And write-only request results in NotDetermined-Denied response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = writeOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Denied
-                )
-            ),
-            sut.checkPermissions(writeOnlyPermission)
-        )
-        // And no-permission request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = noPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(noPermission)
-        )
+        // Then allGranted request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(allGrantedPermission))
+        // And read-only request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(readOnlyPermission))
+        // And write-only request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(writeOnlyPermission))
+        // And no-permission request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(noPermission))
 
         // Case 3: When system does not determine WRITE permission
         sut = KHealth(store = notDeterminedStore, isHealthStoreAvailable = true)
-        // Then allGranted request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
-        // And read-only request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = readOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(readOnlyPermission)
-        )
-        // And write-only request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = writeOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(writeOnlyPermission)
-        )
-        // And no-permission request results in NotDetermined-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = noPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.NotDetermined
-                )
-            ),
-            sut.checkPermissions(noPermission)
-        )
+        // Then allGranted request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(allGrantedPermission))
+        // And read-only request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(readOnlyPermission))
+        // And write-only request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(writeOnlyPermission))
+        // And no-permission request results in Denied-Denied response
+        assertEquals(setOf(noPermission), sut.checkPermissions(noPermission))
     }
 
     @OptIn(UnsafeNumber::class)
     @Test
     fun requestPermissionsWorksAsExpectedInAllScenarios() = runTest {
-        val caloriesPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = true
-        )
-        val heartRatePermission = KHPermission(
-            dataType = KHDataType.HeartRate,
-            read = true,
-            write = true
-        )
+        val caloriesPermission = KHPermission.ActiveCaloriesBurned(read = true, write = true)
+        val heartRatePermission = KHPermission.HeartRate(read = true, write = true)
         sut = KHealth(
             store = object : HKHealthStore() {
                 override fun authorizationStatusForType(type: HKObjectType): HKAuthorizationStatus {
-                    val containsType = caloriesPermission.dataType
-                        .toHKObjectTypesOrNull()
-                        ?.contains(type) == true
-
-                    return if (containsType) HKAuthorizationStatusSharingAuthorized
+                    return if (type == ObjectType.Quantity.ActiveCaloriesBurned) HKAuthorizationStatusSharingAuthorized
                     else HKAuthorizationStatusSharingDenied
                 }
 
@@ -262,16 +126,8 @@ class KHealthTests {
         )
         assertEquals(
             setOf(
-                KHPermissionWithStatus(
-                    permission = caloriesPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Granted
-                ),
-                KHPermissionWithStatus(
-                    permission = heartRatePermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Denied
-                ),
+                caloriesPermission.copy(read = false),
+                heartRatePermission.copy(read = false, write = false)
             ),
             sut.requestPermissions(caloriesPermission, heartRatePermission)
         )

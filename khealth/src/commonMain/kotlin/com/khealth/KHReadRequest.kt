@@ -20,11 +20,7 @@ import kotlinx.datetime.Instant
 /**
  * Represents the kind of [KHRecord] the app wants to read.
  */
-sealed class KHReadRequest(
-    internal val startDateTime: Instant,
-    internal val endDateTime: Instant,
-    internal val dataType: KHDataType
-) {
+sealed class KHReadRequest(internal val startDateTime: Instant, internal val endDateTime: Instant) {
     /**
      * Depicts that the app wants to read records of type [KHRecord.ActiveCaloriesBurned] from
      * the health store.
@@ -37,11 +33,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Energy,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.ActiveCaloriesBurned
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BasalMetabolicRate] from the
@@ -55,11 +47,7 @@ sealed class KHReadRequest(
         val unit: KHEither<KHUnit.Power, KHUnit.Energy>,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BasalMetabolicRate
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BloodGlucose] from the
@@ -73,11 +61,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.BloodGlucose,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BloodGlucose
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BloodPressure] from the
@@ -91,11 +75,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Pressure,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BloodPressure
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BodyFat] from the health
@@ -107,11 +87,7 @@ sealed class KHReadRequest(
     data class BodyFat(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BodyFat
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BodyTemperature] from the
@@ -125,11 +101,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Temperature,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BodyTemperature
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BodyWaterMass] from the
@@ -143,11 +115,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Mass,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BodyWaterMass
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.BoneMass] from the health
@@ -161,11 +129,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Mass,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.BoneMass
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.CervicalMucus] from the
@@ -177,11 +141,7 @@ sealed class KHReadRequest(
     data class CervicalMucus(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.CervicalMucus
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.CyclingPedalingCadence] from
@@ -193,339 +153,7 @@ sealed class KHReadRequest(
     data class CyclingPedalingCadence(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.CyclingPedalingCadence
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.Distance] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class Distance(
-        val unit: KHUnit.Length,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.Distance
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.ElevationGained] from the
-     * health store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class ElevationGained(
-        val unit: KHUnit.Length,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.ElevationGained
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.FloorsClimbed] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class FloorsClimbed(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.FloorsClimbed
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.HeartRate] from the health
-     * store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class HeartRate(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.HeartRate
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.HeartRateVariability] from
-     * the health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class HeartRateVariability(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.HeartRateVariability
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.Height] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class Height(
-        val unit: KHUnit.Length,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.Height
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.Hydration] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class Hydration(
-        val unit: KHUnit.Volume,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.Hydration
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.IntermenstrualBleeding] from
-     * the health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class IntermenstrualBleeding(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.IntermenstrualBleeding
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.LeanBodyMass] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class LeanBodyMass(
-        val unit: KHUnit.Mass,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.LeanBodyMass
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.MenstruationPeriod] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class MenstruationPeriod(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.MenstruationPeriod
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.MenstruationFlow] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class MenstruationFlow(
-        val startTime: Instant,
-        val endTime: Instant,
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.MenstruationFlow
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.OvulationTest] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class OvulationTest(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.OvulationTest
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.OxygenSaturation] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class OxygenSaturation(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.OxygenSaturation
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.Power] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class Power(
-        val unit: KHUnit.Power,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime, dataType = KHDataType.Power)
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.RespiratoryRate] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class RespiratoryRate(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.RespiratoryRate
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.RestingHeartRate] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class RestingHeartRate(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.RestingHeartRate
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.SexualActivity] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class SexualActivity(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.SexualActivity
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.SleepSession] from the
-     * health store.
-     *
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class SleepSession(
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.SleepSession
-    )
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.Speed] from the health
-     * store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class Speed(
-        val unit: KHUnit.Velocity,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime, dataType = KHDataType.Speed)
-
-    /**
-     * Depicts that the app wants to read records of type [KHRecord.RunningSpeed] from the
-     * health store.
-     *
-     * @param unit The measurement scale that the returned value should be converted to
-     * @param startTime Filters the returned records list to at least start from this time instant
-     * @param endTime Filters the returned records list to at most end at this time instant
-     */
-    data class RunningSpeed(
-        val unit: KHUnit.Velocity,
-        val startTime: Instant,
-        val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.RunningSpeed
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.CyclingSpeed] from the
@@ -539,11 +167,270 @@ sealed class KHReadRequest(
         val unit: KHUnit.Velocity,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.CyclingSpeed
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.Distance] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class Distance(
+        val unit: KHUnit.Length,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.ElevationGained] from the
+     * health store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class ElevationGained(
+        val unit: KHUnit.Length,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.FloorsClimbed] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class FloorsClimbed(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.HeartRate] from the health
+     * store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class HeartRate(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.HeartRateVariability] from
+     * the health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class HeartRateVariability(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.Height] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class Height(
+        val unit: KHUnit.Length,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.Hydration] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class Hydration(
+        val unit: KHUnit.Volume,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.IntermenstrualBleeding] from
+     * the health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class IntermenstrualBleeding(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.LeanBodyMass] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class LeanBodyMass(
+        val unit: KHUnit.Mass,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.MenstruationPeriod] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class MenstruationPeriod(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.MenstruationFlow] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class MenstruationFlow(
+        val startTime: Instant,
+        val endTime: Instant,
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    data class Nutrition(
+        val solidUnit: KHUnit.Mass = KHUnit.Mass.Gram,
+        val energyUnit: KHUnit.Energy = KHUnit.Energy.KiloCalorie,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.OvulationTest] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class OvulationTest(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.OxygenSaturation] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class OxygenSaturation(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.Power] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class Power(
+        val unit: KHUnit.Power,
+        val startTime: Instant,
+        val endTime: Instant,
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.RespiratoryRate] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class RespiratoryRate(
+        val startTime: Instant,
+        val endTime: Instant,
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.RestingHeartRate] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class RestingHeartRate(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.RunningSpeed] from the
+     * health store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class RunningSpeed(
+        val unit: KHUnit.Velocity,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.SexualActivity] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class SexualActivity(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.SleepSession] from the
+     * health store.
+     *
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class SleepSession(
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
+
+    /**
+     * Depicts that the app wants to read records of type [KHRecord.Speed] from the health
+     * store.
+     *
+     * @param unit The measurement scale that the returned value should be converted to
+     * @param startTime Filters the returned records list to at least start from this time instant
+     * @param endTime Filters the returned records list to at most end at this time instant
+     */
+    data class Speed(
+        val unit: KHUnit.Velocity,
+        val startTime: Instant,
+        val endTime: Instant
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.StepCount] from the
@@ -555,11 +442,7 @@ sealed class KHReadRequest(
     data class StepCount(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.StepCount
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.Vo2Max] from the health
@@ -571,11 +454,7 @@ sealed class KHReadRequest(
     data class Vo2Max(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.Vo2Max
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.Weight] from the health
@@ -589,11 +468,7 @@ sealed class KHReadRequest(
         val unit: KHUnit.Mass,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.Weight
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 
     /**
      * Depicts that the app wants to read records of type [KHRecord.WheelChairPushes] from the
@@ -605,9 +480,5 @@ sealed class KHReadRequest(
     data class WheelChairPushes(
         val startTime: Instant,
         val endTime: Instant,
-    ) : KHReadRequest(
-        startDateTime = startTime,
-        endDateTime = endTime,
-        dataType = KHDataType.WheelChairPushes
-    )
+    ) : KHReadRequest(startDateTime = startTime, endDateTime = endTime)
 }

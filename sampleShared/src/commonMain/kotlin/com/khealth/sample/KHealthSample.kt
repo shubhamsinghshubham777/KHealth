@@ -17,14 +17,12 @@ package com.khealth.sample
 
 import com.khealth.KHCervicalMucusAppearance
 import com.khealth.KHCyclingPedalingCadenceSample
-import com.khealth.KHDataType
 import com.khealth.KHEither
 import com.khealth.KHHeartRateSample
+import com.khealth.KHMealType
 import com.khealth.KHMenstruationFlowType
 import com.khealth.KHOvulationTestResult
 import com.khealth.KHPermission
-import com.khealth.KHPermissionStatus
-import com.khealth.KHPermissionWithStatus
 import com.khealth.KHPowerSample
 import com.khealth.KHReadRequest
 import com.khealth.KHRecord
@@ -39,16 +37,61 @@ import kotlinx.datetime.Clock
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.minutes
 
-private val permissions = KHDataType.entries
-    .map { type -> KHPermission(type, read = true, write = true) }
-    .toTypedArray()
+val permissions = arrayOf(
+    KHPermission.ActiveCaloriesBurned(read = true, write = true),
+    KHPermission.BasalMetabolicRate(read = true, write = true),
+    KHPermission.BloodGlucose(read = true, write = true),
+    KHPermission.BloodPressure(
+        readSystolic = true,
+        writeSystolic = true,
+        readDiastolic = true,
+        writeDiastolic = true
+    ),
+    KHPermission.BodyFat(read = true, write = true),
+    KHPermission.BodyTemperature(read = true, write = true),
+    KHPermission.BodyWaterMass(read = true, write = true),
+    KHPermission.BoneMass(read = true, write = true),
+    KHPermission.CervicalMucus(read = true, write = true),
+    KHPermission.CyclingPedalingCadence(read = true, write = true),
+    KHPermission.CyclingSpeed(read = true, write = true),
+    KHPermission.Distance(read = true, write = true),
+    KHPermission.ElevationGained(read = true, write = true),
+    KHPermission.FloorsClimbed(read = true, write = true),
+    KHPermission.HeartRate(read = true, write = true),
+    KHPermission.HeartRateVariability(read = true, write = true),
+    KHPermission.Height(read = true, write = true),
+    KHPermission.Hydration(read = true, write = true),
+    KHPermission.IntermenstrualBleeding(read = true, write = true),
+    KHPermission.LeanBodyMass(read = true, write = true),
+    KHPermission.MenstruationPeriod(read = true, write = true),
+    KHPermission.MenstruationFlow(read = true, write = true),
+    KHPermission.Nutrition(
+        readBiotin = true,
+        writeBiotin = true,
+        readCaffeine = true,
+        writeCaffeine = true
+    ),
+    KHPermission.OvulationTest(read = true, write = true),
+    KHPermission.OxygenSaturation(read = true, write = true),
+    KHPermission.Power(read = true, write = true),
+    KHPermission.RespiratoryRate(read = true, write = true),
+    KHPermission.RestingHeartRate(read = true, write = true),
+    KHPermission.RunningSpeed(read = true, write = true),
+    KHPermission.SexualActivity(read = true, write = true),
+    KHPermission.SleepSession(read = true, write = true),
+    KHPermission.Speed(read = true, write = true),
+    KHPermission.StepCount(read = true, write = true),
+    KHPermission.Vo2Max(read = true, write = true),
+    KHPermission.Weight(read = true, write = true),
+    KHPermission.WheelChairPushes(read = true, write = true),
+)
 
 private val coroutineScope = MainScope()
 
 fun sampleCheckAllPerms(kHealth: KHealth) {
     coroutineScope.launch {
         val response = kHealth.checkPermissions(*permissions)
-        printResponse(response)
+        println("Check Permissions Response: $response")
     }
 }
 
@@ -56,9 +99,9 @@ fun sampleRequestAllPerms(kHealth: KHealth) {
     coroutineScope.launch {
         try {
             val response = kHealth.requestPermissions(*permissions)
-            printResponse(response)
+            println("Request Permissions Response: $response")
         } catch (t: Throwable) {
-            println("Error is: $t")
+            println("Request Permissions Error: $t")
         }
     }
 }
@@ -125,6 +168,15 @@ fun sampleWriteData(kHealth: KHealth) {
                 startTime = Clock.System.now() - 10.minutes,
                 endTime = Clock.System.now(),
             ),
+            KHRecord.CyclingSpeed(
+                samples = listOf(
+                    KHSpeedSample(
+                        unit = KHUnit.Velocity.KilometersPerHour,
+                        value = 30.0,
+                        time = Clock.System.now(),
+                    )
+                ),
+            ),
             KHRecord.Distance(
                 unit = KHUnit.Length.Meter,
                 value = 4.9,
@@ -162,9 +214,7 @@ fun sampleWriteData(kHealth: KHealth) {
                 startTime = Clock.System.now().minus(2.minutes),
                 endTime = Clock.System.now(),
             ),
-            KHRecord.IntermenstrualBleeding(
-                time = Clock.System.now(),
-            ),
+            KHRecord.IntermenstrualBleeding(time = Clock.System.now()),
             KHRecord.LeanBodyMass(
                 unit = KHUnit.Mass.Gram,
                 value = 1120.0,
@@ -177,6 +227,15 @@ fun sampleWriteData(kHealth: KHealth) {
             KHRecord.MenstruationFlow(
                 type = KHMenstruationFlowType.Medium,
                 time = Clock.System.now(),
+            ),
+            KHRecord.Nutrition(
+                name = "KHealth Sample Meal",
+                startTime = Clock.System.now() - 10.minutes,
+                endTime = Clock.System.now(),
+                mealType = KHMealType.Snack,
+                solidUnit = KHUnit.Mass.Gram,
+                biotin = 0.00003,
+                caffeine = 0.45,
             ),
             KHRecord.OvulationTest(
                 result = KHOvulationTestResult.Positive,
@@ -202,6 +261,15 @@ fun sampleWriteData(kHealth: KHealth) {
             KHRecord.RestingHeartRate(
                 beatsPerMinute = 112,
                 time = Clock.System.now(),
+            ),
+            KHRecord.RunningSpeed(
+                samples = listOf(
+                    KHSpeedSample(
+                        unit = KHUnit.Velocity.KilometersPerHour,
+                        value = 10.0,
+                        time = Clock.System.now(),
+                    )
+                ),
             ),
             KHRecord.SexualActivity(
                 didUseProtection = true,
@@ -251,23 +319,14 @@ fun sampleWriteData(kHealth: KHealth) {
                     )
                 ),
             ),
-            KHRecord.RunningSpeed(
+            KHRecord.Speed(
                 samples = listOf(
                     KHSpeedSample(
                         unit = KHUnit.Velocity.KilometersPerHour,
-                        value = 10.0,
+                        value = 14.6,
                         time = Clock.System.now(),
                     )
-                ),
-            ),
-            KHRecord.CyclingSpeed(
-                samples = listOf(
-                    KHSpeedSample(
-                        unit = KHUnit.Velocity.KilometersPerHour,
-                        value = 30.0,
-                        time = Clock.System.now(),
-                    )
-                ),
+                )
             ),
             KHRecord.StepCount(
                 count = 24,
@@ -422,6 +481,9 @@ fun sampleReadData(kHealth: KHealth) {
                         KHReadRequest.MenstruationFlow(startTime = startTime, endTime = endTime)
                     ) +
                     readRecords(
+                        KHReadRequest.Nutrition(startTime = startTime, endTime = endTime)
+                    ) +
+                    readRecords(
                         KHReadRequest.OvulationTest(startTime = startTime, endTime = endTime)
                     ) +
                     readRecords(
@@ -479,16 +541,4 @@ fun sampleReadData(kHealth: KHealth) {
         }
         println("All records: $allRecords")
     }
-}
-
-private fun printResponse(response: Set<KHPermissionWithStatus>) {
-    println(
-        "Request Response: ${
-            response.joinToString {
-                "${it.permission.dataType} -> " +
-                        (if (it.readStatus == KHPermissionStatus.Granted) "R" else "") +
-                        if (it.writeStatus == KHPermissionStatus.Granted) "+W" else ""
-            }
-        }"
-    )
 }

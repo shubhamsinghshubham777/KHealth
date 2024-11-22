@@ -17,11 +17,10 @@ package com.khealth
 
 import kotlinx.datetime.Instant
 
-// TODO: Sort classes alphabetically
 /**
  * Represents a readable or writable entity.
  */
-sealed class KHRecord(internal val dataType: KHDataType) {
+sealed class KHRecord {
     /**
      * Captures the estimated active energy burned by the user, excluding basal metabolic rate
      * (BMR). Each record represents the total energy burned over a time interval, so both the
@@ -38,7 +37,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val value: Double,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.ActiveCaloriesBurned)
+    ) : KHRecord()
 
     /**
      * Captures the BMR of a user. Each record represents the energy a user would burn if at rest
@@ -55,7 +54,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHEither<KHUnit.Power, KHUnit.Energy>,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BasalMetabolicRate)
+    ) : KHRecord()
 
     /**
      * Captures the concentration of glucose in the blood. Each record represents a single
@@ -69,7 +68,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.BloodGlucose,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BloodGlucose)
+    ) : KHRecord()
 
     /**
      * Captures the blood pressure of a user. Each record represents a single instantaneous blood
@@ -87,7 +86,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val systolicValue: Double,
         val diastolicValue: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BloodPressure)
+    ) : KHRecord()
 
     /**
      * Captures the body fat percentage of a user. Each record represents a person's total body fat
@@ -99,7 +98,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class BodyFat(
         val percentage: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BodyFat)
+    ) : KHRecord()
 
     /**
      * Captures the body temperature of a user. Each record represents a single instantaneous body
@@ -113,7 +112,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Temperature,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BodyTemperature)
+    ) : KHRecord()
 
     /**
      * Body water mass is the total amount of water in a person's body, typically comprising about
@@ -128,7 +127,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Mass,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BodyWaterMass)
+    ) : KHRecord()
 
     /**
      * Bone mass is the total weight of bones in the body, reflecting the amount of bone tissue and
@@ -143,7 +142,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Mass,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.BoneMass)
+    ) : KHRecord()
 
     /**
      * Cervical mucus is a fluid produced by the cervix that changes in consistency throughout the
@@ -155,7 +154,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class CervicalMucus(
         val appearance: KHCervicalMucusAppearance,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.CervicalMucus)
+    ) : KHRecord()
 
     /**
      * In cycling, cadence is a measure of rotational speed of the crank, expressed in revolutions
@@ -174,7 +173,19 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val samples: List<KHCyclingPedalingCadenceSample>,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.CyclingPedalingCadence)
+    ) : KHRecord()
+
+    /**
+     * Cycling speed is the rate at which a cyclist travels, usually measured in kilometers per hour
+     * (km/h) or miles per hour (mph).
+     *
+     * > **Note -** This record is available on `Apple` only. It will be ignored on `Android`.
+     *
+     * @param samples The list of captured speed values along with their unit and time instances
+     */
+    data class CyclingSpeed(
+        val samples: List<KHSpeedSample>,
+    ) : KHRecord()
 
     /**
      * Captures distance travelled by the user since the last reading. The total distance over an
@@ -197,7 +208,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val value: Double,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.Distance)
+    ) : KHRecord()
 
     /**
      * Captures the elevation gained by the user since the last reading.
@@ -215,7 +226,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val value: Double,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.ElevationGained)
+    ) : KHRecord()
 
     /**
      * Captures the number of floors climbed by the user since the last reading.
@@ -229,7 +240,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val floors: Double,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.FloorsClimbed)
+    ) : KHRecord()
 
     /**
      * Captures the user's heart rate. Each record represents a series of measurements.
@@ -238,7 +249,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
      */
     data class HeartRate(
         val samples: List<KHHeartRateSample>
-    ) : KHRecord(dataType = KHDataType.HeartRate)
+    ) : KHRecord()
 
     /**
      * Captures user's heart rate variability (HRV) as measured by the root mean square of
@@ -251,7 +262,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class HeartRateVariability(
         val heartRateVariabilityMillis: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.HeartRateVariability)
+    ) : KHRecord()
 
     /**
      * Captures the user's height.
@@ -264,7 +275,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Length,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.Height)
+    ) : KHRecord()
 
     /**
      * Captures how much water a user drank in a single drink.
@@ -280,7 +291,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val value: Double,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.Hydration)
+    ) : KHRecord()
 
     /**
      * Captures an instance of user's intermenstrual bleeding, also known as spotting.
@@ -289,7 +300,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
      */
     data class IntermenstrualBleeding(
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.IntermenstrualBleeding)
+    ) : KHRecord()
 
     /**
      * Captures the user's lean body mass. Each record represents a single instantaneous
@@ -303,7 +314,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Mass,
         val value: Double,
         val time: Instant
-    ) : KHRecord(dataType = KHDataType.LeanBodyMass)
+    ) : KHRecord()
 
     /**
      * Captures user's menstruation periods.
@@ -316,7 +327,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class MenstruationPeriod(
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.MenstruationPeriod)
+    ) : KHRecord()
 
     /**
      * Captures a description of how heavy a user's menstrual flow was (light, medium, or heavy).
@@ -332,7 +343,103 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val type: KHMenstruationFlowType,
         val time: Instant,
         val isStartOfCycle: Boolean = false,
-    ) : KHRecord(dataType = KHDataType.MenstruationFlow)
+    ) : KHRecord()
+
+    /**
+     * Captures what nutrients were consumed as part of a meal or a food item.
+     *
+     * @param name Name for food or drink, provided by the user.
+     * @param startTime The start instant of the interval over which the value this record was
+     * captured
+     * @param endTime The end instant of the interval over which the value this record was captured
+     * @param biotin Biotin in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param caffeine Caffeine in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param calcium Calcium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param chloride Chloride in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param cholesterol Cholesterol in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param chromium Chromium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param copper Copper in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param dietaryFiber Dietary fiber in [KHUnit.Mass] unit (Valid range: 0-100000 grams)
+     * @param energy Energy in [KHUnit.Energy] unit (Valid range: 0-100000 kcal)
+     * @param folicAcid Folic acid in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param iodine Iodine in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param iron Iron in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param magnesium Magnesium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param manganese Manganese in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param molybdenum Molybdenum in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param monounsaturatedFat Monounsaturated fat in [KHUnit.Mass] unit (Valid range: 0-100000
+     * grams)
+     * @param niacin Niacin in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param pantothenicAcid Pantothenic acid in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param phosphorus Phosphorus in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param polyunsaturatedFat Polyunsaturated fat in [KHUnit.Mass] unit (Valid range: 0-100000
+     * grams)
+     * @param potassium Potassium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param protein Protein in [KHUnit.Mass] unit (Valid range: 0-100000 grams)
+     * @param riboflavin Riboflavin in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param saturatedFat Saturated fat in [KHUnit.Mass] unit (Valid range: 0-100000 grams)
+     * @param selenium Selenium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param sodium Sodium in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param sugar Sugar in [KHUnit.Mass] unit (Valid range: 0-100000 grams)
+     * @param thiamin Thiamin in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param totalCarbohydrate Total carbohydrate in [KHUnit.Mass] unit (Valid
+     * range: 0-100000 grams)
+     * @param totalFat Total fat in [KHUnit.Mass] unit (Valid range: 0-100000 grams)
+     * @param vitaminA Vitamin A in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminB12 Vitamin B12 in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminB6 Vitamin B6 in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminC Vitamin C in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminD Vitamin D in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminE Vitamin E in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param vitaminK Vitamin K in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     * @param zinc Zinc in [KHUnit.Mass] unit (Valid range: 0-100 grams)
+     */
+    data class Nutrition(
+        val name: String? = null,
+        val startTime: Instant,
+        val endTime: Instant,
+        val solidUnit: KHUnit.Mass = KHUnit.Mass.Gram,
+        val energyUnit: KHUnit.Energy = KHUnit.Energy.KiloCalorie,
+        val mealType: KHMealType,
+        val biotin: Double? = null,
+        val caffeine: Double? = null,
+        val calcium: Double? = null,
+        val chloride: Double? = null,
+        val cholesterol: Double? = null,
+        val chromium: Double? = null,
+        val copper: Double? = null,
+        val dietaryFiber: Double? = null,
+        val energy: Double? = null,
+        val folicAcid: Double? = null,
+        val iodine: Double? = null,
+        val iron: Double? = null,
+        val magnesium: Double? = null,
+        val manganese: Double? = null,
+        val molybdenum: Double? = null,
+        val monounsaturatedFat: Double? = null,
+        val niacin: Double? = null,
+        val pantothenicAcid: Double? = null,
+        val phosphorus: Double? = null,
+        val polyunsaturatedFat: Double? = null,
+        val potassium: Double? = null,
+        val protein: Double? = null,
+        val riboflavin: Double? = null,
+        val saturatedFat: Double? = null,
+        val selenium: Double? = null,
+        val sodium: Double? = null,
+        val sugar: Double? = null,
+        val thiamin: Double? = null,
+        val totalCarbohydrate: Double? = null,
+        val totalFat: Double? = null,
+        val vitaminA: Double? = null,
+        val vitaminB12: Double? = null,
+        val vitaminB6: Double? = null,
+        val vitaminC: Double? = null,
+        val vitaminD: Double? = null,
+        val vitaminE: Double? = null,
+        val vitaminK: Double? = null,
+        val zinc: Double? = null,
+    ) : KHRecord()
 
     /**
      * Each record represents the result of an ovulation test.
@@ -343,7 +450,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class OvulationTest(
         val result: KHOvulationTestResult,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.OvulationTest)
+    ) : KHRecord()
 
     /**
      * Captures the amount of oxygen circulating in the blood, measured as a percentage of
@@ -356,7 +463,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class OxygenSaturation(
         val percentage: Double,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.OxygenSaturation)
+    ) : KHRecord()
 
     /**
      * Captures the power generated by the user, e. g. during cycling or rowing with a power meter.
@@ -364,7 +471,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
      *
      * @param samples The list of captured power values along with their time instances
      */
-    data class Power(val samples: List<KHPowerSample>) : KHRecord(dataType = KHDataType.Power)
+    data class Power(val samples: List<KHPowerSample>) : KHRecord()
 
     /**
      * Captures the user's respiratory rate. Each record represents a single instantaneous
@@ -376,7 +483,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class RespiratoryRate(
         val rate: Double,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.RespiratoryRate)
+    ) : KHRecord()
 
     /**
      * Captures the user's resting heart rate. Each record represents a single instantaneous
@@ -388,7 +495,19 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class RestingHeartRate(
         val beatsPerMinute: Long,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.RestingHeartRate)
+    ) : KHRecord()
+
+    /**
+     * Running speed is the rate at which a person moves while running, typically measured in meters
+     * per second or kilometers per hour.
+     *
+     * > **Note -** This record is available on `Apple` only. It will be ignored on `Android`.
+     *
+     * @param samples The list of captured speed values along with their unit and time instances
+     */
+    data class RunningSpeed(
+        val samples: List<KHSpeedSample>,
+    ) : KHRecord()
 
     /**
      * Captures an occurrence of sexual activity. Each record is a single occurrence.
@@ -399,7 +518,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class SexualActivity(
         val didUseProtection: Boolean,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.SexualActivity)
+    ) : KHRecord()
 
     /**
      * Captures the user's sleep length and its stages. Each record represents a time interval for
@@ -412,7 +531,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
      */
     data class SleepSession(
         val samples: List<KHSleepStageSample>
-    ) : KHRecord(dataType = KHDataType.SleepSession)
+    ) : KHRecord()
 
     /**
      * Captures the user's speed, e. g. during running or cycling. Each record represents a series
@@ -424,31 +543,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
      */
     data class Speed(
         val samples: List<KHSpeedSample>,
-    ) : KHRecord(dataType = KHDataType.Speed)
-
-    /**
-     * Running speed is the rate at which a person moves while running, typically measured in meters
-     * per second or kilometers per hour.
-     *
-     * > **Note -** This record is available on `Apple` only. It will be ignored on `Android`.
-     *
-     * @param samples The list of captured speed values along with their unit and time instances
-     */
-    data class RunningSpeed(
-        val samples: List<KHSpeedSample>,
-    ) : KHRecord(dataType = KHDataType.RunningSpeed)
-
-    /**
-     * Cycling speed is the rate at which a cyclist travels, usually measured in kilometers per hour
-     * (km/h) or miles per hour (mph).
-     *
-     * > **Note -** This record is available on `Apple` only. It will be ignored on `Android`.
-     *
-     * @param samples The list of captured speed values along with their unit and time instances
-     */
-    data class CyclingSpeed(
-        val samples: List<KHSpeedSample>,
-    ) : KHRecord(dataType = KHDataType.CyclingSpeed)
+    ) : KHRecord()
 
     /**
      * Captures the number of steps taken since the last reading. Each step is only reported once
@@ -468,7 +563,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val count: Long,
         val startTime: Instant,
         val endTime: Instant
-    ) : KHRecord(dataType = KHDataType.StepCount)
+    ) : KHRecord()
 
     /**
      * VO2 max is the maximum amount of oxygen the body can utilize during intense exercise,
@@ -480,7 +575,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
     data class Vo2Max(
         val vo2MillilitersPerMinuteKilogram: Double,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.Vo2Max)
+    ) : KHRecord()
 
     /**
      * Captures the user's weight.
@@ -493,7 +588,7 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val unit: KHUnit.Mass,
         val value: Double,
         val time: Instant,
-    ) : KHRecord(dataType = KHDataType.Weight)
+    ) : KHRecord()
 
     /**
      * Captures the number of wheelchair pushes done since the last reading. Each push is only
@@ -509,5 +604,5 @@ sealed class KHRecord(internal val dataType: KHDataType) {
         val count: Long,
         val startTime: Instant,
         val endTime: Instant,
-    ) : KHRecord(dataType = KHDataType.WheelChairPushes)
+    ) : KHRecord()
 }

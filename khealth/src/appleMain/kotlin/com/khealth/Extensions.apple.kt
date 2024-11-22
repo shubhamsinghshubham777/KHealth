@@ -16,6 +16,13 @@
 package com.khealth
 
 import kotlinx.cinterop.UnsafeNumber
+import kotlinx.datetime.toKotlinInstant
+import platform.HealthKit.HKCategoryTypeIdentifierCervicalMucusQuality
+import platform.HealthKit.HKCategoryTypeIdentifierIntermenstrualBleeding
+import platform.HealthKit.HKCategoryTypeIdentifierMenstrualFlow
+import platform.HealthKit.HKCategoryTypeIdentifierOvulationTestResult
+import platform.HealthKit.HKCategoryTypeIdentifierSexualActivity
+import platform.HealthKit.HKCategoryTypeIdentifierSleepAnalysis
 import platform.HealthKit.HKCategoryValueCervicalMucusQuality
 import platform.HealthKit.HKCategoryValueCervicalMucusQualityCreamy
 import platform.HealthKit.HKCategoryValueCervicalMucusQualityDry
@@ -38,7 +45,72 @@ import platform.HealthKit.HKCategoryValueSleepAnalysisAwake
 import platform.HealthKit.HKMetricPrefixDeci
 import platform.HealthKit.HKMetricPrefixKilo
 import platform.HealthKit.HKMetricPrefixMilli
+import platform.HealthKit.HKObjectType
 import platform.HealthKit.HKQuantity
+import platform.HealthKit.HKQuantityType
+import platform.HealthKit.HKQuantityTypeIdentifierActiveEnergyBurned
+import platform.HealthKit.HKQuantityTypeIdentifierBasalEnergyBurned
+import platform.HealthKit.HKQuantityTypeIdentifierBloodGlucose
+import platform.HealthKit.HKQuantityTypeIdentifierBloodPressureDiastolic
+import platform.HealthKit.HKQuantityTypeIdentifierBloodPressureSystolic
+import platform.HealthKit.HKQuantityTypeIdentifierBodyFatPercentage
+import platform.HealthKit.HKQuantityTypeIdentifierBodyMass
+import platform.HealthKit.HKQuantityTypeIdentifierBodyTemperature
+import platform.HealthKit.HKQuantityTypeIdentifierCyclingPower
+import platform.HealthKit.HKQuantityTypeIdentifierCyclingSpeed
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryBiotin
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryCaffeine
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryCalcium
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryCarbohydrates
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryChloride
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryCholesterol
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryChromium
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryCopper
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryEnergyConsumed
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFatMonounsaturated
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFatPolyunsaturated
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFatSaturated
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFatTotal
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFiber
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryFolate
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryIodine
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryIron
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryMagnesium
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryManganese
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryMolybdenum
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryNiacin
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryPantothenicAcid
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryPhosphorus
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryPotassium
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryProtein
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryRiboflavin
+import platform.HealthKit.HKQuantityTypeIdentifierDietarySelenium
+import platform.HealthKit.HKQuantityTypeIdentifierDietarySodium
+import platform.HealthKit.HKQuantityTypeIdentifierDietarySugar
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryThiamin
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminA
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminB12
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminB6
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminC
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminD
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminE
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryVitaminK
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryWater
+import platform.HealthKit.HKQuantityTypeIdentifierDietaryZinc
+import platform.HealthKit.HKQuantityTypeIdentifierDistanceWalkingRunning
+import platform.HealthKit.HKQuantityTypeIdentifierFlightsClimbed
+import platform.HealthKit.HKQuantityTypeIdentifierHeartRate
+import platform.HealthKit.HKQuantityTypeIdentifierHeartRateVariabilitySDNN
+import platform.HealthKit.HKQuantityTypeIdentifierHeight
+import platform.HealthKit.HKQuantityTypeIdentifierLeanBodyMass
+import platform.HealthKit.HKQuantityTypeIdentifierOxygenSaturation
+import platform.HealthKit.HKQuantityTypeIdentifierPushCount
+import platform.HealthKit.HKQuantityTypeIdentifierRespiratoryRate
+import platform.HealthKit.HKQuantityTypeIdentifierRestingHeartRate
+import platform.HealthKit.HKQuantityTypeIdentifierRunningSpeed
+import platform.HealthKit.HKQuantityTypeIdentifierStepCount
+import platform.HealthKit.HKQuantityTypeIdentifierVO2Max
+import platform.HealthKit.HKSample
 import platform.HealthKit.HKUnit
 import platform.HealthKit.HKUnitMolarMassBloodGlucose
 import platform.HealthKit.countUnit
@@ -361,4 +433,189 @@ internal fun NSInteger.toKHSleepStage(): KHSleepStage = when (this) {
     HKCategoryValueSleepAnalysisAsleepREM -> KHSleepStage.REM
     HKCategoryValueSleepAnalysisAsleepUnspecified -> KHSleepStage.Sleeping
     else -> throw IllegalStateException("Unknown Sleep stage!")
+}
+
+/**
+ * Merges multiple lists of quantity samples based on their startDate.
+ * Each inner list in the result corresponds to the input list at the same position.
+ * If no matching sample is found for a particular date, null is used in that position.
+ */
+internal fun mergeHKSamples(vararg samples: List<HKSample>?): List<List<HKSample?>> {
+    // Convert null lists to empty lists
+    val validSamples = samples.map { it ?: emptyList() }
+
+    // If all lists are empty, return an empty result
+    if (validSamples.all { it.isEmpty() }) return emptyList()
+
+    // Get all unique dates
+    val allDates = validSamples
+        .flatten()
+        .map { it.startDate }
+        .distinct()
+        .sortedByDescending { it.toKotlinInstant() }
+
+    // Create maps for efficient lookup
+    val sampleMaps = validSamples.map { validSampleList ->
+        validSampleList.associateBy(
+            keySelector = { it.startDate },
+            valueTransform = { it }
+        )
+    }
+
+    return allDates.map { date ->
+        // For each date, create a list of values matching the input order
+        sampleMaps.map { sampleMap -> sampleMap[date] }
+    }
+}
+
+internal object ObjectType {
+    object Category {
+        val CervicalMucus =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierCervicalMucusQuality)!!
+
+        val IntermenstrualBleeding =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierIntermenstrualBleeding)!!
+
+        val MenstruationFlow =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierMenstrualFlow)!!
+
+        val SexualActivity =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSexualActivity)!!
+
+        val OvulationTest =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierOvulationTestResult)!!
+
+        val SleepSession =
+            HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierSleepAnalysis)!!
+    }
+
+    object Food {
+        val Biotin =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryBiotin)!!
+        val Caffeine =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCaffeine)!!
+        val Calcium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCalcium)!!
+        val EnergyConsumed =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryEnergyConsumed)!!
+        val Chloride =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryChloride)!!
+        val Cholesterol =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCholesterol)!!
+        val Chromium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryChromium)!!
+        val Copper =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCopper)!!
+        val Fiber =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFiber)!!
+        val Folate =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFolate)!!
+        val Iodine =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryIodine)!!
+        val Iron =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryIron)!!
+        val Magnesium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryMagnesium)!!
+        val Manganese =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryManganese)!!
+        val Molybdenum =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryMolybdenum)!!
+        val FatMonounsaturated =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFatMonounsaturated)!!
+        val Niacin =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryNiacin)!!
+        val PantothenicAcid =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryPantothenicAcid)!!
+        val Phosphorus =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryPhosphorus)!!
+        val FatPolyunsaturated =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFatPolyunsaturated)!!
+        val Potassium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryPotassium)!!
+        val Protein =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryProtein)!!
+        val Riboflavin =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryRiboflavin)!!
+        val FatSaturated =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFatSaturated)!!
+        val Selenium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietarySelenium)!!
+        val Sodium =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietarySodium)!!
+        val Sugar =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietarySugar)!!
+        val Thiamin =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryThiamin)!!
+        val Carbohydrates =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCarbohydrates)!!
+        val FatTotal =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFatTotal)!!
+        val VitaminA =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminA)!!
+        val VitaminB12 =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminB12)!!
+        val VitaminB6 =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminB6)!!
+        val VitaminC =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminC)!!
+        val VitaminD =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminD)!!
+        val VitaminE =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminE)!!
+        val VitaminK =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryVitaminK)!!
+        val Zinc =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryZinc)!!
+    }
+
+    object Quantity {
+        val ActiveCaloriesBurned =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!!
+        val BasalMetabolicRate =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBasalEnergyBurned)!!
+        val BloodGlucose =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodGlucose)!!
+        val BloodPressureSystolic =
+            HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodPressureSystolic)!!
+        val BloodPressureDiastolic =
+            HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodPressureDiastolic)!!
+        val BodyFat =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyFatPercentage)!!
+        val BodyTemperature =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyTemperature)!!
+        val Distance =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!!
+        val FloorsClimbed =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierFlightsClimbed)!!
+        val HeartRate =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!!
+        val HeartRateVariability =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRateVariabilitySDNN)!!
+        val Height =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!!
+        val Hydration =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryWater)!!
+        val LeanBodyMass =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierLeanBodyMass)!!
+        val OxygenSaturation =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierOxygenSaturation)!!
+        val Power =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierCyclingPower)!!
+        val RespiratoryRate =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRespiratoryRate)!!
+        val RestingHeartRate =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRestingHeartRate)!!
+        val RunningSpeed =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierRunningSpeed)!!
+        val CyclingSpeed =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierCyclingSpeed)!!
+        val StepCount =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!!
+        val Vo2Max =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierVO2Max)!!
+        val Weight =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!!
+        val WheelChairPushes =
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierPushCount)!!
+    }
 }

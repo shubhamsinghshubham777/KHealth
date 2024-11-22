@@ -16,10 +16,6 @@
 package com.khealth
 
 /**
- * Represents the user's response to a [KHPermission] request. He can either grant or deny a
- * permission request. But since Apple's HealthKit does not provide the real read status of any
- * permission due to privacy concerns, another type of status was introduced named [NotDetermined].
- * In this case, the user will have to just try to read the data from HealthKit, if the data is
- * returned, it means that the app was granted the permission, otherwise not.
+ * The type of food that the [KHRecord.Nutrition] object represents.
  */
-enum class KHPermissionStatus { Granted, Denied, NotDetermined }
+enum class KHMealType { Unknown, Breakfast, Lunch, Dinner, Snack }

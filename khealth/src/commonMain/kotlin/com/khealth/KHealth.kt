@@ -71,9 +71,9 @@ expect class KHealth {
     val isHealthStoreAvailable: Boolean
 
     /**
-     * Returns the status of the requested permissions by clubbing them with their statuses in a
-     * single unit named [KHPermissionWithStatus]. Unsupported permissions are silently discarded
-     * from the request list and are not included in the returned set.
+     * Returns the status of the requested permissions using the [KHPermission] object. Unsupported
+     * permissions are silently discarded from the request list and are not included in the returned
+     * set.
      *
      * > **Note:** On Android, this method will only work if [initialise] has been called before
      * this method's invocation. On Apple, it has no such requirements.
@@ -104,7 +104,7 @@ expect class KHealth {
      * @param permissions [KHPermission]s for which the statuses will be fetched
      * @return Statuses clubbed with their requested permissions
      */
-    suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermissionWithStatus>
+    suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermission>
 
     /**
      * Initiates a request to the operating system for the input list of [KHPermission]s. Similar
@@ -137,7 +137,7 @@ expect class KHealth {
      * @param permissions [KHPermission]s for which the statuses will be fetched
      * @return Statuses clubbed with their requested permissions
      */
-    suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermissionWithStatus>
+    suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermission>
 
     /**
      * Writes the provided [KHRecord]s into the health store and returns its insertion status.

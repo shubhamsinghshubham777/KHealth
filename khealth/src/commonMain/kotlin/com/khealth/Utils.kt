@@ -17,10 +17,18 @@ package com.khealth
 
 import co.touchlab.kermit.Logger
 
-internal fun logDebug(message: String) {
-    Logger.d { "[KHealth] -> $message" }
+internal fun logDebug(message: String, methodName: String? = null) {
+    Logger.d(
+        tag = "KHealth - $methodName",
+        throwable = null,
+        messageString = "[KHealth] ${methodName?.let { "($it)" }} -> $message"
+    )
 }
 
-internal fun logError(throwable: Throwable) {
-    Logger.e(throwable) { "[KHealth] -> ${throwable.message}" }
+internal fun logError(throwable: Throwable? = null, methodName: String, message: String? = null) {
+    Logger.e(
+        tag = "KHealth - $methodName",
+        throwable = throwable,
+        messageString = (message ?: throwable?.message).orEmpty()
+    )
 }
