@@ -78,24 +78,23 @@ actual class KHealth {
         if (!isHealthStoreAvailable) throw HealthStoreNotAvailableException
     }
 
-    actual suspend fun checkPermissions(
-        vararg permissions: KHPermission
-    ): Set<KHPermissionWithStatus> {
+    actual suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermission> {
         verifyHealthStoreAvailability()
         val grantedPermissions = client.permissionController.getGrantedPermissions()
         return permissions.toPermissionsWithStatuses(grantedPermissions).toSet()
     }
 
-    actual suspend fun requestPermissions(
-        vararg permissions: KHPermission
-    ): Set<KHPermissionWithStatus> {
+    actual suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermission> {
         verifyHealthStoreAvailability()
         val permissionSets = permissions.map { entry -> entry.toPermissions() }
 
         if (::permissionsLauncher.isInitialized) {
             permissionsLauncher.launch(permissionSets.flatten().map { it.first }.toSet())
         } else if (!isTestMode) {
-            logError(HealthStoreNotInitialisedException)
+            logError(
+                throwable = HealthStoreNotInitialisedException,
+                methodName = "requestPermissions"
+            )
         }
 
         val grantedPermissions = permissionsChannel.receive()
@@ -123,14 +122,14 @@ actual class KHealth {
                 is SecurityException -> NoWriteAccessException(t.message?.extractHealthPermission())
                 else -> t
             }
-            logError(t)
+            logError(throwable = t, methodName = "writeRecords")
             return KHWriteResponse.Failed(parsedThrowable)
         }
     }
 
     actual suspend fun readRecords(request: KHReadRequest): List<KHRecord> {
         return try {
-            val recordClass = request.dataType.toRecordClass() ?: return emptyList()
+            val recordClass = request.toRecordClass() ?: return emptyList()
 
             val hcRecords = client.readRecords(
                 request = ReadRecordsRequest(
@@ -144,7 +143,7 @@ actual class KHealth {
 
             hcRecords.map { record -> record.toKHRecord(request) }
         } catch (t: Throwable) {
-            logError(t)
+            logError(throwable = t, methodName = "readRecords")
             emptyList()
         }
     }

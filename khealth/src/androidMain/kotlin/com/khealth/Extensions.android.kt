@@ -35,8 +35,10 @@ import androidx.health.connect.client.records.HeightRecord
 import androidx.health.connect.client.records.HydrationRecord
 import androidx.health.connect.client.records.IntermenstrualBleedingRecord
 import androidx.health.connect.client.records.LeanBodyMassRecord
+import androidx.health.connect.client.records.MealType
 import androidx.health.connect.client.records.MenstruationFlowRecord
 import androidx.health.connect.client.records.MenstruationPeriodRecord
+import androidx.health.connect.client.records.NutritionRecord
 import androidx.health.connect.client.records.OvulationTestRecord
 import androidx.health.connect.client.records.OxygenSaturationRecord
 import androidx.health.connect.client.records.PowerRecord
@@ -377,11 +379,165 @@ internal fun Record.toKHRecord(request: KHReadRequest): KHRecord = when (this) {
 internal fun KHPermission.toPermissions(): Set<Pair<String, KHPermissionType>> {
     val entry = this@toPermissions
     return buildSet {
-        entry.dataType.toRecordClass()?.let { safeRecord ->
-            if (entry.read) {
+        entry.toRecordClass()?.let { safeRecord ->
+            val isReadGranted = when (entry) {
+                is KHPermission.ActiveCaloriesBurned -> entry.read
+                is KHPermission.BasalMetabolicRate -> entry.read
+                is KHPermission.BloodGlucose -> entry.read
+                is KHPermission.BloodPressure -> entry.readSystolic || entry.readDiastolic
+                is KHPermission.BodyFat -> entry.read
+                is KHPermission.BodyTemperature -> entry.read
+                is KHPermission.BodyWaterMass -> entry.read
+                is KHPermission.BoneMass -> entry.read
+                is KHPermission.CervicalMucus -> entry.read
+                is KHPermission.CyclingPedalingCadence -> entry.read
+                is KHPermission.CyclingSpeed -> entry.read
+                is KHPermission.Distance -> entry.read
+                is KHPermission.ElevationGained -> entry.read
+                is KHPermission.FloorsClimbed -> entry.read
+                is KHPermission.HeartRate -> entry.read
+                is KHPermission.HeartRateVariability -> entry.read
+                is KHPermission.Height -> entry.read
+                is KHPermission.Hydration -> entry.read
+                is KHPermission.IntermenstrualBleeding -> entry.read
+                is KHPermission.LeanBodyMass -> entry.read
+                is KHPermission.MenstruationFlow -> entry.read
+                is KHPermission.MenstruationPeriod -> entry.read
+                is KHPermission.Nutrition -> entry.readBiotin ||
+                        entry.readCaffeine ||
+                        entry.readCalcium ||
+                        entry.readChloride ||
+                        entry.readCholesterol ||
+                        entry.readChromium ||
+                        entry.readCopper ||
+                        entry.readDietaryFiber ||
+                        entry.readEnergy ||
+                        entry.readFolicAcid ||
+                        entry.readIodine ||
+                        entry.readIron ||
+                        entry.readMagnesium ||
+                        entry.readManganese ||
+                        entry.readMolybdenum ||
+                        entry.readMonounsaturatedFat ||
+                        entry.readNiacin ||
+                        entry.readPantothenicAcid ||
+                        entry.readPhosphorus ||
+                        entry.readPolyunsaturatedFat ||
+                        entry.readPotassium ||
+                        entry.readProtein ||
+                        entry.readRiboflavin ||
+                        entry.readSaturatedFat ||
+                        entry.readSelenium ||
+                        entry.readSodium ||
+                        entry.readSugar ||
+                        entry.readThiamin ||
+                        entry.readTotalCarbohydrate ||
+                        entry.readTotalFat ||
+                        entry.readVitaminA ||
+                        entry.readVitaminB12 ||
+                        entry.readVitaminB6 ||
+                        entry.readVitaminC ||
+                        entry.readVitaminD ||
+                        entry.readVitaminE ||
+                        entry.readVitaminK ||
+                        entry.readZinc
+
+                is KHPermission.OvulationTest -> entry.read
+                is KHPermission.OxygenSaturation -> entry.read
+                is KHPermission.Power -> entry.read
+                is KHPermission.RespiratoryRate -> entry.read
+                is KHPermission.RestingHeartRate -> entry.read
+                is KHPermission.RunningSpeed -> entry.read
+                is KHPermission.SexualActivity -> entry.read
+                is KHPermission.SleepSession -> entry.read
+                is KHPermission.Speed -> entry.read
+                is KHPermission.StepCount -> entry.read
+                is KHPermission.Vo2Max -> entry.read
+                is KHPermission.Weight -> entry.read
+                is KHPermission.WheelChairPushes -> entry.read
+            }
+
+            val isWriteGranted = when (entry) {
+                is KHPermission.ActiveCaloriesBurned -> entry.write
+                is KHPermission.BasalMetabolicRate -> entry.write
+                is KHPermission.BloodGlucose -> entry.write
+                is KHPermission.BloodPressure -> entry.writeSystolic || entry.writeDiastolic
+                is KHPermission.BodyFat -> entry.write
+                is KHPermission.BodyTemperature -> entry.write
+                is KHPermission.BodyWaterMass -> entry.write
+                is KHPermission.BoneMass -> entry.write
+                is KHPermission.CervicalMucus -> entry.write
+                is KHPermission.CyclingPedalingCadence -> entry.write
+                is KHPermission.CyclingSpeed -> entry.write
+                is KHPermission.Distance -> entry.write
+                is KHPermission.ElevationGained -> entry.write
+                is KHPermission.FloorsClimbed -> entry.write
+                is KHPermission.HeartRate -> entry.write
+                is KHPermission.HeartRateVariability -> entry.write
+                is KHPermission.Height -> entry.write
+                is KHPermission.Hydration -> entry.write
+                is KHPermission.IntermenstrualBleeding -> entry.write
+                is KHPermission.LeanBodyMass -> entry.write
+                is KHPermission.MenstruationFlow -> entry.write
+                is KHPermission.MenstruationPeriod -> entry.write
+                is KHPermission.Nutrition -> entry.writeBiotin ||
+                        entry.writeCaffeine ||
+                        entry.writeCalcium ||
+                        entry.writeChloride ||
+                        entry.writeCholesterol ||
+                        entry.writeChromium ||
+                        entry.writeCopper ||
+                        entry.writeDietaryFiber ||
+                        entry.writeEnergy ||
+                        entry.writeFolicAcid ||
+                        entry.writeIodine ||
+                        entry.writeIron ||
+                        entry.writeMagnesium ||
+                        entry.writeManganese ||
+                        entry.writeMolybdenum ||
+                        entry.writeMonounsaturatedFat ||
+                        entry.writeNiacin ||
+                        entry.writePantothenicAcid ||
+                        entry.writePhosphorus ||
+                        entry.writePolyunsaturatedFat ||
+                        entry.writePotassium ||
+                        entry.writeProtein ||
+                        entry.writeRiboflavin ||
+                        entry.writeSaturatedFat ||
+                        entry.writeSelenium ||
+                        entry.writeSodium ||
+                        entry.writeSugar ||
+                        entry.writeThiamin ||
+                        entry.writeTotalCarbohydrate ||
+                        entry.writeTotalFat ||
+                        entry.writeVitaminA ||
+                        entry.writeVitaminB12 ||
+                        entry.writeVitaminB6 ||
+                        entry.writeVitaminC ||
+                        entry.writeVitaminD ||
+                        entry.writeVitaminE ||
+                        entry.writeVitaminK ||
+                        entry.writeZinc
+
+                is KHPermission.OvulationTest -> entry.write
+                is KHPermission.OxygenSaturation -> entry.write
+                is KHPermission.Power -> entry.write
+                is KHPermission.RespiratoryRate -> entry.write
+                is KHPermission.RestingHeartRate -> entry.write
+                is KHPermission.RunningSpeed -> entry.write
+                is KHPermission.SexualActivity -> entry.write
+                is KHPermission.SleepSession -> entry.write
+                is KHPermission.Speed -> entry.write
+                is KHPermission.StepCount -> entry.write
+                is KHPermission.Vo2Max -> entry.write
+                is KHPermission.Weight -> entry.write
+                is KHPermission.WheelChairPushes -> entry.write
+            }
+
+            if (isReadGranted) {
                 add(HealthPermission.getReadPermission(safeRecord) to KHPermissionType.Read)
             }
-            if (entry.write) {
+            if (isWriteGranted) {
                 add(HealthPermission.getWritePermission(safeRecord) to KHPermissionType.Write)
             }
         }
@@ -390,71 +546,286 @@ internal fun KHPermission.toPermissions(): Set<Pair<String, KHPermissionType>> {
 
 internal fun Array<out KHPermission>.toPermissionsWithStatuses(
     grantedPermissions: Set<String>
-): List<KHPermissionWithStatus> = this.mapIndexed { index, entry ->
+): List<KHPermission> = this.mapIndexed { index, entry ->
     val permissionSet = entry.toPermissions()
 
     val readGranted = permissionSet.firstOrNull { it.second == KHPermissionType.Read }
         ?.first
         ?.let(grantedPermissions::contains)
-
-    val readStatus = readGranted
-        ?.let { granted ->
-            if (granted) KHPermissionStatus.Granted else KHPermissionStatus.Denied
-        }
-        ?: KHPermissionStatus.NotDetermined
+        ?: false
 
     val writeGranted = permissionSet.firstOrNull { it.second == KHPermissionType.Write }
         ?.first
         ?.let(grantedPermissions::contains)
+        ?: false
 
-    val writeStatus = writeGranted
-        ?.let { granted ->
-            if (granted) KHPermissionStatus.Granted else KHPermissionStatus.Denied
-        }
-        ?: KHPermissionStatus.NotDetermined
+    when (this[index]) {
+        is KHPermission.ActiveCaloriesBurned ->
+            KHPermission.ActiveCaloriesBurned(read = readGranted, write = writeGranted)
 
-    KHPermissionWithStatus(
-        permission = this[index],
-        readStatus = readStatus,
-        writeStatus = writeStatus,
-    )
+        is KHPermission.BasalMetabolicRate ->
+            KHPermission.BasalMetabolicRate(read = readGranted, write = writeGranted)
+
+        is KHPermission.BloodGlucose ->
+            KHPermission.BloodGlucose(read = readGranted, write = writeGranted)
+
+        is KHPermission.BloodPressure -> KHPermission.BloodPressure(
+            readSystolic = readGranted,
+            writeSystolic = writeGranted,
+            readDiastolic = readGranted,
+            writeDiastolic = writeGranted
+        )
+
+        is KHPermission.BodyFat ->
+            KHPermission.BodyFat(read = readGranted, write = writeGranted)
+
+        is KHPermission.BodyTemperature ->
+            KHPermission.BodyTemperature(read = readGranted, write = writeGranted)
+
+        is KHPermission.BodyWaterMass ->
+            KHPermission.BodyWaterMass(read = readGranted, write = writeGranted)
+
+        is KHPermission.BoneMass ->
+            KHPermission.BoneMass(read = readGranted, write = writeGranted)
+
+        is KHPermission.CervicalMucus ->
+            KHPermission.CervicalMucus(read = readGranted, write = writeGranted)
+
+        is KHPermission.CyclingPedalingCadence ->
+            KHPermission.CyclingPedalingCadence(read = readGranted, write = writeGranted)
+
+        is KHPermission.CyclingSpeed ->
+            KHPermission.CyclingSpeed(read = readGranted, write = writeGranted)
+
+        is KHPermission.Distance ->
+            KHPermission.Distance(read = readGranted, write = writeGranted)
+
+        is KHPermission.ElevationGained ->
+            KHPermission.ElevationGained(read = readGranted, write = writeGranted)
+
+        is KHPermission.FloorsClimbed ->
+            KHPermission.FloorsClimbed(read = readGranted, write = writeGranted)
+
+        is KHPermission.HeartRate ->
+            KHPermission.HeartRate(read = readGranted, write = writeGranted)
+
+        is KHPermission.HeartRateVariability ->
+            KHPermission.HeartRateVariability(read = readGranted, write = writeGranted)
+
+        is KHPermission.Height ->
+            KHPermission.Height(read = readGranted, write = writeGranted)
+
+        is KHPermission.Hydration ->
+            KHPermission.Hydration(read = readGranted, write = writeGranted)
+
+        is KHPermission.IntermenstrualBleeding ->
+            KHPermission.IntermenstrualBleeding(read = readGranted, write = writeGranted)
+
+        is KHPermission.LeanBodyMass ->
+            KHPermission.LeanBodyMass(read = readGranted, write = writeGranted)
+
+        is KHPermission.MenstruationFlow ->
+            KHPermission.MenstruationFlow(read = readGranted, write = writeGranted)
+
+        is KHPermission.MenstruationPeriod ->
+            KHPermission.MenstruationPeriod(read = readGranted, write = writeGranted)
+
+        is KHPermission.Nutrition -> KHPermission.Nutrition(
+            readBiotin = readGranted,
+            writeBiotin = writeGranted,
+            readCaffeine = readGranted,
+            writeCaffeine = writeGranted,
+            readCalcium = readGranted,
+            writeCalcium = writeGranted,
+            readChloride = readGranted,
+            writeChloride = writeGranted,
+            readCholesterol = readGranted,
+            writeCholesterol = writeGranted,
+            readChromium = readGranted,
+            writeChromium = writeGranted,
+            readCopper = readGranted,
+            writeCopper = writeGranted,
+            readDietaryFiber = readGranted,
+            writeDietaryFiber = writeGranted,
+            readEnergy = readGranted,
+            writeEnergy = writeGranted,
+            readFolicAcid = readGranted,
+            writeFolicAcid = writeGranted,
+            readIodine = readGranted,
+            writeIodine = writeGranted,
+            readIron = readGranted,
+            writeIron = writeGranted,
+            readMagnesium = readGranted,
+            writeMagnesium = writeGranted,
+            readManganese = readGranted,
+            writeManganese = writeGranted,
+            readMolybdenum = readGranted,
+            writeMolybdenum = writeGranted,
+            readMonounsaturatedFat = readGranted,
+            writeMonounsaturatedFat = writeGranted,
+            readNiacin = readGranted,
+            writeNiacin = writeGranted,
+            readPantothenicAcid = readGranted,
+            writePantothenicAcid = writeGranted,
+            readPhosphorus = readGranted,
+            writePhosphorus = writeGranted,
+            readPolyunsaturatedFat = readGranted,
+            writePolyunsaturatedFat = writeGranted,
+            readPotassium = readGranted,
+            writePotassium = writeGranted,
+            readProtein = readGranted,
+            writeProtein = writeGranted,
+            readRiboflavin = readGranted,
+            writeRiboflavin = writeGranted,
+            readSaturatedFat = readGranted,
+            writeSaturatedFat = writeGranted,
+            readSelenium = readGranted,
+            writeSelenium = writeGranted,
+            readSodium = readGranted,
+            writeSodium = writeGranted,
+            readSugar = readGranted,
+            writeSugar = writeGranted,
+            readThiamin = readGranted,
+            writeThiamin = writeGranted,
+            readTotalCarbohydrate = readGranted,
+            writeTotalCarbohydrate = writeGranted,
+            readTotalFat = readGranted,
+            writeTotalFat = writeGranted,
+            readVitaminA = readGranted,
+            writeVitaminA = writeGranted,
+            readVitaminB12 = readGranted,
+            writeVitaminB12 = writeGranted,
+            readVitaminB6 = readGranted,
+            writeVitaminB6 = writeGranted,
+            readVitaminC = readGranted,
+            writeVitaminC = writeGranted,
+            readVitaminD = readGranted,
+            writeVitaminD = writeGranted,
+            readVitaminE = readGranted,
+            writeVitaminE = writeGranted,
+            readVitaminK = readGranted,
+            writeVitaminK = writeGranted,
+            readZinc = readGranted,
+            writeZinc = writeGranted,
+        )
+
+        is KHPermission.OvulationTest ->
+            KHPermission.OvulationTest(read = readGranted, write = writeGranted)
+
+        is KHPermission.OxygenSaturation ->
+            KHPermission.OxygenSaturation(read = readGranted, write = writeGranted)
+
+        is KHPermission.Power ->
+            KHPermission.Power(read = readGranted, write = writeGranted)
+
+        is KHPermission.RespiratoryRate ->
+            KHPermission.RespiratoryRate(read = readGranted, write = writeGranted)
+
+        is KHPermission.RestingHeartRate ->
+            KHPermission.RestingHeartRate(read = readGranted, write = writeGranted)
+
+        is KHPermission.RunningSpeed ->
+            KHPermission.RunningSpeed(read = readGranted, write = writeGranted)
+
+        is KHPermission.SexualActivity ->
+            KHPermission.SexualActivity(read = readGranted, write = writeGranted)
+
+        is KHPermission.SleepSession ->
+            KHPermission.SleepSession(read = readGranted, write = writeGranted)
+
+        is KHPermission.Speed ->
+            KHPermission.Speed(read = readGranted, write = writeGranted)
+
+        is KHPermission.StepCount ->
+            KHPermission.StepCount(read = readGranted, write = writeGranted)
+
+        is KHPermission.Vo2Max ->
+            KHPermission.Vo2Max(read = readGranted, write = writeGranted)
+
+        is KHPermission.Weight ->
+            KHPermission.Weight(read = readGranted, write = writeGranted)
+
+        is KHPermission.WheelChairPushes ->
+            KHPermission.WheelChairPushes(read = readGranted, write = writeGranted)
+    }
 }
 
-internal fun KHDataType.toRecordClass(): KClass<out Record>? = when (this) {
-    KHDataType.ActiveCaloriesBurned -> ActiveCaloriesBurnedRecord::class
-    KHDataType.BasalMetabolicRate -> BasalMetabolicRateRecord::class
-    KHDataType.BloodGlucose -> BloodGlucoseRecord::class
-    KHDataType.BloodPressure -> BloodPressureRecord::class
-    KHDataType.BodyFat -> BodyFatRecord::class
-    KHDataType.BodyTemperature -> BodyTemperatureRecord::class
-    KHDataType.BodyWaterMass -> BodyWaterMassRecord::class
-    KHDataType.BoneMass -> BoneMassRecord::class
-    KHDataType.CervicalMucus -> CervicalMucusRecord::class
-    KHDataType.CyclingPedalingCadence -> CyclingPedalingCadenceRecord::class
-    KHDataType.Distance -> DistanceRecord::class
-    KHDataType.ElevationGained -> ElevationGainedRecord::class
-    KHDataType.FloorsClimbed -> FloorsClimbedRecord::class
-    KHDataType.HeartRate -> HeartRateRecord::class
-    KHDataType.HeartRateVariability -> HeartRateVariabilityRmssdRecord::class
-    KHDataType.Height -> HeightRecord::class
-    KHDataType.Hydration -> HydrationRecord::class
-    KHDataType.IntermenstrualBleeding -> IntermenstrualBleedingRecord::class
-    KHDataType.MenstruationPeriod -> MenstruationPeriodRecord::class
-    KHDataType.LeanBodyMass -> LeanBodyMassRecord::class
-    KHDataType.MenstruationFlow -> MenstruationFlowRecord::class
-    KHDataType.OvulationTest -> OvulationTestRecord::class
-    KHDataType.OxygenSaturation -> OxygenSaturationRecord::class
-    KHDataType.Power -> PowerRecord::class
-    KHDataType.RespiratoryRate -> RespiratoryRateRecord::class
-    KHDataType.RestingHeartRate -> RestingHeartRateRecord::class
-    KHDataType.SexualActivity -> SexualActivityRecord::class
-    KHDataType.SleepSession -> SleepSessionRecord::class
-    KHDataType.Speed -> SpeedRecord::class
-    KHDataType.RunningSpeed, KHDataType.CyclingSpeed -> null
-    KHDataType.StepCount -> StepsRecord::class
-    KHDataType.Vo2Max -> Vo2MaxRecord::class
-    KHDataType.Weight -> WeightRecord::class
-    KHDataType.WheelChairPushes -> WheelchairPushesRecord::class
+internal fun KHReadRequest.toRecordClass(): KClass<out Record>? = when (this) {
+    is KHReadRequest.ActiveCaloriesBurned -> ActiveCaloriesBurnedRecord::class
+    is KHReadRequest.BasalMetabolicRate -> BasalMetabolicRateRecord::class
+    is KHReadRequest.BloodGlucose -> BloodGlucoseRecord::class
+    is KHReadRequest.BloodPressure -> BloodPressureRecord::class
+    is KHReadRequest.BodyFat -> BodyFatRecord::class
+    is KHReadRequest.BodyTemperature -> BodyTemperatureRecord::class
+    is KHReadRequest.BodyWaterMass -> BodyWaterMassRecord::class
+    is KHReadRequest.BoneMass -> BoneMassRecord::class
+    is KHReadRequest.CervicalMucus -> CervicalMucusRecord::class
+    is KHReadRequest.CyclingPedalingCadence -> CyclingPedalingCadenceRecord::class
+    is KHReadRequest.CyclingSpeed -> null
+    is KHReadRequest.Distance -> DistanceRecord::class
+    is KHReadRequest.ElevationGained -> ElevationGainedRecord::class
+    is KHReadRequest.FloorsClimbed -> FloorsClimbedRecord::class
+    is KHReadRequest.HeartRate -> HeartRateRecord::class
+    is KHReadRequest.HeartRateVariability -> HeartRateVariabilityRmssdRecord::class
+    is KHReadRequest.Height -> HeightRecord::class
+    is KHReadRequest.Hydration -> HydrationRecord::class
+    is KHReadRequest.IntermenstrualBleeding -> IntermenstrualBleedingRecord::class
+    is KHReadRequest.LeanBodyMass -> LeanBodyMassRecord::class
+    is KHReadRequest.MenstruationFlow -> MenstruationFlowRecord::class
+    is KHReadRequest.MenstruationPeriod -> MenstruationPeriodRecord::class
+    is KHReadRequest.Nutrition -> NutritionRecord::class
+    is KHReadRequest.OvulationTest -> OvulationTestRecord::class
+    is KHReadRequest.OxygenSaturation -> OxygenSaturationRecord::class
+    is KHReadRequest.Power -> PowerRecord::class
+    is KHReadRequest.RespiratoryRate -> RespiratoryRateRecord::class
+    is KHReadRequest.RestingHeartRate -> RestingHeartRateRecord::class
+    is KHReadRequest.RunningSpeed -> null
+    is KHReadRequest.SexualActivity -> SexualActivityRecord::class
+    is KHReadRequest.SleepSession -> SleepSessionRecord::class
+    is KHReadRequest.Speed -> SpeedRecord::class
+    is KHReadRequest.StepCount -> StepsRecord::class
+    is KHReadRequest.Vo2Max -> Vo2MaxRecord::class
+    is KHReadRequest.Weight -> WeightRecord::class
+    is KHReadRequest.WheelChairPushes -> WheelchairPushesRecord::class
+}
+
+internal fun KHPermission.toRecordClass(): KClass<out Record>? = when (this) {
+    is KHPermission.ActiveCaloriesBurned -> ActiveCaloriesBurnedRecord::class
+    is KHPermission.BasalMetabolicRate -> BasalMetabolicRateRecord::class
+    is KHPermission.BloodGlucose -> BloodGlucoseRecord::class
+    is KHPermission.BloodPressure -> BloodPressureRecord::class
+    is KHPermission.BodyFat -> BodyFatRecord::class
+    is KHPermission.BodyTemperature -> BodyTemperatureRecord::class
+    is KHPermission.BodyWaterMass -> BodyWaterMassRecord::class
+    is KHPermission.BoneMass -> BoneMassRecord::class
+    is KHPermission.CervicalMucus -> CervicalMucusRecord::class
+    is KHPermission.CyclingPedalingCadence -> CyclingPedalingCadenceRecord::class
+    is KHPermission.CyclingSpeed -> null
+    is KHPermission.Distance -> DistanceRecord::class
+    is KHPermission.ElevationGained -> ElevationGainedRecord::class
+    is KHPermission.FloorsClimbed -> FloorsClimbedRecord::class
+    is KHPermission.HeartRate -> HeartRateRecord::class
+    is KHPermission.HeartRateVariability -> HeartRateVariabilityRmssdRecord::class
+    is KHPermission.Height -> HeightRecord::class
+    is KHPermission.Hydration -> HydrationRecord::class
+    is KHPermission.IntermenstrualBleeding -> IntermenstrualBleedingRecord::class
+    is KHPermission.LeanBodyMass -> LeanBodyMassRecord::class
+    is KHPermission.MenstruationFlow -> MenstruationFlowRecord::class
+    is KHPermission.MenstruationPeriod -> MenstruationPeriodRecord::class
+    is KHPermission.Nutrition -> NutritionRecord::class
+    is KHPermission.OvulationTest -> OvulationTestRecord::class
+    is KHPermission.OxygenSaturation -> OxygenSaturationRecord::class
+    is KHPermission.Power -> PowerRecord::class
+    is KHPermission.RespiratoryRate -> RespiratoryRateRecord::class
+    is KHPermission.RestingHeartRate -> RestingHeartRateRecord::class
+    is KHPermission.RunningSpeed -> null
+    is KHPermission.SexualActivity -> SexualActivityRecord::class
+    is KHPermission.SleepSession -> SleepSessionRecord::class
+    is KHPermission.Speed -> SpeedRecord::class
+    is KHPermission.StepCount -> StepsRecord::class
+    is KHPermission.Vo2Max -> Vo2MaxRecord::class
+    is KHPermission.Weight -> WeightRecord::class
+    is KHPermission.WheelChairPushes -> WheelchairPushesRecord::class
 }
 
 internal fun KHRecord.toHCRecord(): Record? {
@@ -534,6 +905,8 @@ internal fun KHRecord.toHCRecord(): Record? {
                 )
             },
         )
+
+        is KHRecord.CyclingSpeed -> null
 
         is KHRecord.Distance -> DistanceRecord(
             startTime = startTime.toJavaInstant(),
@@ -621,6 +994,52 @@ internal fun KHRecord.toHCRecord(): Record? {
             },
         )
 
+        is KHRecord.Nutrition -> NutritionRecord(
+            startTime = startTime.toJavaInstant(),
+            startZoneOffset = null,
+            endTime = endTime.toJavaInstant(),
+            endZoneOffset = null,
+            mealType = mealType.toHCMealType(),
+            biotin = biotin?.let(solidUnit::toNativeMassFor),
+            caffeine = caffeine?.let(solidUnit::toNativeMassFor),
+            calcium = calcium?.let(solidUnit::toNativeMassFor),
+            chloride = chloride?.let(solidUnit::toNativeMassFor),
+            cholesterol = cholesterol?.let(solidUnit::toNativeMassFor),
+            chromium = chromium?.let(solidUnit::toNativeMassFor),
+            copper = copper?.let(solidUnit::toNativeMassFor),
+            dietaryFiber = dietaryFiber?.let(solidUnit::toNativeMassFor),
+            energy = energy?.let(energyUnit::toNativeEnergyFor),
+            folicAcid = folicAcid?.let(solidUnit::toNativeMassFor),
+            iodine = iodine?.let(solidUnit::toNativeMassFor),
+            iron = iron?.let(solidUnit::toNativeMassFor),
+            magnesium = magnesium?.let(solidUnit::toNativeMassFor),
+            manganese = manganese?.let(solidUnit::toNativeMassFor),
+            molybdenum = molybdenum?.let(solidUnit::toNativeMassFor),
+            monounsaturatedFat = monounsaturatedFat?.let(solidUnit::toNativeMassFor),
+            niacin = niacin?.let(solidUnit::toNativeMassFor),
+            pantothenicAcid = pantothenicAcid?.let(solidUnit::toNativeMassFor),
+            phosphorus = phosphorus?.let(solidUnit::toNativeMassFor),
+            polyunsaturatedFat = polyunsaturatedFat?.let(solidUnit::toNativeMassFor),
+            potassium = potassium?.let(solidUnit::toNativeMassFor),
+            protein = protein?.let(solidUnit::toNativeMassFor),
+            riboflavin = riboflavin?.let(solidUnit::toNativeMassFor),
+            saturatedFat = saturatedFat?.let(solidUnit::toNativeMassFor),
+            selenium = selenium?.let(solidUnit::toNativeMassFor),
+            sodium = sodium?.let(solidUnit::toNativeMassFor),
+            sugar = sugar?.let(solidUnit::toNativeMassFor),
+            thiamin = thiamin?.let(solidUnit::toNativeMassFor),
+            totalCarbohydrate = totalCarbohydrate?.let(solidUnit::toNativeMassFor),
+            totalFat = totalFat?.let(solidUnit::toNativeMassFor),
+            vitaminA = vitaminA?.let(solidUnit::toNativeMassFor),
+            vitaminB12 = vitaminB12?.let(solidUnit::toNativeMassFor),
+            vitaminB6 = vitaminB6?.let(solidUnit::toNativeMassFor),
+            vitaminC = vitaminC?.let(solidUnit::toNativeMassFor),
+            vitaminD = vitaminD?.let(solidUnit::toNativeMassFor),
+            vitaminE = vitaminE?.let(solidUnit::toNativeMassFor),
+            vitaminK = vitaminK?.let(solidUnit::toNativeMassFor),
+            zinc = zinc?.let(solidUnit::toNativeMassFor),
+        )
+
         is KHRecord.OvulationTest -> OvulationTestRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
@@ -662,6 +1081,8 @@ internal fun KHRecord.toHCRecord(): Record? {
             zoneOffset = null,
             beatsPerMinute = beatsPerMinute,
         )
+
+        is KHRecord.RunningSpeed -> null
 
         is KHRecord.SexualActivity -> SexualActivityRecord(
             time = time.toJavaInstant(),
@@ -705,10 +1126,6 @@ internal fun KHRecord.toHCRecord(): Record? {
                 )
             },
         )
-
-        is KHRecord.RunningSpeed -> null
-
-        is KHRecord.CyclingSpeed -> null
 
         is KHRecord.StepCount -> StepsRecord(
             startTime = startTime.toJavaInstant(),
@@ -844,4 +1261,12 @@ internal infix fun KHUnit.Volume.toNativeVolumeFor(value: Double): Volume = when
 internal infix fun Volume.toDoubleValueFor(volume: KHUnit.Volume): Double = when (volume) {
     KHUnit.Volume.FluidOunceUS -> this.inFluidOuncesUs
     KHUnit.Volume.Liter -> this.inLiters
+}
+
+internal fun KHMealType.toHCMealType(): Int = when (this) {
+    KHMealType.Unknown -> MealType.MEAL_TYPE_UNKNOWN
+    KHMealType.Breakfast -> MealType.MEAL_TYPE_BREAKFAST
+    KHMealType.Lunch -> MealType.MEAL_TYPE_LUNCH
+    KHMealType.Dinner -> MealType.MEAL_TYPE_DINNER
+    KHMealType.Snack -> MealType.MEAL_TYPE_SNACK
 }

@@ -96,21 +96,9 @@ class KHealthTests {
 
     @Test
     fun checkPermissionsWorksAsExpectedInAllScenarios() = runTest(testDispatcher) {
-        val allGrantedPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = true,
-        )
-        val writeOnlyPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = false,
-            write = true,
-        )
-        val readOnlyPermission = KHPermission(
-            dataType = KHDataType.ActiveCaloriesBurned,
-            read = true,
-            write = false,
-        )
+        val allGrantedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = true)
+        val writeOnlyPermission = KHPermission.ActiveCaloriesBurned(read = false, write = true)
+        val readOnlyPermission = KHPermission.ActiveCaloriesBurned(read = true, write = false)
 
         // Case 1: When system grants all permissions
         everySuspend { permissionController.getGrantedPermissions() } returns setOf(
@@ -118,80 +106,27 @@ class KHealthTests {
             WRITE_PERMISSION
         )
         // Then allGranted request results in allGranted response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.Granted,
-                    writeStatus = KHPermissionStatus.Granted,
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
+        assertEquals(setOf(allGrantedPermission), sut.checkPermissions(allGrantedPermission))
 
         // Case 2: When system grants WRITE only permissions
-        everySuspend { permissionController.getGrantedPermissions() } returns setOf(
-            WRITE_PERMISSION
-        )
+        everySuspend { permissionController.getGrantedPermissions() } returns setOf(WRITE_PERMISSION)
         // Then allGranted request results in deniedRead response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.Denied,
-                    writeStatus = KHPermissionStatus.Granted,
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
+        assertEquals(setOf(writeOnlyPermission), sut.checkPermissions(allGrantedPermission))
 
         // Case 3: When system grants READ only permissions
-        everySuspend { permissionController.getGrantedPermissions() } returns setOf(
-            READ_PERMISSION
-        )
+        everySuspend { permissionController.getGrantedPermissions() } returns setOf(READ_PERMISSION)
         // Then allGranted request results in deniedWrite response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = allGrantedPermission,
-                    readStatus = KHPermissionStatus.Granted,
-                    writeStatus = KHPermissionStatus.Denied,
-                )
-            ),
-            sut.checkPermissions(allGrantedPermission)
-        )
+        assertEquals(setOf(readOnlyPermission), sut.checkPermissions(allGrantedPermission))
 
         // Case 4: When system grants WRITE only permissions
-        everySuspend { permissionController.getGrantedPermissions() } returns setOf(
-            WRITE_PERMISSION
-        )
-        // Then writeOnly request results in NotDetermined-Granted response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = writeOnlyPermission,
-                    readStatus = KHPermissionStatus.NotDetermined,
-                    writeStatus = KHPermissionStatus.Granted,
-                )
-            ),
-            sut.checkPermissions(writeOnlyPermission)
-        )
+        everySuspend { permissionController.getGrantedPermissions() } returns setOf(WRITE_PERMISSION)
+        // Then writeOnly request results in Denied-Granted response
+        assertEquals(setOf(writeOnlyPermission), sut.checkPermissions(writeOnlyPermission))
 
         // Case 5: When system grants READ only permissions
-        everySuspend { permissionController.getGrantedPermissions() } returns setOf(
-            READ_PERMISSION
-        )
-        // Then readOnly request results in Granted-NotDetermined response
-        assertEquals(
-            setOf(
-                KHPermissionWithStatus(
-                    permission = readOnlyPermission,
-                    readStatus = KHPermissionStatus.Granted,
-                    writeStatus = KHPermissionStatus.NotDetermined,
-                )
-            ),
-            sut.checkPermissions(readOnlyPermission)
-        )
+        everySuspend { permissionController.getGrantedPermissions() } returns setOf(READ_PERMISSION)
+        // Then readOnly request results in Granted-Denied response
+        assertEquals(setOf(readOnlyPermission), sut.checkPermissions(readOnlyPermission))
 
         verifySuspend(exactly(5)) {
             client.permissionController
@@ -201,111 +136,61 @@ class KHealthTests {
 
     @Test
     fun requestPermissionsWorksAsExpectedInAllScenarios() = runTest(testDispatcher) {
-        var permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = true, write = true)
+        var requestedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = true)
+        val allGrantedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = true)
+        val readOnlyPermission = KHPermission.ActiveCaloriesBurned(read = true, write = false)
+        val writeOnlyPermission = KHPermission.ActiveCaloriesBurned(read = false, write = true)
+        val noPermission = KHPermission.ActiveCaloriesBurned(read = false, write = false)
 
         // Case 1: App requested all perms & user granted all perms
-        var expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Granted,
-                writeStatus = KHPermissionStatus.Granted
-            )
-        )
+        var expectedResult = setOf(allGrantedPermission)
         launch { permissionsChannel.send(setOf(READ_PERMISSION, WRITE_PERMISSION)) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 2: App requested all perms but user granted WRITE only
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Denied,
-                writeStatus = KHPermissionStatus.Granted
-            )
-        )
+        expectedResult = setOf(writeOnlyPermission)
         launch { permissionsChannel.send(setOf(WRITE_PERMISSION)) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 3: App requested all perms but user granted READ only
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Granted,
-                writeStatus = KHPermissionStatus.Denied
-            )
-        )
+        expectedResult = setOf(readOnlyPermission)
         launch { permissionsChannel.send(setOf(READ_PERMISSION)) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 4: App requested all perms but user granted none
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Denied,
-                writeStatus = KHPermissionStatus.Denied
-            )
-        )
+        expectedResult = setOf(noPermission)
         launch { permissionsChannel.send(emptySet()) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 5: App requested READ only perm and user granted it
-        permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = true, write = false)
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Granted,
-                writeStatus = KHPermissionStatus.NotDetermined
-            )
-        )
+        requestedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = false)
+        expectedResult = setOf(readOnlyPermission)
         launch { permissionsChannel.send(setOf(READ_PERMISSION)) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 6: App requested WRITE only perm and user granted it
-        permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = false, write = true)
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.NotDetermined,
-                writeStatus = KHPermissionStatus.Granted
-            )
-        )
+        requestedPermission = KHPermission.ActiveCaloriesBurned(read = false, write = true)
+        expectedResult = setOf(writeOnlyPermission)
         launch { permissionsChannel.send(setOf(WRITE_PERMISSION)) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 7: App requested READ only perm and user denied it
-        permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = true, write = false)
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.Denied,
-                writeStatus = KHPermissionStatus.NotDetermined
-            )
-        )
+        requestedPermission = KHPermission.ActiveCaloriesBurned(read = true, write = false)
+        expectedResult = setOf(noPermission)
         launch { permissionsChannel.send(emptySet()) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 8: App requested WRITE only perm and user denied it
-        permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = false, write = true)
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.NotDetermined,
-                writeStatus = KHPermissionStatus.Denied
-            )
-        )
+        requestedPermission = KHPermission.ActiveCaloriesBurned(read = false, write = true)
+        expectedResult = setOf(noPermission)
         launch { permissionsChannel.send(emptySet()) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
 
         // Case 9: App requested no perms
-        permission = KHPermission(KHDataType.ActiveCaloriesBurned, read = false, write = false)
-        expectedResult = setOf(
-            KHPermissionWithStatus(
-                permission = permission,
-                readStatus = KHPermissionStatus.NotDetermined,
-                writeStatus = KHPermissionStatus.NotDetermined
-            )
-        )
+        requestedPermission = KHPermission.ActiveCaloriesBurned(read = false, write = false)
+        expectedResult = setOf(noPermission)
         launch { permissionsChannel.send(emptySet()) }
-        assertEquals(expectedResult, sut.requestPermissions(permission))
+        assertEquals(expectedResult, sut.requestPermissions(requestedPermission))
     }
 }
 
