@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Nutrition</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="../../../../images/logo-icon.svg">
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../../index.html">
+                            KHealth
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KHealth::com.khealth/KHPermission.Nutrition///PointingToDeclaration//107750912">
+  <div class="breadcrumbs"><a href="../../../../index.html">KHealth</a><span class="delimiter">/</span><a href="../../index.html">com.khealth</a><span class="delimiter">/</span><a href="../index.html">KHPermission</a><span class="delimiter">/</span><span class="current">Nutrition</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Nutrition</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">Nutrition</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>readBiotin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeBiotin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readCaffeine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeCaffeine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readCalcium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeCalcium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readChloride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeChloride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readCholesterol<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeCholesterol<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readChromium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeChromium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readCopper<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeCopper<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readDietaryFiber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeDietaryFiber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readEnergy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeEnergy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readFolicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeFolicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readIodine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeIodine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readIron<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeIron<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readMagnesium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeMagnesium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readManganese<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeManganese<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readMolybdenum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeMolybdenum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readMonounsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeMonounsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readNiacin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeNiacin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readPantothenicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writePantothenicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readPhosphorus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writePhosphorus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readPolyunsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writePolyunsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readPotassium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writePotassium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readProtein<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeProtein<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readRiboflavin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeRiboflavin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readSaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeSaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readSelenium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeSelenium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readSodium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeSodium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readSugar<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeSugar<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readThiamin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeThiamin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readTotalCarbohydrate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeTotalCarbohydrate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readTotalFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeTotalFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminB12<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminB12<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminB6<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminB6<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminC<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminC<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminD<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminD<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminE<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminE<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readVitaminK<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeVitaminK<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>readZinc<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>writeZinc<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../index.html">KHPermission</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1722452714%2FConstructors%2F107750912" anchor-label="Nutrition" id="-1722452714%2FConstructors%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-nutrition.html"><span><span>Nutrition</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1722452714%2FConstructors%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">readBiotin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeBiotin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readCaffeine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeCaffeine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readCalcium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeCalcium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readChloride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeChloride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readCholesterol<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeCholesterol<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readChromium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeChromium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readCopper<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeCopper<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readDietaryFiber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeDietaryFiber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readEnergy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeEnergy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readFolicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeFolicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readIodine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeIodine<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readIron<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeIron<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readMagnesium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeMagnesium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readManganese<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeManganese<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readMolybdenum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeMolybdenum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readMonounsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeMonounsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readNiacin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeNiacin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readPantothenicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writePantothenicAcid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readPhosphorus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writePhosphorus<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readPolyunsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writePolyunsaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readPotassium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writePotassium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readProtein<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeProtein<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readRiboflavin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeRiboflavin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readSaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeSaturatedFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readSelenium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeSelenium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readSodium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeSodium<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readSugar<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeSugar<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readThiamin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeThiamin<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readTotalCarbohydrate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeTotalCarbohydrate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readTotalFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeTotalFat<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminA<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminB12<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminB12<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminB6<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminB6<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminC<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminC<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminD<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminD<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminE<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminE<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readVitaminK<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeVitaminK<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">readZinc<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">writeZinc<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="826091378%2FProperties%2F107750912" anchor-label="readBiotin" id="826091378%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-biotin.html"><span>read</span><wbr></wbr><span><span>Biotin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="826091378%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-biotin.html">readBiotin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1725867402%2FProperties%2F107750912" anchor-label="readCaffeine" id="1725867402%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-caffeine.html"><span>read</span><wbr></wbr><span><span>Caffeine</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1725867402%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-caffeine.html">readCaffeine</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-92782965%2FProperties%2F107750912" anchor-label="readCalcium" id="-92782965%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-calcium.html"><span>read</span><wbr></wbr><span><span>Calcium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-92782965%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-calcium.html">readCalcium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2140869059%2FProperties%2F107750912" anchor-label="readChloride" id="2140869059%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-chloride.html"><span>read</span><wbr></wbr><span><span>Chloride</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2140869059%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-chloride.html">readChloride</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="157954953%2FProperties%2F107750912" anchor-label="readCholesterol" id="157954953%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-cholesterol.html"><span>read</span><wbr></wbr><span><span>Cholesterol</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="157954953%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-cholesterol.html">readCholesterol</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="195887757%2FProperties%2F107750912" anchor-label="readChromium" id="195887757%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-chromium.html"><span>read</span><wbr></wbr><span><span>Chromium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="195887757%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-chromium.html">readChromium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-765540886%2FProperties%2F107750912" anchor-label="readCopper" id="-765540886%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-copper.html"><span>read</span><wbr></wbr><span><span>Copper</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-765540886%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-copper.html">readCopper</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2143562741%2FProperties%2F107750912" anchor-label="readDietaryFiber" id="-2143562741%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-dietary-fiber.html"><span>read</span><wbr></wbr><span>Dietary</span><wbr></wbr><span><span>Fiber</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2143562741%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-dietary-fiber.html">readDietaryFiber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1773514917%2FProperties%2F107750912" anchor-label="readEnergy" id="-1773514917%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-energy.html"><span>read</span><wbr></wbr><span><span>Energy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1773514917%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-energy.html">readEnergy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-703551843%2FProperties%2F107750912" anchor-label="readFolicAcid" id="-703551843%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-folic-acid.html"><span>read</span><wbr></wbr><span>Folic</span><wbr></wbr><span><span>Acid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-703551843%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-folic-acid.html">readFolicAcid</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1238504447%2FProperties%2F107750912" anchor-label="readIodine" id="-1238504447%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-iodine.html"><span>read</span><wbr></wbr><span><span>Iodine</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1238504447%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-iodine.html">readIodine</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1169827483%2FProperties%2F107750912" anchor-label="readIron" id="1169827483%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-iron.html"><span>read</span><wbr></wbr><span><span>Iron</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1169827483%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-iron.html">readIron</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-670548193%2FProperties%2F107750912" anchor-label="readMagnesium" id="-670548193%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-magnesium.html"><span>read</span><wbr></wbr><span><span>Magnesium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-670548193%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-magnesium.html">readMagnesium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-385251462%2FProperties%2F107750912" anchor-label="readManganese" id="-385251462%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-manganese.html"><span>read</span><wbr></wbr><span><span>Manganese</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-385251462%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-manganese.html">readManganese</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1761760881%2FProperties%2F107750912" anchor-label="readMolybdenum" id="1761760881%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-molybdenum.html"><span>read</span><wbr></wbr><span><span>Molybdenum</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1761760881%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-molybdenum.html">readMolybdenum</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2035254755%2FProperties%2F107750912" anchor-label="readMonounsaturatedFat" id="2035254755%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-monounsaturated-fat.html"><span>read</span><wbr></wbr><span>Monounsaturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2035254755%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-monounsaturated-fat.html">readMonounsaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-337211871%2FProperties%2F107750912" anchor-label="readNiacin" id="-337211871%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-niacin.html"><span>read</span><wbr></wbr><span><span>Niacin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-337211871%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-niacin.html">readNiacin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1291789227%2FProperties%2F107750912" anchor-label="readPantothenicAcid" id="1291789227%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-pantothenic-acid.html"><span>read</span><wbr></wbr><span>Pantothenic</span><wbr></wbr><span><span>Acid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1291789227%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-pantothenic-acid.html">readPantothenicAcid</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-855864082%2FProperties%2F107750912" anchor-label="readPhosphorus" id="-855864082%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-phosphorus.html"><span>read</span><wbr></wbr><span><span>Phosphorus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-855864082%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-phosphorus.html">readPhosphorus</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1996416218%2FProperties%2F107750912" anchor-label="readPolyunsaturatedFat" id="1996416218%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-polyunsaturated-fat.html"><span>read</span><wbr></wbr><span>Polyunsaturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1996416218%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-polyunsaturated-fat.html">readPolyunsaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1430669634%2FProperties%2F107750912" anchor-label="readPotassium" id="1430669634%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-potassium.html"><span>read</span><wbr></wbr><span><span>Potassium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1430669634%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-potassium.html">readPotassium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1753389772%2FProperties%2F107750912" anchor-label="readProtein" id="-1753389772%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-protein.html"><span>read</span><wbr></wbr><span><span>Protein</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1753389772%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-protein.html">readProtein</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1284331199%2FProperties%2F107750912" anchor-label="readRiboflavin" id="1284331199%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-riboflavin.html"><span>read</span><wbr></wbr><span><span>Riboflavin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1284331199%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-riboflavin.html">readRiboflavin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1047048607%2FProperties%2F107750912" anchor-label="readSaturatedFat" id="1047048607%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-saturated-fat.html"><span>read</span><wbr></wbr><span>Saturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1047048607%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-saturated-fat.html">readSaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-172719675%2FProperties%2F107750912" anchor-label="readSelenium" id="-172719675%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-selenium.html"><span>read</span><wbr></wbr><span><span>Selenium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-172719675%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-selenium.html">readSelenium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="659016906%2FProperties%2F107750912" anchor-label="readSodium" id="659016906%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-sodium.html"><span>read</span><wbr></wbr><span><span>Sodium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="659016906%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-sodium.html">readSodium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-535507615%2FProperties%2F107750912" anchor-label="readSugar" id="-535507615%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-sugar.html"><span>read</span><wbr></wbr><span><span>Sugar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-535507615%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-sugar.html">readSugar</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1488245201%2FProperties%2F107750912" anchor-label="readThiamin" id="1488245201%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-thiamin.html"><span>read</span><wbr></wbr><span><span>Thiamin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1488245201%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-thiamin.html">readThiamin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-633897055%2FProperties%2F107750912" anchor-label="readTotalCarbohydrate" id="-633897055%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-total-carbohydrate.html"><span>read</span><wbr></wbr><span>Total</span><wbr></wbr><span><span>Carbohydrate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-633897055%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-total-carbohydrate.html">readTotalCarbohydrate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1117094962%2FProperties%2F107750912" anchor-label="readTotalFat" id="-1117094962%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-total-fat.html"><span>read</span><wbr></wbr><span>Total</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1117094962%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-total-fat.html">readTotalFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="682534324%2FProperties%2F107750912" anchor-label="readVitaminA" id="682534324%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-a.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="682534324%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-a.html">readVitaminA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="347962450%2FProperties%2F107750912" anchor-label="readVitaminB12" id="347962450%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-b12.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>B12</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347962450%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-b12.html">readVitaminB12</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="319388145%2FProperties%2F107750912" anchor-label="readVitaminB6" id="319388145%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-b6.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>B6</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="319388145%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-b6.html">readVitaminB6</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="744573938%2FProperties%2F107750912" anchor-label="readVitaminC" id="744573938%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-c.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="744573938%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-c.html">readVitaminC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="775593745%2FProperties%2F107750912" anchor-label="readVitaminD" id="775593745%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-d.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="775593745%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-d.html">readVitaminD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="806613552%2FProperties%2F107750912" anchor-label="readVitaminE" id="806613552%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-e.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>E</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806613552%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-e.html">readVitaminE</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="992732394%2FProperties%2F107750912" anchor-label="readVitaminK" id="992732394%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-vitamin-k.html"><span>read</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>K</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="992732394%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-vitamin-k.html">readVitaminK</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1057451455%2FProperties%2F107750912" anchor-label="readZinc" id="1057451455%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="read-zinc.html"><span>read</span><wbr></wbr><span><span>Zinc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1057451455%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="read-zinc.html">readZinc</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1713946705%2FProperties%2F107750912" anchor-label="writeBiotin" id="1713946705%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-biotin.html"><span>write</span><wbr></wbr><span><span>Biotin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1713946705%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-biotin.html">writeBiotin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="256344745%2FProperties%2F107750912" anchor-label="writeCaffeine" id="256344745%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-caffeine.html"><span>write</span><wbr></wbr><span><span>Caffeine</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="256344745%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-caffeine.html">writeCaffeine</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1660928396%2FProperties%2F107750912" anchor-label="writeCalcium" id="1660928396%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-calcium.html"><span>write</span><wbr></wbr><span><span>Calcium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1660928396%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-calcium.html">writeCalcium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="671346402%2FProperties%2F107750912" anchor-label="writeChloride" id="671346402%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-chloride.html"><span>write</span><wbr></wbr><span><span>Chloride</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="671346402%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-chloride.html">writeChloride</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="210128394%2FProperties%2F107750912" anchor-label="writeCholesterol" id="210128394%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-cholesterol.html"><span>write</span><wbr></wbr><span><span>Cholesterol</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="210128394%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-cholesterol.html">writeCholesterol</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1273634900%2FProperties%2F107750912" anchor-label="writeChromium" id="-1273634900%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-chromium.html"><span>write</span><wbr></wbr><span><span>Chromium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1273634900%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-chromium.html">writeChromium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="122314441%2FProperties%2F107750912" anchor-label="writeCopper" id="122314441%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-copper.html"><span>write</span><wbr></wbr><span><span>Copper</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="122314441%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-copper.html">writeCopper</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-526186070%2FProperties%2F107750912" anchor-label="writeDietaryFiber" id="-526186070%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-dietary-fiber.html"><span>write</span><wbr></wbr><span>Dietary</span><wbr></wbr><span><span>Fiber</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-526186070%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-dietary-fiber.html">writeDietaryFiber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-885659590%2FProperties%2F107750912" anchor-label="writeEnergy" id="-885659590%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-energy.html"><span>write</span><wbr></wbr><span><span>Energy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-885659590%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-energy.html">writeEnergy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="985886046%2FProperties%2F107750912" anchor-label="writeFolicAcid" id="985886046%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-folic-acid.html"><span>write</span><wbr></wbr><span>Folic</span><wbr></wbr><span><span>Acid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="985886046%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-folic-acid.html">writeFolicAcid</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-350649120%2FProperties%2F107750912" anchor-label="writeIodine" id="-350649120%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-iodine.html"><span>write</span><wbr></wbr><span><span>Iodine</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-350649120%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-iodine.html">writeIodine</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1814326074%2FProperties%2F107750912" anchor-label="writeIron" id="1814326074%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-iron.html"><span>write</span><wbr></wbr><span><span>Iron</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1814326074%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-iron.html">writeIron</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1018889696%2FProperties%2F107750912" anchor-label="writeMagnesium" id="1018889696%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-magnesium.html"><span>write</span><wbr></wbr><span><span>Magnesium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1018889696%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-magnesium.html">writeMagnesium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1304186427%2FProperties%2F107750912" anchor-label="writeManganese" id="1304186427%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-manganese.html"><span>write</span><wbr></wbr><span><span>Manganese</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1304186427%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-manganese.html">writeManganese</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1700239408%2FProperties%2F107750912" anchor-label="writeMolybdenum" id="-1700239408%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-molybdenum.html"><span>write</span><wbr></wbr><span><span>Molybdenum</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1700239408%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-molybdenum.html">writeMolybdenum</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="901367874%2FProperties%2F107750912" anchor-label="writeMonounsaturatedFat" id="901367874%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-monounsaturated-fat.html"><span>write</span><wbr></wbr><span>Monounsaturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="901367874%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-monounsaturated-fat.html">writeMonounsaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="550643456%2FProperties%2F107750912" anchor-label="writeNiacin" id="550643456%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-niacin.html"><span>write</span><wbr></wbr><span><span>Niacin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="550643456%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-niacin.html">writeNiacin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-677898836%2FProperties%2F107750912" anchor-label="writePantothenicAcid" id="-677898836%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-pantothenic-acid.html"><span>write</span><wbr></wbr><span>Pantothenic</span><wbr></wbr><span><span>Acid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-677898836%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-pantothenic-acid.html">writePantothenicAcid</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-22897075%2FProperties%2F107750912" anchor-label="writePhosphorus" id="-22897075%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-phosphorus.html"><span>write</span><wbr></wbr><span><span>Phosphorus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-22897075%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-phosphorus.html">writePhosphorus</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="862529337%2FProperties%2F107750912" anchor-label="writePolyunsaturatedFat" id="862529337%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-polyunsaturated-fat.html"><span>write</span><wbr></wbr><span>Polyunsaturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="862529337%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-polyunsaturated-fat.html">writePolyunsaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1174859773%2FProperties%2F107750912" anchor-label="writePotassium" id="-1174859773%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-potassium.html"><span>write</span><wbr></wbr><span><span>Potassium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1174859773%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-potassium.html">writePotassium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="321589%2FProperties%2F107750912" anchor-label="writeProtein" id="321589%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-protein.html"><span>write</span><wbr></wbr><span><span>Protein</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="321589%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-protein.html">writeProtein</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2117298206%2FProperties%2F107750912" anchor-label="writeRiboflavin" id="2117298206%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-riboflavin.html"><span>write</span><wbr></wbr><span><span>Riboflavin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2117298206%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-riboflavin.html">writeRiboflavin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1630542018%2FProperties%2F107750912" anchor-label="writeSaturatedFat" id="-1630542018%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-saturated-fat.html"><span>write</span><wbr></wbr><span>Saturated</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1630542018%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-saturated-fat.html">writeSaturatedFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1642242332%2FProperties%2F107750912" anchor-label="writeSelenium" id="-1642242332%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-selenium.html"><span>write</span><wbr></wbr><span><span>Selenium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1642242332%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-selenium.html">writeSelenium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1546872233%2FProperties%2F107750912" anchor-label="writeSodium" id="1546872233%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-sodium.html"><span>write</span><wbr></wbr><span><span>Sodium</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1546872233%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-sodium.html">writeSodium</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2030887774%2FProperties%2F107750912" anchor-label="writeSugar" id="-2030887774%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-sugar.html"><span>write</span><wbr></wbr><span><span>Sugar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2030887774%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-sugar.html">writeSugar</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1053010734%2FProperties%2F107750912" anchor-label="writeThiamin" id="-1053010734%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-thiamin.html"><span>write</span><wbr></wbr><span><span>Thiamin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1053010734%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-thiamin.html">writeThiamin</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="576451938%2FProperties%2F107750912" anchor-label="writeTotalCarbohydrate" id="576451938%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-total-carbohydrate.html"><span>write</span><wbr></wbr><span>Total</span><wbr></wbr><span><span>Carbohydrate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="576451938%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-total-carbohydrate.html">writeTotalCarbohydrate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1708349677%2FProperties%2F107750912" anchor-label="writeTotalFat" id="1708349677%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-total-fat.html"><span>write</span><wbr></wbr><span>Total</span><wbr></wbr><span><span>Fat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1708349677%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-total-fat.html">writeTotalFat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-786988333%2FProperties%2F107750912" anchor-label="writeVitaminA" id="-786988333%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-a.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>A</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-786988333%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-a.html">writeVitaminA</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1180929457%2FProperties%2F107750912" anchor-label="writeVitaminB12" id="1180929457%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-b12.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>B12</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1180929457%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-b12.html">writeVitaminB12</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2008826034%2FProperties%2F107750912" anchor-label="writeVitaminB6" id="2008826034%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-b6.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>B6</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2008826034%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-b6.html">writeVitaminB6</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-724948719%2FProperties%2F107750912" anchor-label="writeVitaminC" id="-724948719%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-c.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>C</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-724948719%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-c.html">writeVitaminC</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-693928912%2FProperties%2F107750912" anchor-label="writeVitaminD" id="-693928912%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-d.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>D</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-693928912%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-d.html">writeVitaminD</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-662909105%2FProperties%2F107750912" anchor-label="writeVitaminE" id="-662909105%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-e.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>E</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-662909105%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-e.html">writeVitaminE</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-476790263%2FProperties%2F107750912" anchor-label="writeVitaminK" id="-476790263%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-vitamin-k.html"><span>write</span><wbr></wbr><span>Vitamin</span><wbr></wbr><span><span>K</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-476790263%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-vitamin-k.html">writeVitaminK</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1701950046%2FProperties%2F107750912" anchor-label="writeZinc" id="1701950046%2FProperties%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="write-zinc.html"><span>write</span><wbr></wbr><span><span>Zinc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1701950046%2FProperties%2F107750912"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="write-zinc.html">writeZinc</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>(c) 2024 Shubham Singh</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
