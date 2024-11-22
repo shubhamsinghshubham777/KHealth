@@ -257,16 +257,65 @@ internal fun Record.toKHRecord(request: KHReadRequest): KHRecord = when (this) {
         )
     }
 
-    is MenstruationFlowRecord -> {
-        KHRecord.MenstruationFlow(
-            type = when (this.flow) {
-                MenstruationFlowRecord.FLOW_UNKNOWN -> KHMenstruationFlowType.Unknown
-                MenstruationFlowRecord.FLOW_LIGHT -> KHMenstruationFlowType.Light
-                MenstruationFlowRecord.FLOW_MEDIUM -> KHMenstruationFlowType.Medium
-                MenstruationFlowRecord.FLOW_HEAVY -> KHMenstruationFlowType.Heavy
-                else -> throw Exception("Unknown menstruation flow type!")
-            },
-            time = this.time.toKotlinInstant(),
+    is MenstruationFlowRecord -> KHRecord.MenstruationFlow(
+        type = when (this.flow) {
+            MenstruationFlowRecord.FLOW_UNKNOWN -> KHMenstruationFlowType.Unknown
+            MenstruationFlowRecord.FLOW_LIGHT -> KHMenstruationFlowType.Light
+            MenstruationFlowRecord.FLOW_MEDIUM -> KHMenstruationFlowType.Medium
+            MenstruationFlowRecord.FLOW_HEAVY -> KHMenstruationFlowType.Heavy
+            else -> throw Exception("Unknown menstruation flow type!")
+        },
+        time = this.time.toKotlinInstant(),
+    )
+
+    is NutritionRecord -> {
+        val solidUnit = (request as KHReadRequest.Nutrition).solidUnit
+        val energyUnit = request.energyUnit
+        KHRecord.Nutrition(
+            name = name,
+            startTime = startTime.toKotlinInstant(),
+            endTime = endTime.toKotlinInstant(),
+            solidUnit = solidUnit,
+            energyUnit = energyUnit,
+            mealType = mealType.toKHMealType(),
+            biotin = biotin?.toDoubleValueFor(solidUnit),
+            caffeine = caffeine?.toDoubleValueFor(solidUnit),
+            calcium = calcium?.toDoubleValueFor(solidUnit),
+            chloride = chloride?.toDoubleValueFor(solidUnit),
+            cholesterol = cholesterol?.toDoubleValueFor(solidUnit),
+            chromium = chromium?.toDoubleValueFor(solidUnit),
+            copper = copper?.toDoubleValueFor(solidUnit),
+            dietaryFiber = dietaryFiber?.toDoubleValueFor(solidUnit),
+            energy = energy?.toDoubleValueFor(energyUnit),
+            folicAcid = folicAcid?.toDoubleValueFor(solidUnit),
+            iodine = iodine?.toDoubleValueFor(solidUnit),
+            iron = iron?.toDoubleValueFor(solidUnit),
+            magnesium = magnesium?.toDoubleValueFor(solidUnit),
+            manganese = manganese?.toDoubleValueFor(solidUnit),
+            molybdenum = molybdenum?.toDoubleValueFor(solidUnit),
+            monounsaturatedFat = monounsaturatedFat?.toDoubleValueFor(solidUnit),
+            niacin = niacin?.toDoubleValueFor(solidUnit),
+            pantothenicAcid = pantothenicAcid?.toDoubleValueFor(solidUnit),
+            phosphorus = phosphorus?.toDoubleValueFor(solidUnit),
+            polyunsaturatedFat = polyunsaturatedFat?.toDoubleValueFor(solidUnit),
+            potassium = potassium?.toDoubleValueFor(solidUnit),
+            protein = protein?.toDoubleValueFor(solidUnit),
+            riboflavin = riboflavin?.toDoubleValueFor(solidUnit),
+            saturatedFat = saturatedFat?.toDoubleValueFor(solidUnit),
+            selenium = selenium?.toDoubleValueFor(solidUnit),
+            sodium = sodium?.toDoubleValueFor(solidUnit),
+            sugar = sugar?.toDoubleValueFor(solidUnit),
+            thiamin = thiamin?.toDoubleValueFor(solidUnit),
+            totalCarbohydrate = totalCarbohydrate?.toDoubleValueFor(solidUnit),
+            totalFat = totalFat?.toDoubleValueFor(solidUnit),
+            vitaminA = vitaminA?.toDoubleValueFor(solidUnit),
+            vitaminB12 = vitaminB12?.toDoubleValueFor(solidUnit),
+            vitaminB6 = vitaminB6?.toDoubleValueFor(solidUnit),
+            vitaminC = vitaminC?.toDoubleValueFor(solidUnit),
+            vitaminD = vitaminD?.toDoubleValueFor(solidUnit),
+            vitaminE = vitaminE?.toDoubleValueFor(solidUnit),
+            vitaminK = vitaminK?.toDoubleValueFor(solidUnit),
+            zinc = zinc?.toDoubleValueFor(solidUnit),
         )
     }
 
@@ -373,7 +422,7 @@ internal fun Record.toKHRecord(request: KHReadRequest): KHRecord = when (this) {
         endTime = this.endTime.toKotlinInstant()
     )
 
-    else -> throw Exception("Unknown record type!")
+    else -> throw Exception("Unknown record type ($this)!")
 }
 
 internal fun KHPermission.toPermissions(): Set<Pair<String, KHPermissionType>> {
@@ -995,6 +1044,7 @@ internal fun KHRecord.toHCRecord(): Record? {
         )
 
         is KHRecord.Nutrition -> NutritionRecord(
+            name = name,
             startTime = startTime.toJavaInstant(),
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
@@ -1269,4 +1319,13 @@ internal fun KHMealType.toHCMealType(): Int = when (this) {
     KHMealType.Lunch -> MealType.MEAL_TYPE_LUNCH
     KHMealType.Dinner -> MealType.MEAL_TYPE_DINNER
     KHMealType.Snack -> MealType.MEAL_TYPE_SNACK
+}
+
+internal fun Int.toKHMealType(): KHMealType = when (this) {
+    MealType.MEAL_TYPE_UNKNOWN -> KHMealType.Unknown
+    MealType.MEAL_TYPE_BREAKFAST -> KHMealType.Breakfast
+    MealType.MEAL_TYPE_LUNCH -> KHMealType.Lunch
+    MealType.MEAL_TYPE_DINNER -> KHMealType.Dinner
+    MealType.MEAL_TYPE_SNACK -> KHMealType.Snack
+    else -> throw IllegalStateException("Unknown meal type!")
 }
