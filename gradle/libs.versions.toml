@@ -7,11 +7,11 @@ dokkatoo = "2.4.0"
 healthConnectClient = "1.1.0-alpha10"
 java = "21"
 kermit = "2.0.5"
-kotlin = "2.1.0-RC2"
+kotlin = "2.1.0"
 kotlin-dateTime = "0.6.1"
 mavenPublish = "0.30.0"
 minSdk = "28"
-mokkery = "2.6.0-SNAPSHOT"
+mokkery = "2.6.0"
 targetSdk = "35"
 
 [libraries]
