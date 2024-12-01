@@ -81,16 +81,8 @@ expect class KHealth {
      * Code Example:
      * ```kotlin
      * val statuses = kHealth.checkPermissions(
-     *     KHPermission(
-     *         dataType = KHDataType.ActiveCaloriesBurned,
-     *         read = true,
-     *         write = true
-     *     ),
-     *     KHPermission(
-     *         dataType = KHDataType.HeartRate,
-     *         read = true,
-     *         write = false
-     *     ),
+     *     KHPermission.ActiveCaloriesBurned(read = true, write = true),
+     *     KHPermission.HeartRate(read = true, write = false),
      * )
      * statuses.map { permWithStat ->
      *     println(
@@ -114,16 +106,8 @@ expect class KHealth {
      * Code Example:
      * ```kotlin
      * val statuses = kHealth.requestPermissions(
-     *     KHPermission(
-     *         dataType = KHDataType.ActiveCaloriesBurned,
-     *         read = true,
-     *         write = true
-     *     ),
-     *     KHPermission(
-     *         dataType = KHDataType.HeartRate,
-     *         read = true,
-     *         write = false
-     *     ),
+     *     KHPermission.ActiveCaloriesBurned(read = true, write = true),
+     *     KHPermission.HeartRate(read = true, write = false),
      * )
      * statuses.map { permWithStat ->
      *     println(

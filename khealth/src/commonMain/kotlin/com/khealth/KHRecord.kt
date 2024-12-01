@@ -229,6 +229,24 @@ sealed class KHRecord {
     ) : KHRecord()
 
     /**
+     * Captures any exercise a user does. This can be common fitness exercise like running or
+     * different sports.
+     *
+     * Each record needs a start time and end time. Records don't need to be back-to-back or
+     * directly after each other, there can be gaps in between.
+     *
+     * @param startTime The start instant of the interval over which the value this record was
+     * captured
+     * @param endTime The end instant of the interval over which the value this record was captured
+     * @param type The type of exercise that the user is doing
+     */
+    data class Exercise(
+        val type: KHExerciseType,
+        val startTime: Instant,
+        val endTime: Instant,
+    ) : KHRecord()
+
+    /**
      * Captures the number of floors climbed by the user since the last reading.
      *
      * @param floors Count of the floors climbed

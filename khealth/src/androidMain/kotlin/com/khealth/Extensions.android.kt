@@ -28,6 +28,7 @@ import androidx.health.connect.client.records.CervicalMucusRecord
 import androidx.health.connect.client.records.CyclingPedalingCadenceRecord
 import androidx.health.connect.client.records.DistanceRecord
 import androidx.health.connect.client.records.ElevationGainedRecord
+import androidx.health.connect.client.records.ExerciseSessionRecord
 import androidx.health.connect.client.records.FloorsClimbedRecord
 import androidx.health.connect.client.records.HeartRateRecord
 import androidx.health.connect.client.records.HeartRateVariabilityRmssdRecord
@@ -86,7 +87,7 @@ import kotlinx.datetime.toJavaInstant
 import kotlinx.datetime.toKotlinInstant
 import kotlin.reflect.KClass
 
-internal fun Record.toKHRecord(request: KHReadRequest): KHRecord = when (this) {
+internal fun Record.toKHRecordOrNull(request: KHReadRequest): KHRecord? = when (this) {
     is ActiveCaloriesBurnedRecord -> {
         val unit = (request as KHReadRequest.ActiveCaloriesBurned).unit
         KHRecord.ActiveCaloriesBurned(
@@ -197,6 +198,14 @@ internal fun Record.toKHRecord(request: KHReadRequest): KHRecord = when (this) {
             value = this.elevation toDoubleValueFor unit,
             startTime = this.startTime.toKotlinInstant(),
             endTime = this.endTime.toKotlinInstant(),
+        )
+    }
+
+    is ExerciseSessionRecord -> exerciseType.toKHExerciseTypeOrNull()?.let { safeExerciseType ->
+        KHRecord.Exercise(
+            startTime = startTime.toKotlinInstant(),
+            endTime = endTime.toKotlinInstant(),
+            type = safeExerciseType,
         )
     }
 
@@ -443,6 +452,7 @@ internal fun KHPermission.toPermissions(): Set<Pair<String, KHPermissionType>> {
                 is KHPermission.CyclingSpeed -> entry.read
                 is KHPermission.Distance -> entry.read
                 is KHPermission.ElevationGained -> entry.read
+                is KHPermission.Exercise -> entry.read
                 is KHPermission.FloorsClimbed -> entry.read
                 is KHPermission.HeartRate -> entry.read
                 is KHPermission.HeartRateVariability -> entry.read
@@ -520,6 +530,7 @@ internal fun KHPermission.toPermissions(): Set<Pair<String, KHPermissionType>> {
                 is KHPermission.CyclingSpeed -> entry.write
                 is KHPermission.Distance -> entry.write
                 is KHPermission.ElevationGained -> entry.write
+                is KHPermission.Exercise -> entry.write
                 is KHPermission.FloorsClimbed -> entry.write
                 is KHPermission.HeartRate -> entry.write
                 is KHPermission.HeartRateVariability -> entry.write
@@ -651,6 +662,9 @@ internal fun Array<out KHPermission>.toPermissionsWithStatuses(
 
         is KHPermission.ElevationGained ->
             KHPermission.ElevationGained(read = readGranted, write = writeGranted)
+
+        is KHPermission.Exercise ->
+            KHPermission.Exercise(read = readGranted, write = writeGranted)
 
         is KHPermission.FloorsClimbed ->
             KHPermission.FloorsClimbed(read = readGranted, write = writeGranted)
@@ -813,6 +827,7 @@ internal fun KHReadRequest.toRecordClass(): KClass<out Record>? = when (this) {
     is KHReadRequest.CyclingSpeed -> null
     is KHReadRequest.Distance -> DistanceRecord::class
     is KHReadRequest.ElevationGained -> ElevationGainedRecord::class
+    is KHReadRequest.Exercise -> ExerciseSessionRecord::class
     is KHReadRequest.FloorsClimbed -> FloorsClimbedRecord::class
     is KHReadRequest.HeartRate -> HeartRateRecord::class
     is KHReadRequest.HeartRateVariability -> HeartRateVariabilityRmssdRecord::class
@@ -852,6 +867,7 @@ internal fun KHPermission.toRecordClass(): KClass<out Record>? = when (this) {
     is KHPermission.CyclingSpeed -> null
     is KHPermission.Distance -> DistanceRecord::class
     is KHPermission.ElevationGained -> ElevationGainedRecord::class
+    is KHPermission.Exercise -> ExerciseSessionRecord::class
     is KHPermission.FloorsClimbed -> FloorsClimbedRecord::class
     is KHPermission.HeartRate -> HeartRateRecord::class
     is KHPermission.HeartRateVariability -> HeartRateVariabilityRmssdRecord::class
@@ -972,6 +988,16 @@ internal fun KHRecord.toHCRecord(): Record? {
             endZoneOffset = null,
             elevation = unit toNativeLengthFor value
         )
+
+        is KHRecord.Exercise -> type.toNativeExerciseTypeOrNull()?.let { exerciseType ->
+            ExerciseSessionRecord(
+                startTime = startTime.toJavaInstant(),
+                startZoneOffset = null,
+                endTime = endTime.toJavaInstant(),
+                endZoneOffset = null,
+                exerciseType = exerciseType,
+            )
+        }
 
         is KHRecord.FloorsClimbed -> FloorsClimbedRecord(
             startTime = startTime.toJavaInstant(),
@@ -1328,4 +1354,134 @@ internal fun Int.toKHMealType(): KHMealType = when (this) {
     MealType.MEAL_TYPE_DINNER -> KHMealType.Dinner
     MealType.MEAL_TYPE_SNACK -> KHMealType.Snack
     else -> throw IllegalStateException("Unknown meal type!")
+}
+
+internal fun KHExerciseType.toNativeExerciseTypeOrNull() = when (this) {
+    KHExerciseType.AmericanFootball -> ExerciseSessionRecord.EXERCISE_TYPE_FOOTBALL_AMERICAN
+    KHExerciseType.AustralianFootball -> ExerciseSessionRecord.EXERCISE_TYPE_FOOTBALL_AUSTRALIAN
+    KHExerciseType.Badminton -> ExerciseSessionRecord.EXERCISE_TYPE_BADMINTON
+    KHExerciseType.Baseball -> ExerciseSessionRecord.EXERCISE_TYPE_BASEBALL
+    KHExerciseType.Basketball -> ExerciseSessionRecord.EXERCISE_TYPE_BASKETBALL
+    KHExerciseType.Biking -> ExerciseSessionRecord.EXERCISE_TYPE_BIKING
+    KHExerciseType.BikingStationary -> ExerciseSessionRecord.EXERCISE_TYPE_BIKING_STATIONARY
+    KHExerciseType.BootCamp -> ExerciseSessionRecord.EXERCISE_TYPE_BOOT_CAMP
+    KHExerciseType.Boxing -> ExerciseSessionRecord.EXERCISE_TYPE_BOXING
+    KHExerciseType.Calisthenics -> ExerciseSessionRecord.EXERCISE_TYPE_CALISTHENICS
+    KHExerciseType.Cricket -> ExerciseSessionRecord.EXERCISE_TYPE_CRICKET
+    KHExerciseType.Dancing -> ExerciseSessionRecord.EXERCISE_TYPE_DANCING
+    KHExerciseType.Elliptical -> ExerciseSessionRecord.EXERCISE_TYPE_ELLIPTICAL
+    KHExerciseType.ExerciseClass -> ExerciseSessionRecord.EXERCISE_TYPE_EXERCISE_CLASS
+    KHExerciseType.Fencing -> ExerciseSessionRecord.EXERCISE_TYPE_FENCING
+    KHExerciseType.FrisbeeDisc -> ExerciseSessionRecord.EXERCISE_TYPE_FRISBEE_DISC
+    KHExerciseType.Golf -> ExerciseSessionRecord.EXERCISE_TYPE_GOLF
+    KHExerciseType.GuidedBreathing -> ExerciseSessionRecord.EXERCISE_TYPE_GUIDED_BREATHING
+    KHExerciseType.Gymnastics -> ExerciseSessionRecord.EXERCISE_TYPE_GYMNASTICS
+    KHExerciseType.Handball -> ExerciseSessionRecord.EXERCISE_TYPE_HANDBALL
+    KHExerciseType.HighIntensityIntervalTraining -> ExerciseSessionRecord.EXERCISE_TYPE_HIGH_INTENSITY_INTERVAL_TRAINING
+    KHExerciseType.Hiking -> ExerciseSessionRecord.EXERCISE_TYPE_HIKING
+    KHExerciseType.IceHockey -> ExerciseSessionRecord.EXERCISE_TYPE_ICE_HOCKEY
+    KHExerciseType.IceSkating -> ExerciseSessionRecord.EXERCISE_TYPE_ICE_SKATING
+    KHExerciseType.MartialArts -> ExerciseSessionRecord.EXERCISE_TYPE_MARTIAL_ARTS
+    KHExerciseType.Other -> ExerciseSessionRecord.EXERCISE_TYPE_OTHER_WORKOUT
+    KHExerciseType.Paddling -> ExerciseSessionRecord.EXERCISE_TYPE_PADDLING
+    KHExerciseType.Paragliding -> ExerciseSessionRecord.EXERCISE_TYPE_PARAGLIDING
+    KHExerciseType.Pilates -> ExerciseSessionRecord.EXERCISE_TYPE_PILATES
+    KHExerciseType.Racquetball -> ExerciseSessionRecord.EXERCISE_TYPE_RACQUETBALL
+    KHExerciseType.RockClimbing -> ExerciseSessionRecord.EXERCISE_TYPE_ROCK_CLIMBING
+    KHExerciseType.RollerHockey -> ExerciseSessionRecord.EXERCISE_TYPE_ROLLER_HOCKEY
+    KHExerciseType.Rowing -> ExerciseSessionRecord.EXERCISE_TYPE_ROWING
+    KHExerciseType.RowingMachine -> ExerciseSessionRecord.EXERCISE_TYPE_ROWING_MACHINE
+    KHExerciseType.Rugby -> ExerciseSessionRecord.EXERCISE_TYPE_RUGBY
+    KHExerciseType.Running -> ExerciseSessionRecord.EXERCISE_TYPE_RUNNING
+    KHExerciseType.RunningTreadmill -> ExerciseSessionRecord.EXERCISE_TYPE_RUNNING_TREADMILL
+    KHExerciseType.Sailing -> ExerciseSessionRecord.EXERCISE_TYPE_SAILING
+    KHExerciseType.ScubaDiving -> ExerciseSessionRecord.EXERCISE_TYPE_SCUBA_DIVING
+    KHExerciseType.Skating -> ExerciseSessionRecord.EXERCISE_TYPE_SKATING
+    KHExerciseType.Skiing -> ExerciseSessionRecord.EXERCISE_TYPE_SKIING
+    KHExerciseType.Snowboarding -> ExerciseSessionRecord.EXERCISE_TYPE_SNOWBOARDING
+    KHExerciseType.Snowshoeing -> ExerciseSessionRecord.EXERCISE_TYPE_SNOWSHOEING
+    KHExerciseType.Soccer -> ExerciseSessionRecord.EXERCISE_TYPE_SOCCER
+    KHExerciseType.Softball -> ExerciseSessionRecord.EXERCISE_TYPE_SOFTBALL
+    KHExerciseType.Squash -> ExerciseSessionRecord.EXERCISE_TYPE_SQUASH
+    KHExerciseType.StairClimbing -> ExerciseSessionRecord.EXERCISE_TYPE_STAIR_CLIMBING
+    KHExerciseType.StairClimbingMachine -> ExerciseSessionRecord.EXERCISE_TYPE_STAIR_CLIMBING_MACHINE
+    KHExerciseType.StrengthTraining -> ExerciseSessionRecord.EXERCISE_TYPE_STRENGTH_TRAINING
+    KHExerciseType.Stretching -> ExerciseSessionRecord.EXERCISE_TYPE_STRETCHING
+    KHExerciseType.Surfing -> ExerciseSessionRecord.EXERCISE_TYPE_SURFING
+    KHExerciseType.SwimmingOpenWater -> ExerciseSessionRecord.EXERCISE_TYPE_SWIMMING_OPEN_WATER
+    KHExerciseType.SwimmingPool -> ExerciseSessionRecord.EXERCISE_TYPE_SWIMMING_POOL
+    KHExerciseType.TableTennis -> ExerciseSessionRecord.EXERCISE_TYPE_TABLE_TENNIS
+    KHExerciseType.Tennis -> ExerciseSessionRecord.EXERCISE_TYPE_TENNIS
+    KHExerciseType.Volleyball -> ExerciseSessionRecord.EXERCISE_TYPE_VOLLEYBALL
+    KHExerciseType.Walking -> ExerciseSessionRecord.EXERCISE_TYPE_WALKING
+    KHExerciseType.WaterPolo -> ExerciseSessionRecord.EXERCISE_TYPE_WATER_POLO
+    KHExerciseType.Weightlifting -> ExerciseSessionRecord.EXERCISE_TYPE_WEIGHTLIFTING
+    KHExerciseType.Wheelchair -> ExerciseSessionRecord.EXERCISE_TYPE_WHEELCHAIR
+    KHExerciseType.Yoga -> ExerciseSessionRecord.EXERCISE_TYPE_YOGA
+    else -> null
+}
+
+internal fun Int.toKHExerciseTypeOrNull(): KHExerciseType? = when (this) {
+    ExerciseSessionRecord.EXERCISE_TYPE_BADMINTON -> KHExerciseType.Badminton
+    ExerciseSessionRecord.EXERCISE_TYPE_BASEBALL -> KHExerciseType.Baseball
+    ExerciseSessionRecord.EXERCISE_TYPE_BASKETBALL -> KHExerciseType.Basketball
+    ExerciseSessionRecord.EXERCISE_TYPE_BIKING -> KHExerciseType.Biking
+    ExerciseSessionRecord.EXERCISE_TYPE_BIKING_STATIONARY -> KHExerciseType.BikingStationary
+    ExerciseSessionRecord.EXERCISE_TYPE_BOOT_CAMP -> KHExerciseType.BootCamp
+    ExerciseSessionRecord.EXERCISE_TYPE_BOXING -> KHExerciseType.Boxing
+    ExerciseSessionRecord.EXERCISE_TYPE_CALISTHENICS -> KHExerciseType.Calisthenics
+    ExerciseSessionRecord.EXERCISE_TYPE_CRICKET -> KHExerciseType.Cricket
+    ExerciseSessionRecord.EXERCISE_TYPE_DANCING -> KHExerciseType.Dancing
+    ExerciseSessionRecord.EXERCISE_TYPE_ELLIPTICAL -> KHExerciseType.Elliptical
+    ExerciseSessionRecord.EXERCISE_TYPE_EXERCISE_CLASS -> KHExerciseType.ExerciseClass
+    ExerciseSessionRecord.EXERCISE_TYPE_FENCING -> KHExerciseType.Fencing
+    ExerciseSessionRecord.EXERCISE_TYPE_FOOTBALL_AMERICAN -> KHExerciseType.AmericanFootball
+    ExerciseSessionRecord.EXERCISE_TYPE_FOOTBALL_AUSTRALIAN -> KHExerciseType.AustralianFootball
+    ExerciseSessionRecord.EXERCISE_TYPE_FRISBEE_DISC -> KHExerciseType.FrisbeeDisc
+    ExerciseSessionRecord.EXERCISE_TYPE_GOLF -> KHExerciseType.Golf
+    ExerciseSessionRecord.EXERCISE_TYPE_GUIDED_BREATHING -> KHExerciseType.GuidedBreathing
+    ExerciseSessionRecord.EXERCISE_TYPE_GYMNASTICS -> KHExerciseType.Gymnastics
+    ExerciseSessionRecord.EXERCISE_TYPE_HANDBALL -> KHExerciseType.Handball
+    ExerciseSessionRecord.EXERCISE_TYPE_HIGH_INTENSITY_INTERVAL_TRAINING -> KHExerciseType.HighIntensityIntervalTraining
+    ExerciseSessionRecord.EXERCISE_TYPE_HIKING -> KHExerciseType.Hiking
+    ExerciseSessionRecord.EXERCISE_TYPE_ICE_HOCKEY -> KHExerciseType.IceHockey
+    ExerciseSessionRecord.EXERCISE_TYPE_ICE_SKATING -> KHExerciseType.IceSkating
+    ExerciseSessionRecord.EXERCISE_TYPE_MARTIAL_ARTS -> KHExerciseType.MartialArts
+    ExerciseSessionRecord.EXERCISE_TYPE_OTHER_WORKOUT -> KHExerciseType.Other
+    ExerciseSessionRecord.EXERCISE_TYPE_PADDLING -> KHExerciseType.Paddling
+    ExerciseSessionRecord.EXERCISE_TYPE_PARAGLIDING -> KHExerciseType.Paragliding
+    ExerciseSessionRecord.EXERCISE_TYPE_PILATES -> KHExerciseType.Pilates
+    ExerciseSessionRecord.EXERCISE_TYPE_RACQUETBALL -> KHExerciseType.Racquetball
+    ExerciseSessionRecord.EXERCISE_TYPE_ROCK_CLIMBING -> KHExerciseType.RockClimbing
+    ExerciseSessionRecord.EXERCISE_TYPE_ROLLER_HOCKEY -> KHExerciseType.RollerHockey
+    ExerciseSessionRecord.EXERCISE_TYPE_ROWING -> KHExerciseType.Rowing
+    ExerciseSessionRecord.EXERCISE_TYPE_ROWING_MACHINE -> KHExerciseType.RowingMachine
+    ExerciseSessionRecord.EXERCISE_TYPE_RUGBY -> KHExerciseType.Rugby
+    ExerciseSessionRecord.EXERCISE_TYPE_RUNNING -> KHExerciseType.Running
+    ExerciseSessionRecord.EXERCISE_TYPE_RUNNING_TREADMILL -> KHExerciseType.RunningTreadmill
+    ExerciseSessionRecord.EXERCISE_TYPE_SAILING -> KHExerciseType.Sailing
+    ExerciseSessionRecord.EXERCISE_TYPE_SCUBA_DIVING -> KHExerciseType.ScubaDiving
+    ExerciseSessionRecord.EXERCISE_TYPE_SKATING -> KHExerciseType.Skating
+    ExerciseSessionRecord.EXERCISE_TYPE_SKIING -> KHExerciseType.Skiing
+    ExerciseSessionRecord.EXERCISE_TYPE_SNOWBOARDING -> KHExerciseType.Snowboarding
+    ExerciseSessionRecord.EXERCISE_TYPE_SNOWSHOEING -> KHExerciseType.Snowshoeing
+    ExerciseSessionRecord.EXERCISE_TYPE_SOCCER -> KHExerciseType.Soccer
+    ExerciseSessionRecord.EXERCISE_TYPE_SOFTBALL -> KHExerciseType.Softball
+    ExerciseSessionRecord.EXERCISE_TYPE_SQUASH -> KHExerciseType.Squash
+    ExerciseSessionRecord.EXERCISE_TYPE_STAIR_CLIMBING -> KHExerciseType.StairClimbing
+    ExerciseSessionRecord.EXERCISE_TYPE_STAIR_CLIMBING_MACHINE -> KHExerciseType.StairClimbingMachine
+    ExerciseSessionRecord.EXERCISE_TYPE_STRENGTH_TRAINING -> KHExerciseType.StrengthTraining
+    ExerciseSessionRecord.EXERCISE_TYPE_STRETCHING -> KHExerciseType.Stretching
+    ExerciseSessionRecord.EXERCISE_TYPE_SURFING -> KHExerciseType.Surfing
+    ExerciseSessionRecord.EXERCISE_TYPE_SWIMMING_OPEN_WATER -> KHExerciseType.SwimmingOpenWater
+    ExerciseSessionRecord.EXERCISE_TYPE_SWIMMING_POOL -> KHExerciseType.SwimmingPool
+    ExerciseSessionRecord.EXERCISE_TYPE_TABLE_TENNIS -> KHExerciseType.TableTennis
+    ExerciseSessionRecord.EXERCISE_TYPE_TENNIS -> KHExerciseType.Tennis
+    ExerciseSessionRecord.EXERCISE_TYPE_VOLLEYBALL -> KHExerciseType.Volleyball
+    ExerciseSessionRecord.EXERCISE_TYPE_WALKING -> KHExerciseType.Walking
+    ExerciseSessionRecord.EXERCISE_TYPE_WATER_POLO -> KHExerciseType.WaterPolo
+    ExerciseSessionRecord.EXERCISE_TYPE_WEIGHTLIFTING -> KHExerciseType.Weightlifting
+    ExerciseSessionRecord.EXERCISE_TYPE_WHEELCHAIR -> KHExerciseType.Wheelchair
+    ExerciseSessionRecord.EXERCISE_TYPE_YOGA -> KHExerciseType.Yoga
+    else -> null
 }

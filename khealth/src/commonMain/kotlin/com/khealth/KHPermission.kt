@@ -87,6 +87,11 @@ sealed class KHPermission {
         val write: Boolean = false
     ) : KHPermission()
 
+    data class Exercise(
+        val read: Boolean = false,
+        val write: Boolean = false,
+    ) : KHPermission()
+
     data class FloorsClimbed(
         val read: Boolean = false,
         val write: Boolean = false

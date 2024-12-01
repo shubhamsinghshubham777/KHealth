@@ -40,6 +40,7 @@ import platform.HealthKit.HKSample
 import platform.HealthKit.HKSampleQuery
 import platform.HealthKit.HKSampleSortIdentifierStartDate
 import platform.HealthKit.HKSampleType
+import platform.HealthKit.HKWorkout
 import platform.HealthKit.predicateForSamplesWithStartDate
 import platform.darwin.NSInteger
 import kotlin.coroutines.resume
@@ -147,6 +148,12 @@ actual class KHealth {
                     )
 
                     is KHPermission.ElevationGained -> KHPermission.ElevationGained(write = false)
+
+                    is KHPermission.Exercise -> KHPermission.Exercise(
+                        write = if (permission.write) {
+                            store.authorizationStatusForType(ObjectType.Exercise).isGranted
+                        } else false
+                    )
 
                     is KHPermission.FloorsClimbed -> KHPermission.FloorsClimbed(
                         write = if (permission.write) {
@@ -389,8 +396,6 @@ actual class KHealth {
                             store.authorizationStatusForType(ObjectType.Quantity.WheelChairPushes).isGranted
                         } else false
                     )
-
-                    else -> KHPermission.BasalMetabolicRate(write = false)
                 }
             }.toSet()
         } catch (t: Throwable) {
@@ -470,6 +475,11 @@ actual class KHealth {
                 }
 
                 is KHPermission.ElevationGained -> Unit
+
+                is KHPermission.Exercise -> {
+                    if (permission.read) readPermissions.add(ObjectType.Exercise)
+                    if (permission.write) writePermissions.add(ObjectType.Exercise)
+                }
 
                 is KHPermission.FloorsClimbed -> {
                     if (permission.read) readPermissions.add(ObjectType.Quantity.FloorsClimbed)
@@ -778,6 +788,18 @@ actual class KHealth {
                     )
 
                     is KHRecord.ElevationGained -> Unit
+
+                    is KHRecord.Exercise -> record.type
+                        .toNativeExerciseTypeOrNull()
+                        ?.let { exerciseType ->
+                            samples.add(
+                                HKWorkout.workoutWithActivityType(
+                                    workoutActivityType = exerciseType,
+                                    startDate = record.startTime.toNSDate(),
+                                    endDate = record.endTime.toNSDate(),
+                                )
+                            )
+                        }
 
                     is KHRecord.FloorsClimbed -> samples.add(
                         HKQuantitySample.quantitySampleWithType(
@@ -1499,6 +1521,8 @@ actual class KHealth {
 
                         is KHReadRequest.ElevationGained -> Unit
 
+                        is KHReadRequest.Exercise -> addAll(quantitySamplesFor(ObjectType.Exercise))
+
                         is KHReadRequest.FloorsClimbed ->
                             addAll(quantitySamplesFor(ObjectType.Quantity.FloorsClimbed))
 
@@ -1621,7 +1645,6 @@ actual class KHealth {
                         )
                     }
 
-
                     is KHReadRequest.BasalMetabolicRate -> {
                         val sample = hkSamples.first() as HKQuantitySample
                         KHRecord.BasalMetabolicRate(
@@ -1703,6 +1726,17 @@ actual class KHealth {
                     }
 
                     is KHReadRequest.ElevationGained -> null
+
+                    is KHReadRequest.Exercise -> {
+                        val sample = hkSamples.first() as HKWorkout
+                        sample.workoutActivityType.toKHExerciseTypeOrNull()?.let { exerciseType ->
+                            KHRecord.Exercise(
+                                startTime = sample.startDate.toKotlinInstant(),
+                                endTime = sample.endDate.toKotlinInstant(),
+                                type = exerciseType,
+                            )
+                        }
+                    }
 
                     is KHReadRequest.FloorsClimbed -> {
                         val sample = hkSamples.first() as HKQuantitySample
@@ -2041,8 +2075,8 @@ actual class KHealth {
         vararg hkObjectTypes: HKSampleType
     ): List<List<HKSample>?> {
         val predicate = HKQuery.predicateForSamplesWithStartDate(
-            startDate = startDateTime.toNSDate(),
-            endDate = endDateTime.toNSDate(),
+            startDate = this.startDateTime.toNSDate(),
+            endDate = this.endDateTime.toNSDate(),
             options = HKQueryOptionStrictStartDate
         )
         val limit = HKObjectQueryNoLimit
@@ -2063,7 +2097,9 @@ actual class KHealth {
                         sortDescriptors = sortDescriptors,
                     ) { _, data, error ->
                         error.logToConsole(type)
-                        continuation.resume(data?.filterIsInstance<HKQuantitySample>())
+                        continuation.resume(
+                            data?.filterIsInstance<HKSample>()?.filterNot { it is HKCategorySample }
+                        )
                     }
                 )
             }

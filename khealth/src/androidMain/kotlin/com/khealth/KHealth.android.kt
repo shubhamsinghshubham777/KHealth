@@ -141,7 +141,7 @@ actual class KHealth {
                 )
             ).records
 
-            hcRecords.map { record -> record.toKHRecord(request) }
+            hcRecords.mapNotNull { record -> record.toKHRecordOrNull(request) }
         } catch (t: Throwable) {
             logError(throwable = t, methodName = "readRecords")
             emptyList()

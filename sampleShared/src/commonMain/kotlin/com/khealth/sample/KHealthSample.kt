@@ -18,6 +18,7 @@ package com.khealth.sample
 import com.khealth.KHCervicalMucusAppearance
 import com.khealth.KHCyclingPedalingCadenceSample
 import com.khealth.KHEither
+import com.khealth.KHExerciseType
 import com.khealth.KHHeartRateSample
 import com.khealth.KHMealType
 import com.khealth.KHMenstruationFlowType
@@ -56,6 +57,7 @@ val permissions = arrayOf(
     KHPermission.CyclingSpeed(read = true, write = true),
     KHPermission.Distance(read = true, write = true),
     KHPermission.ElevationGained(read = true, write = true),
+    KHPermission.Exercise(read = true, write = true),
     KHPermission.FloorsClimbed(read = true, write = true),
     KHPermission.HeartRate(read = true, write = true),
     KHPermission.HeartRateVariability(read = true, write = true),
@@ -187,6 +189,16 @@ fun sampleWriteData(kHealth: KHealth) {
                 unit = KHUnit.Length.Meter,
                 value = 2.2,
                 startTime = Clock.System.now().minus(2.minutes),
+                endTime = Clock.System.now(),
+            ),
+            KHRecord.Exercise(
+                type = KHExerciseType.AmericanFootball,
+                startTime = Clock.System.now().minus(40.minutes),
+                endTime = Clock.System.now(),
+            ),
+            KHRecord.Exercise(
+                type = KHExerciseType.Archery,
+                startTime = Clock.System.now().minus(30.minutes),
                 endTime = Clock.System.now(),
             ),
             KHRecord.FloorsClimbed(
@@ -437,6 +449,9 @@ fun sampleReadData(kHealth: KHealth) {
                             startTime = startTime,
                             endTime = endTime
                         )
+                    ) +
+                    readRecords(
+                        KHReadRequest.Exercise(startTime = startTime, endTime = endTime)
                     ) +
                     readRecords(
                         KHReadRequest.FloorsClimbed(startTime = startTime, endTime = endTime)

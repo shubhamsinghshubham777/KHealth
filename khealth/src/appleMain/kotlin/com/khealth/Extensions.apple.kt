@@ -113,6 +113,91 @@ import platform.HealthKit.HKQuantityTypeIdentifierVO2Max
 import platform.HealthKit.HKSample
 import platform.HealthKit.HKUnit
 import platform.HealthKit.HKUnitMolarMassBloodGlucose
+import platform.HealthKit.HKWorkoutActivityType
+import platform.HealthKit.HKWorkoutActivityTypeAmericanFootball
+import platform.HealthKit.HKWorkoutActivityTypeArchery
+import platform.HealthKit.HKWorkoutActivityTypeAustralianFootball
+import platform.HealthKit.HKWorkoutActivityTypeBadminton
+import platform.HealthKit.HKWorkoutActivityTypeBarre
+import platform.HealthKit.HKWorkoutActivityTypeBaseball
+import platform.HealthKit.HKWorkoutActivityTypeBasketball
+import platform.HealthKit.HKWorkoutActivityTypeBowling
+import platform.HealthKit.HKWorkoutActivityTypeBoxing
+import platform.HealthKit.HKWorkoutActivityTypeCardioDance
+import platform.HealthKit.HKWorkoutActivityTypeClimbing
+import platform.HealthKit.HKWorkoutActivityTypeCooldown
+import platform.HealthKit.HKWorkoutActivityTypeCoreTraining
+import platform.HealthKit.HKWorkoutActivityTypeCricket
+import platform.HealthKit.HKWorkoutActivityTypeCrossCountrySkiing
+import platform.HealthKit.HKWorkoutActivityTypeCrossTraining
+import platform.HealthKit.HKWorkoutActivityTypeCurling
+import platform.HealthKit.HKWorkoutActivityTypeCycling
+import platform.HealthKit.HKWorkoutActivityTypeDance
+import platform.HealthKit.HKWorkoutActivityTypeDanceInspiredTraining
+import platform.HealthKit.HKWorkoutActivityTypeDiscSports
+import platform.HealthKit.HKWorkoutActivityTypeDownhillSkiing
+import platform.HealthKit.HKWorkoutActivityTypeElliptical
+import platform.HealthKit.HKWorkoutActivityTypeEquestrianSports
+import platform.HealthKit.HKWorkoutActivityTypeFencing
+import platform.HealthKit.HKWorkoutActivityTypeFishing
+import platform.HealthKit.HKWorkoutActivityTypeFitnessGaming
+import platform.HealthKit.HKWorkoutActivityTypeFlexibility
+import platform.HealthKit.HKWorkoutActivityTypeFunctionalStrengthTraining
+import platform.HealthKit.HKWorkoutActivityTypeGolf
+import platform.HealthKit.HKWorkoutActivityTypeGymnastics
+import platform.HealthKit.HKWorkoutActivityTypeHandCycling
+import platform.HealthKit.HKWorkoutActivityTypeHandball
+import platform.HealthKit.HKWorkoutActivityTypeHighIntensityIntervalTraining
+import platform.HealthKit.HKWorkoutActivityTypeHiking
+import platform.HealthKit.HKWorkoutActivityTypeHockey
+import platform.HealthKit.HKWorkoutActivityTypeHunting
+import platform.HealthKit.HKWorkoutActivityTypeJumpRope
+import platform.HealthKit.HKWorkoutActivityTypeKickboxing
+import platform.HealthKit.HKWorkoutActivityTypeLacrosse
+import platform.HealthKit.HKWorkoutActivityTypeMartialArts
+import platform.HealthKit.HKWorkoutActivityTypeMindAndBody
+import platform.HealthKit.HKWorkoutActivityTypeMixedCardio
+import platform.HealthKit.HKWorkoutActivityTypeMixedMetabolicCardioTraining
+import platform.HealthKit.HKWorkoutActivityTypeOther
+import platform.HealthKit.HKWorkoutActivityTypePaddleSports
+import platform.HealthKit.HKWorkoutActivityTypePickleball
+import platform.HealthKit.HKWorkoutActivityTypePilates
+import platform.HealthKit.HKWorkoutActivityTypePlay
+import platform.HealthKit.HKWorkoutActivityTypePreparationAndRecovery
+import platform.HealthKit.HKWorkoutActivityTypeRacquetball
+import platform.HealthKit.HKWorkoutActivityTypeRowing
+import platform.HealthKit.HKWorkoutActivityTypeRugby
+import platform.HealthKit.HKWorkoutActivityTypeRunning
+import platform.HealthKit.HKWorkoutActivityTypeSailing
+import platform.HealthKit.HKWorkoutActivityTypeSkatingSports
+import platform.HealthKit.HKWorkoutActivityTypeSnowSports
+import platform.HealthKit.HKWorkoutActivityTypeSnowboarding
+import platform.HealthKit.HKWorkoutActivityTypeSoccer
+import platform.HealthKit.HKWorkoutActivityTypeSocialDance
+import platform.HealthKit.HKWorkoutActivityTypeSoftball
+import platform.HealthKit.HKWorkoutActivityTypeSquash
+import platform.HealthKit.HKWorkoutActivityTypeStairClimbing
+import platform.HealthKit.HKWorkoutActivityTypeStairs
+import platform.HealthKit.HKWorkoutActivityTypeStepTraining
+import platform.HealthKit.HKWorkoutActivityTypeSurfingSports
+import platform.HealthKit.HKWorkoutActivityTypeSwimBikeRun
+import platform.HealthKit.HKWorkoutActivityTypeSwimming
+import platform.HealthKit.HKWorkoutActivityTypeTableTennis
+import platform.HealthKit.HKWorkoutActivityTypeTaiChi
+import platform.HealthKit.HKWorkoutActivityTypeTennis
+import platform.HealthKit.HKWorkoutActivityTypeTrackAndField
+import platform.HealthKit.HKWorkoutActivityTypeTraditionalStrengthTraining
+import platform.HealthKit.HKWorkoutActivityTypeTransition
+import platform.HealthKit.HKWorkoutActivityTypeUnderwaterDiving
+import platform.HealthKit.HKWorkoutActivityTypeVolleyball
+import platform.HealthKit.HKWorkoutActivityTypeWalking
+import platform.HealthKit.HKWorkoutActivityTypeWaterFitness
+import platform.HealthKit.HKWorkoutActivityTypeWaterPolo
+import platform.HealthKit.HKWorkoutActivityTypeWaterSports
+import platform.HealthKit.HKWorkoutActivityTypeWheelchairRunPace
+import platform.HealthKit.HKWorkoutActivityTypeWheelchairWalkPace
+import platform.HealthKit.HKWorkoutActivityTypeWrestling
+import platform.HealthKit.HKWorkoutActivityTypeYoga
 import platform.HealthKit.countUnit
 import platform.HealthKit.dayUnit
 import platform.HealthKit.degreeCelsiusUnit
@@ -468,6 +553,184 @@ internal fun mergeHKSamples(vararg samples: List<HKSample>?): List<List<HKSample
     }
 }
 
+@OptIn(UnsafeNumber::class)
+internal fun KHExerciseType.toNativeExerciseTypeOrNull(): HKWorkoutActivityType? = when (this) {
+    KHExerciseType.AmericanFootball -> HKWorkoutActivityTypeAmericanFootball
+    KHExerciseType.Archery -> HKWorkoutActivityTypeArchery
+    KHExerciseType.AustralianFootball -> HKWorkoutActivityTypeAustralianFootball
+    KHExerciseType.Badminton -> HKWorkoutActivityTypeBadminton
+    KHExerciseType.Barre -> HKWorkoutActivityTypeBarre
+    KHExerciseType.Baseball -> HKWorkoutActivityTypeBaseball
+    KHExerciseType.Basketball -> HKWorkoutActivityTypeBasketball
+    KHExerciseType.Bowling -> HKWorkoutActivityTypeBowling
+    KHExerciseType.Boxing -> HKWorkoutActivityTypeBoxing
+    KHExerciseType.CardioDance -> HKWorkoutActivityTypeCardioDance
+    KHExerciseType.Climbing -> HKWorkoutActivityTypeClimbing
+    KHExerciseType.Cooldown -> HKWorkoutActivityTypeCooldown
+    KHExerciseType.CoreTraining -> HKWorkoutActivityTypeCoreTraining
+    KHExerciseType.Cricket -> HKWorkoutActivityTypeCricket
+    KHExerciseType.CrossCountrySkiing -> HKWorkoutActivityTypeCrossCountrySkiing
+    KHExerciseType.CrossTraining -> HKWorkoutActivityTypeCrossTraining
+    KHExerciseType.Curling -> HKWorkoutActivityTypeCurling
+    KHExerciseType.Cycling -> HKWorkoutActivityTypeCycling
+    KHExerciseType.Dance -> HKWorkoutActivityTypeDance
+    KHExerciseType.DanceInspiredTraining -> HKWorkoutActivityTypeDanceInspiredTraining
+    KHExerciseType.DiscSports -> HKWorkoutActivityTypeDiscSports
+    KHExerciseType.DownhillSkiing -> HKWorkoutActivityTypeDownhillSkiing
+    KHExerciseType.Elliptical -> HKWorkoutActivityTypeElliptical
+    KHExerciseType.EquestrianSports -> HKWorkoutActivityTypeEquestrianSports
+    KHExerciseType.Fencing -> HKWorkoutActivityTypeFencing
+    KHExerciseType.Fishing -> HKWorkoutActivityTypeFishing
+    KHExerciseType.FitnessGaming -> HKWorkoutActivityTypeFitnessGaming
+    KHExerciseType.Flexibility -> HKWorkoutActivityTypeFlexibility
+    KHExerciseType.FunctionalStrengthTraining -> HKWorkoutActivityTypeFunctionalStrengthTraining
+    KHExerciseType.Golf -> HKWorkoutActivityTypeGolf
+    KHExerciseType.Gymnastics -> HKWorkoutActivityTypeGymnastics
+    KHExerciseType.HandCycling -> HKWorkoutActivityTypeHandCycling
+    KHExerciseType.Handball -> HKWorkoutActivityTypeHandball
+    KHExerciseType.HighIntensityIntervalTraining -> HKWorkoutActivityTypeHighIntensityIntervalTraining
+    KHExerciseType.Hiking -> HKWorkoutActivityTypeHiking
+    KHExerciseType.Hockey -> HKWorkoutActivityTypeHockey
+    KHExerciseType.Hunting -> HKWorkoutActivityTypeHunting
+    KHExerciseType.JumpRope -> HKWorkoutActivityTypeJumpRope
+    KHExerciseType.Kickboxing -> HKWorkoutActivityTypeKickboxing
+    KHExerciseType.Lacrosse -> HKWorkoutActivityTypeLacrosse
+    KHExerciseType.MartialArts -> HKWorkoutActivityTypeMartialArts
+    KHExerciseType.MindAndBody -> HKWorkoutActivityTypeMindAndBody
+    KHExerciseType.MixedCardio -> HKWorkoutActivityTypeMixedCardio
+    KHExerciseType.MixedMetabolicCardioTraining -> HKWorkoutActivityTypeMixedMetabolicCardioTraining
+    KHExerciseType.Other -> HKWorkoutActivityTypeOther
+    KHExerciseType.PaddleSports -> HKWorkoutActivityTypePaddleSports
+    KHExerciseType.Pickleball -> HKWorkoutActivityTypePickleball
+    KHExerciseType.Pilates -> HKWorkoutActivityTypePilates
+    KHExerciseType.Play -> HKWorkoutActivityTypePlay
+    KHExerciseType.PreparationAndRecovery -> HKWorkoutActivityTypePreparationAndRecovery
+    KHExerciseType.Racquetball -> HKWorkoutActivityTypeRacquetball
+    KHExerciseType.Rowing -> HKWorkoutActivityTypeRowing
+    KHExerciseType.Rugby -> HKWorkoutActivityTypeRugby
+    KHExerciseType.Running -> HKWorkoutActivityTypeRunning
+    KHExerciseType.Sailing -> HKWorkoutActivityTypeSailing
+    KHExerciseType.SkatingSports -> HKWorkoutActivityTypeSkatingSports
+    KHExerciseType.SnowSports -> HKWorkoutActivityTypeSnowSports
+    KHExerciseType.Snowboarding -> HKWorkoutActivityTypeSnowboarding
+    KHExerciseType.Soccer -> HKWorkoutActivityTypeSoccer
+    KHExerciseType.SocialDance -> HKWorkoutActivityTypeSocialDance
+    KHExerciseType.Softball -> HKWorkoutActivityTypeSoftball
+    KHExerciseType.Squash -> HKWorkoutActivityTypeSquash
+    KHExerciseType.StairClimbing -> HKWorkoutActivityTypeStairClimbing
+    KHExerciseType.Stairs -> HKWorkoutActivityTypeStairs
+    KHExerciseType.StepTraining -> HKWorkoutActivityTypeStepTraining
+    KHExerciseType.SurfingSports -> HKWorkoutActivityTypeSurfingSports
+    KHExerciseType.SwimBikeRun -> HKWorkoutActivityTypeSwimBikeRun
+    KHExerciseType.Swimming -> HKWorkoutActivityTypeSwimming
+    KHExerciseType.TableTennis -> HKWorkoutActivityTypeTableTennis
+    KHExerciseType.TaiChi -> HKWorkoutActivityTypeTaiChi
+    KHExerciseType.Tennis -> HKWorkoutActivityTypeTennis
+    KHExerciseType.TrackAndField -> HKWorkoutActivityTypeTrackAndField
+    KHExerciseType.TraditionalStrengthTraining -> HKWorkoutActivityTypeTraditionalStrengthTraining
+    KHExerciseType.Transition -> HKWorkoutActivityTypeTransition
+    KHExerciseType.UnderwaterDiving -> HKWorkoutActivityTypeUnderwaterDiving
+    KHExerciseType.Volleyball -> HKWorkoutActivityTypeVolleyball
+    KHExerciseType.Walking -> HKWorkoutActivityTypeWalking
+    KHExerciseType.WaterFitness -> HKWorkoutActivityTypeWaterFitness
+    KHExerciseType.WaterPolo -> HKWorkoutActivityTypeWaterPolo
+    KHExerciseType.WaterSports -> HKWorkoutActivityTypeWaterSports
+    KHExerciseType.WheelchairRunPace -> HKWorkoutActivityTypeWheelchairRunPace
+    KHExerciseType.WheelchairWalkPace -> HKWorkoutActivityTypeWheelchairWalkPace
+    KHExerciseType.Wrestling -> HKWorkoutActivityTypeWrestling
+    KHExerciseType.Yoga -> HKWorkoutActivityTypeYoga
+    else -> null
+}
+
+@OptIn(UnsafeNumber::class)
+internal fun HKWorkoutActivityType.toKHExerciseTypeOrNull(): KHExerciseType? = when (this) {
+    HKWorkoutActivityTypeAmericanFootball -> KHExerciseType.AmericanFootball
+    HKWorkoutActivityTypeArchery -> KHExerciseType.Archery
+    HKWorkoutActivityTypeAustralianFootball -> KHExerciseType.AustralianFootball
+    HKWorkoutActivityTypeBadminton -> KHExerciseType.Badminton
+    HKWorkoutActivityTypeBarre -> KHExerciseType.Barre
+    HKWorkoutActivityTypeBaseball -> KHExerciseType.Baseball
+    HKWorkoutActivityTypeBasketball -> KHExerciseType.Basketball
+    HKWorkoutActivityTypeBowling -> KHExerciseType.Bowling
+    HKWorkoutActivityTypeBoxing -> KHExerciseType.Boxing
+    HKWorkoutActivityTypeCardioDance -> KHExerciseType.CardioDance
+    HKWorkoutActivityTypeClimbing -> KHExerciseType.Climbing
+    HKWorkoutActivityTypeCooldown -> KHExerciseType.Cooldown
+    HKWorkoutActivityTypeCoreTraining -> KHExerciseType.CoreTraining
+    HKWorkoutActivityTypeCricket -> KHExerciseType.Cricket
+    HKWorkoutActivityTypeCrossCountrySkiing -> KHExerciseType.CrossCountrySkiing
+    HKWorkoutActivityTypeCrossTraining -> KHExerciseType.CrossTraining
+    HKWorkoutActivityTypeCurling -> KHExerciseType.Curling
+    HKWorkoutActivityTypeCycling -> KHExerciseType.Cycling
+    HKWorkoutActivityTypeDance -> KHExerciseType.Dance
+    HKWorkoutActivityTypeDanceInspiredTraining -> KHExerciseType.DanceInspiredTraining
+    HKWorkoutActivityTypeDiscSports -> KHExerciseType.DiscSports
+    HKWorkoutActivityTypeDownhillSkiing -> KHExerciseType.DownhillSkiing
+    HKWorkoutActivityTypeElliptical -> KHExerciseType.Elliptical
+    HKWorkoutActivityTypeEquestrianSports -> KHExerciseType.EquestrianSports
+    HKWorkoutActivityTypeFencing -> KHExerciseType.Fencing
+    HKWorkoutActivityTypeFishing -> KHExerciseType.Fishing
+    HKWorkoutActivityTypeFitnessGaming -> KHExerciseType.FitnessGaming
+    HKWorkoutActivityTypeFlexibility -> KHExerciseType.Flexibility
+    HKWorkoutActivityTypeFunctionalStrengthTraining -> KHExerciseType.FunctionalStrengthTraining
+    HKWorkoutActivityTypeGolf -> KHExerciseType.Golf
+    HKWorkoutActivityTypeGymnastics -> KHExerciseType.Gymnastics
+    HKWorkoutActivityTypeHandCycling -> KHExerciseType.HandCycling
+    HKWorkoutActivityTypeHandball -> KHExerciseType.Handball
+    HKWorkoutActivityTypeHighIntensityIntervalTraining -> KHExerciseType.HighIntensityIntervalTraining
+    HKWorkoutActivityTypeHiking -> KHExerciseType.Hiking
+    HKWorkoutActivityTypeHockey -> KHExerciseType.Hockey
+    HKWorkoutActivityTypeHunting -> KHExerciseType.Hunting
+    HKWorkoutActivityTypeJumpRope -> KHExerciseType.JumpRope
+    HKWorkoutActivityTypeKickboxing -> KHExerciseType.Kickboxing
+    HKWorkoutActivityTypeLacrosse -> KHExerciseType.Lacrosse
+    HKWorkoutActivityTypeMartialArts -> KHExerciseType.MartialArts
+    HKWorkoutActivityTypeMindAndBody -> KHExerciseType.MindAndBody
+    HKWorkoutActivityTypeMixedCardio -> KHExerciseType.MixedCardio
+    HKWorkoutActivityTypeMixedMetabolicCardioTraining -> KHExerciseType.MixedMetabolicCardioTraining
+    HKWorkoutActivityTypeOther -> KHExerciseType.Other
+    HKWorkoutActivityTypePaddleSports -> KHExerciseType.PaddleSports
+    HKWorkoutActivityTypePickleball -> KHExerciseType.Pickleball
+    HKWorkoutActivityTypePilates -> KHExerciseType.Pilates
+    HKWorkoutActivityTypePlay -> KHExerciseType.Play
+    HKWorkoutActivityTypePreparationAndRecovery -> KHExerciseType.PreparationAndRecovery
+    HKWorkoutActivityTypeRacquetball -> KHExerciseType.Racquetball
+    HKWorkoutActivityTypeRowing -> KHExerciseType.Rowing
+    HKWorkoutActivityTypeRugby -> KHExerciseType.Rugby
+    HKWorkoutActivityTypeRunning -> KHExerciseType.Running
+    HKWorkoutActivityTypeSailing -> KHExerciseType.Sailing
+    HKWorkoutActivityTypeSkatingSports -> KHExerciseType.SkatingSports
+    HKWorkoutActivityTypeSnowSports -> KHExerciseType.SnowSports
+    HKWorkoutActivityTypeSnowboarding -> KHExerciseType.Snowboarding
+    HKWorkoutActivityTypeSoccer -> KHExerciseType.Soccer
+    HKWorkoutActivityTypeSocialDance -> KHExerciseType.SocialDance
+    HKWorkoutActivityTypeSoftball -> KHExerciseType.Softball
+    HKWorkoutActivityTypeSquash -> KHExerciseType.Squash
+    HKWorkoutActivityTypeStairClimbing -> KHExerciseType.StairClimbing
+    HKWorkoutActivityTypeStairs -> KHExerciseType.Stairs
+    HKWorkoutActivityTypeStepTraining -> KHExerciseType.StepTraining
+    HKWorkoutActivityTypeSurfingSports -> KHExerciseType.SurfingSports
+    HKWorkoutActivityTypeSwimBikeRun -> KHExerciseType.SwimBikeRun
+    HKWorkoutActivityTypeSwimming -> KHExerciseType.Swimming
+    HKWorkoutActivityTypeTableTennis -> KHExerciseType.TableTennis
+    HKWorkoutActivityTypeTaiChi -> KHExerciseType.TaiChi
+    HKWorkoutActivityTypeTennis -> KHExerciseType.Tennis
+    HKWorkoutActivityTypeTrackAndField -> KHExerciseType.TrackAndField
+    HKWorkoutActivityTypeTraditionalStrengthTraining -> KHExerciseType.TraditionalStrengthTraining
+    HKWorkoutActivityTypeTransition -> KHExerciseType.Transition
+    HKWorkoutActivityTypeUnderwaterDiving -> KHExerciseType.UnderwaterDiving
+    HKWorkoutActivityTypeVolleyball -> KHExerciseType.Volleyball
+    HKWorkoutActivityTypeWalking -> KHExerciseType.Walking
+    HKWorkoutActivityTypeWaterFitness -> KHExerciseType.WaterFitness
+    HKWorkoutActivityTypeWaterPolo -> KHExerciseType.WaterPolo
+    HKWorkoutActivityTypeWaterSports -> KHExerciseType.WaterSports
+    HKWorkoutActivityTypeWheelchairRunPace -> KHExerciseType.WheelchairRunPace
+    HKWorkoutActivityTypeWheelchairWalkPace -> KHExerciseType.WheelchairWalkPace
+    HKWorkoutActivityTypeWrestling -> KHExerciseType.Wrestling
+    HKWorkoutActivityTypeYoga -> KHExerciseType.Yoga
+    else -> null
+}
+
 internal object ObjectType {
     object Category {
         val CervicalMucus =
@@ -618,4 +881,6 @@ internal object ObjectType {
         val WheelChairPushes =
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierPushCount)!!
     }
+
+    val Exercise = HKObjectType.workoutType()
 }
