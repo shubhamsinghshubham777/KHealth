@@ -117,8 +117,8 @@ kotlin {
 
 3. (Android only) Add the dependencies you require to use in `AndroidManifest.xml`
 
-   | Type                    | Permissions                                                                                                          |
-   |-------------------------|----------------------------------------------------------------------------------------------------------------------|
+   | Type                    | Permissions                                                                                                            |
+   |-------------------------|------------------------------------------------------------------------------------------------------------------------|
    | ACTIVE_CALORIES_BURNED  | `android.permission.health.READ_ACTIVE_CALORIES_BURNED`<br/>`android.permission.health.WRITE_ACTIVE_CALORIES_BURNED`   |
    | BASAL_METABOLIC_RATE    | `android.permission.health.READ_BASAL_METABOLIC_RATE`<br/>`android.permission.health.WRITE_BASAL_METABOLIC_RATE`       |
    | BLOOD_GLUCOSE           | `android.permission.health.READ_BLOOD_GLUCOSE`<br/>`android.permission.health.WRITE_BLOOD_GLUCOSE`                     |
@@ -261,45 +261,166 @@ KHealth supports reading and writing the following data types on the following p
 
 | Type                   | Android | Apple (iOS & watchOS) |
 |------------------------|---------|-----------------------|
-| ActiveCaloriesBurned   | ✅       | ✅                     |
-| BasalMetabolicRate     | ✅       | ✅                     |
-| BloodGlucose           | ✅       | ✅                     |
-| BloodPressure          | ✅       | ✅                     |
-| BodyFat                | ✅       | ✅                     |
-| BodyTemperature        | ✅       | ✅                     |
-| BodyWaterMass          | ✅       | ❌                     |
-| BoneMass               | ✅       | ❌                     |
-| CervicalMucus          | ✅       | ✅                     |
-| CyclingPedalingCadence | ✅       | ❌                     |
-| Distance               | ✅       | ✅                     |
-| ElevationGained        | ✅       | ❌                     |
-| FloorsClimbed          | ✅       | ✅                     |
-| HeartRate              | ✅       | ✅                     |
-| HeartRateVariability   | ✅       | ✅                     |
-| Height                 | ✅       | ✅                     |
-| Hydration              | ✅       | ✅                     |
-| IntermenstrualBleeding | ✅       | ✅                     |
-| LeanBodyMass           | ✅       | ✅                     |
-| MenstruationPeriod     | ✅       | ❌                     |
-| MenstruationFlow       | ✅       | ✅                     |
-| Nutrition              | ✅       | ✅                     |
-| OvulationTest          | ✅       | ✅                     |
-| OxygenSaturation       | ✅       | ✅                     |
-| Power                  | ✅       | ✅                     |
-| RespiratoryRate        | ✅       | ✅                     |
-| RestingHeartRate       | ✅       | ✅                     |
-| SexualActivity         | ✅       | ✅                     |
-| SleepSession           | ✅       | ✅                     |
-| Speed                  | ✅       | ❌                     |
-| RunningSpeed           | ❌       | ✅                     |
-| CyclingSpeed           | ❌       | ✅                     |
-| StepCount              | ✅       | ✅                     |
-| Vo2Max                 | ✅       | ✅                     |
-| Weight                 | ✅       | ✅                     |
-| WheelChairPushes       | ✅       | ✅                     |
+| ActiveCaloriesBurned   | ✅      | ✅                    |
+| BasalMetabolicRate     | ✅      | ✅                    |
+| BloodGlucose           | ✅      | ✅                    |
+| BloodPressure          | ✅      | ✅                    |
+| BodyFat                | ✅      | ✅                    |
+| BodyTemperature        | ✅      | ✅                    |
+| BodyWaterMass          | ✅      |                       |
+| BoneMass               | ✅      |                       |
+| CervicalMucus          | ✅      | ✅                    |
+| CyclingPedalingCadence | ✅      |                       |
+| Distance               | ✅      | ✅                    |
+| ElevationGained        | ✅      |                       |
+| Exercise               | ✅      | ✅                    |
+| FloorsClimbed          | ✅      | ✅                    |
+| HeartRate              | ✅      | ✅                    |
+| HeartRateVariability   | ✅      | ✅                    |
+| Height                 | ✅      | ✅                    |
+| Hydration              | ✅      | ✅                    |
+| IntermenstrualBleeding | ✅      | ✅                    |
+| LeanBodyMass           | ✅      | ✅                    |
+| MenstruationPeriod     | ✅      |                       |
+| MenstruationFlow       | ✅      | ✅                    |
+| Nutrition              | ✅      | ✅                    |
+| OvulationTest          | ✅      | ✅                    |
+| OxygenSaturation       | ✅      | ✅                    |
+| Power                  | ✅      | ✅                    |
+| RespiratoryRate        | ✅      | ✅                    |
+| RestingHeartRate       | ✅      | ✅                    |
+| SexualActivity         | ✅      | ✅                    |
+| SleepSession           | ✅      | ✅                    |
+| Speed                  | ✅      |                       |
+| RunningSpeed           |         | ✅                    |
+| CyclingSpeed           |         | ✅                    |
+| StepCount              | ✅      | ✅                    |
+| Vo2Max                 | ✅      | ✅                    |
+| Weight                 | ✅      | ✅                    |
+| WheelChairPushes       | ✅      | ✅                    |
+
+## Supported Exercise Types (based on platforms)
+
+KHealth supports reading and writing the following exercise/workout types on the following
+platforms:
+
+| Type                          | Android | Apple (iOS & watchOS)  |
+|-------------------------------|---------|------------------------|
+| AmericanFootball              | ✅      | ✅                     |
+| Archery                       |         | ✅                     |
+| AustralianFootball            | ✅      | ✅                     |
+| Badminton                     | ✅      | ✅                     |
+| Barre                         |         | ✅                     |
+| Baseball                      | ✅      | ✅                     |
+| Basketball                    | ✅      | ✅                     |
+| Biking                        | ✅      | ✅                     |
+| BikingStationary              | ✅      | ✅                     |
+| BootCamp                      | ✅      | ✅                     |
+| Bowling                       |         | ✅                     |
+| Boxing                        | ✅      | ✅                     |
+| Calisthenics                  | ✅      | ✅                     |
+| CardioDance                   |         | ✅                     |
+| Climbing                      |         | ✅                     |
+| Cooldown                      |         | ✅                     |
+| CoreTraining                  |         | ✅                     |
+| Cricket                       | ✅      | ✅                     |
+| CrossCountrySkiing            |         | ✅                     |
+| CrossTraining                 |         | ✅                     |
+| Curling                       |         | ✅                     |
+| Cycling                       |         | ✅                     |
+| Dance                         |         | ✅                     |
+| DanceInspiredTraining         |         | ✅                     |
+| Dancing                       | ✅      | ✅                     |
+| DiscSports                    |         | ✅                     |
+| DownhillSkiing                |         | ✅                     |
+| Elliptical                    | ✅      | ✅                     |
+| EquestrianSports              |         | ✅                     |
+| ExerciseClass                 | ✅      | ✅                     |
+| Fencing                       | ✅      | ✅                     |
+| Fishing                       |         | ✅                     |
+| FitnessGaming                 |         | ✅                     |
+| Flexibility                   |         | ✅                     |
+| FrisbeeDisc                   |         | ✅                     |
+| FunctionalStrengthTraining    |         | ✅                     |
+| Golf                          | ✅      | ✅                     |
+| GuidedBreathing               | ✅      | ✅                     |
+| Gymnastics                    | ✅      | ✅                     |
+| HandCycling                   |         | ✅                     |
+| Handball                      | ✅      | ✅                     |
+| HighIntensityIntervalTraining | ✅      | ✅                     |
+| Hiking                        | ✅      | ✅                     |
+| Hockey                        |         | ✅                     |
+| Hunting                       |         | ✅                     |
+| IceHockey                     | ✅      | ✅                     |
+| IceSkating                    | ✅      | ✅                     |
+| JumpRope                      |         | ✅                     |
+| Kickboxing                    |         | ✅                     |
+| Lacrosse                      |         | ✅                     |
+| MartialArts                   | ✅      | ✅                     |
+| MindAndBody                   |         | ✅                     |
+| MixedCardio                   |         | ✅                     |
+| MixedMetabolicCardioTraining  |         | ✅                     |
+| Other                         | ✅      | ✅                     |
+| PaddleSports                  |         | ✅                     |
+| Paddling                      | ✅      | ✅                     |
+| Paragliding                   | ✅      | ✅                     |
+| Pickleball                    |         | ✅                     |
+| Pilates                       | ✅      | ✅                     |
+| Play                          |         | ✅                     |
+| PreparationAndRecovery        |         | ✅                     |
+| Racquetball                   | ✅      | ✅                     |
+| RockClimbing                  | ✅      | ✅                     |
+| RollerHockey                  | ✅      | ✅                     |
+| Rowing                        | ✅      | ✅                     |
+| RowingMachine                 | ✅      | ✅                     |
+| Rugby                         | ✅      | ✅                     |
+| Running                       | ✅      | ✅                     |
+| RunningTreadmill              | ✅      | ✅                     |
+| Sailing                       | ✅      | ✅                     |
+| ScubaDiving                   | ✅      | ✅                     |
+| Skating                       | ✅      | ✅                     |
+| SkatingSports                 |         | ✅                     |
+| Skiing                        | ✅      | ✅                     |
+| SnowSports                    |         | ✅                     |
+| Snowboarding                  | ✅      | ✅                     |
+| Snowshoeing                   | ✅      | ✅                     |
+| Soccer                        | ✅      | ✅                     |
+| SocialDance                   |         | ✅                     |
+| Softball                      | ✅      | ✅                     |
+| Squash                        | ✅      | ✅                     |
+| StairClimbing                 | ✅      | ✅                     |
+| StairClimbingMachine          | ✅      | ✅                     |
+| Stairs                        |         | ✅                     |
+| StepTraining                  |         | ✅                     |
+| StrengthTraining              | ✅      | ✅                     |
+| Stretching                    | ✅      | ✅                     |
+| Surfing                       | ✅      | ✅                     |
+| SurfingSports                 |         | ✅                     |
+| SwimBikeRun                   |         | ✅                     |
+| Swimming                      |         | ✅                     |
+| SwimmingOpenWater             | ✅      |                       |
+| SwimmingPool                  | ✅      |                       |
+| TableTennis                   | ✅      | ✅                     |
+| TaiChi                        |         | ✅                     |
+| Tennis                        | ✅      | ✅                     |
+| TrackAndField                 |         | ✅                     |
+| TraditionalStrengthTraining   |         | ✅                     |
+| Transition                    |         | ✅                     |
+| UnderwaterDiving              |         | ✅                     |
+| Volleyball                    | ✅      | ✅                     |
+| Walking                       | ✅      | ✅                     |
+| WaterFitness                  |         | ✅                     |
+| WaterPolo                     | ✅      | ✅                     |
+| WaterSports                   |         | ✅                     |
+| Weightlifting                 | ✅      | ✅                     |
+| Wheelchair                    | ✅      | ✅                     |
+| WheelchairRunPace             |         | ✅                     |
+| WheelchairWalkPace            |         | ✅                     |
+| Wrestling                     |         | ✅                     |
+| Yoga                          | ✅      | ✅                     |
 
 > [!NOTE]
-> The unsupported data types will simply be ignored by all platforms.
+> The unsupported types will simply be ignored by all platforms.
 
 ## 🤝 Contributing
 

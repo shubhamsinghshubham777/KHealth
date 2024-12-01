@@ -105,7 +105,6 @@ enum class KHExerciseType {
     FunctionalStrengthTraining,
 
     Golf,
-
     GuidedBreathing,
     Gymnastics,
 
@@ -113,7 +112,6 @@ enum class KHExerciseType {
     HandCycling,
 
     Handball,
-
     HighIntensityIntervalTraining,
     Hiking,
 
@@ -216,8 +214,12 @@ enum class KHExerciseType {
     /** Supported on Apple only */
     Swimming,
 
+    /** Supported on Android only */
     SwimmingOpenWater,
+
+    /** Supported on Android only */
     SwimmingPool,
+
     TableTennis,
 
     /** Supported on Apple only */
