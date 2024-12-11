@@ -1,7 +1,7 @@
 [versions]
-agp = "8.7.2"
+agp = "8.7.3"
 androidx-activityCompose = "1.9.3"
-composeBom = "2024.11.00"
+composeBom = "2024.12.01"
 coroutines = "1.9.0"
 dokkatoo = "2.4.0"
 healthConnectClient = "1.1.0-alpha10"
