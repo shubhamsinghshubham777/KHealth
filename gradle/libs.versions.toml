@@ -1,10 +1,10 @@
 [versions]
 agp = "8.8.0"
-androidx-activityCompose = "1.9.3"
-composeBom = "2024.12.01"
+androidx-activityCompose = "1.10.0"
+composeBom = "2025.01.00"
 coroutines = "1.10.1"
 dokkatoo = "2.4.0"
-healthConnectClient = "1.1.0-alpha10"
+healthConnectClient = "1.1.0-alpha11"
 java = "21"
 kermit = "2.0.5"
 kotlin = "2.1.0"
