@@ -1,17 +1,17 @@
 [versions]
-agp = "8.9.0"
+agp = "8.9.1"
 androidx-activityCompose = "1.10.1"
-composeBom = "2025.02.00"
+composeBom = "2025.03.00"
 coroutines = "1.10.1"
 dokkatoo = "2.4.0"
-healthConnectClient = "1.1.0-alpha12"
+healthConnectClient = "1.1.0-beta01"
 java = "21"
 kermit = "2.0.5"
-kotlin = "2.1.10"
+kotlin = "2.1.20"
 kotlin-dateTime = "0.6.2"
 mavenPublish = "0.31.0"
 minSdk = "28"
-mokkery = "2.7.0"
+mokkery = "2.7.2"
 targetSdk = "35"
 
 [libraries]
