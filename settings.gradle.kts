@@ -21,3 +21,4 @@ rootProject.name = "KotlinHealth"
 include(":khealth")
 include(":sampleAndroidApp")
 include(":sampleShared")
+include(":samples:CMPKoinSample:composeApp")
