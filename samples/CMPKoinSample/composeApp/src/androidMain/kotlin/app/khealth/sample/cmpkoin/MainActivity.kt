@@ -4,22 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import com.khealth.KHealth
+import org.koin.dsl.module
 
 class MainActivity : ComponentActivity() {
+    private val kHealth = KHealth(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-
+        kHealth.initialise()
         setContent {
-            App()
+            App(
+                module {
+                    single { kHealth }
+                }
+            )
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
 }

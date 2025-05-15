@@ -53,6 +53,8 @@ import androidx.health.connect.client.records.StepsRecord
 import androidx.health.connect.client.records.Vo2MaxRecord
 import androidx.health.connect.client.records.WeightRecord
 import androidx.health.connect.client.records.WheelchairPushesRecord
+import androidx.health.connect.client.records.metadata.Device
+import androidx.health.connect.client.records.metadata.Metadata
 import androidx.health.connect.client.units.BloodGlucose
 import androidx.health.connect.client.units.Energy
 import androidx.health.connect.client.units.Length
@@ -901,18 +903,22 @@ internal fun KHRecord.toHCRecord(): Record? {
             startZoneOffset = null,
             endZoneOffset = null,
             energy = unit toNativeEnergyFor value,
+            // TODO: Figure out how to fetch the correct value (and use the same for all records)
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BasalMetabolicRate -> BasalMetabolicRateRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             basalMetabolicRate = unit.left toNativePowerFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BloodGlucose -> BloodGlucoseRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             level = unit toNativeBloodGlucoseFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BloodPressure -> BloodPressureRecord(
@@ -920,30 +926,35 @@ internal fun KHRecord.toHCRecord(): Record? {
             zoneOffset = null,
             systolic = unit toNativePressureFor systolicValue,
             diastolic = unit toNativePressureFor diastolicValue,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BodyFat -> BodyFatRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             percentage = percentage.percent,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BodyTemperature -> BodyTemperatureRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            temperature = unit toNativeTemperatureFor value
+            temperature = unit toNativeTemperatureFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BodyWaterMass -> BodyWaterMassRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            mass = unit toNativeMassFor value
+            mass = unit toNativeMassFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.BoneMass -> BoneMassRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            mass = unit toNativeMassFor value
+            mass = unit toNativeMassFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.CervicalMucus -> CervicalMucusRecord(
@@ -956,6 +967,7 @@ internal fun KHRecord.toHCRecord(): Record? {
                 KHCervicalMucusAppearance.Sticky -> CervicalMucusRecord.APPEARANCE_STICKY
                 KHCervicalMucusAppearance.Watery -> CervicalMucusRecord.APPEARANCE_WATERY
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.CyclingPedalingCadence -> CyclingPedalingCadenceRecord(
@@ -969,6 +981,7 @@ internal fun KHRecord.toHCRecord(): Record? {
                     revolutionsPerMinute = sample.revolutionsPerMinute,
                 )
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.CyclingSpeed -> null
@@ -978,7 +991,8 @@ internal fun KHRecord.toHCRecord(): Record? {
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
-            distance = unit toNativeLengthFor value
+            distance = unit toNativeLengthFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.ElevationGained -> ElevationGainedRecord(
@@ -986,25 +1000,31 @@ internal fun KHRecord.toHCRecord(): Record? {
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
-            elevation = unit toNativeLengthFor value
+            elevation = unit toNativeLengthFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
-        is KHRecord.Exercise -> type.toNativeExerciseTypeOrNull()?.let { exerciseType ->
-            ExerciseSessionRecord(
-                startTime = startTime.toJavaInstant(),
-                startZoneOffset = null,
-                endTime = endTime.toJavaInstant(),
-                endZoneOffset = null,
-                exerciseType = exerciseType,
-            )
-        }
+        // TODO: Figure out how ExerciseSessionRecord works now
+        is KHRecord.Exercise -> null
+
+//        is KHRecord.Exercise -> type.toNativeExerciseTypeOrNull()?.let { exerciseType ->
+//            ExerciseSessionRecord(
+//                startTime = startTime.toJavaInstant(),
+//                startZoneOffset = null,
+//                endTime = endTime.toJavaInstant(),
+//                endZoneOffset = null,
+//                exerciseType = exerciseType,
+//                metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
+//            )
+//        }
 
         is KHRecord.FloorsClimbed -> FloorsClimbedRecord(
             startTime = startTime.toJavaInstant(),
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
-            floors = floors
+            floors = floors,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.HeartRate -> HeartRateRecord(
@@ -1017,19 +1037,22 @@ internal fun KHRecord.toHCRecord(): Record? {
                     time = sample.time.toJavaInstant(),
                     beatsPerMinute = sample.beatsPerMinute,
                 )
-            }
+            },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.HeartRateVariability -> HeartRateVariabilityRmssdRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            heartRateVariabilityMillis = heartRateVariabilityMillis
+            heartRateVariabilityMillis = heartRateVariabilityMillis,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Height -> HeightRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             height = unit toNativeLengthFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Hydration -> HydrationRecord(
@@ -1037,18 +1060,21 @@ internal fun KHRecord.toHCRecord(): Record? {
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
-            volume = unit toNativeVolumeFor value
+            volume = unit toNativeVolumeFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.IntermenstrualBleeding -> IntermenstrualBleedingRecord(
             time = time.toJavaInstant(),
-            zoneOffset = null
+            zoneOffset = null,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.LeanBodyMass -> LeanBodyMassRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             mass = unit toNativeMassFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.MenstruationPeriod -> MenstruationPeriodRecord(
@@ -1056,6 +1082,7 @@ internal fun KHRecord.toHCRecord(): Record? {
             startZoneOffset = null,
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.MenstruationFlow -> MenstruationFlowRecord(
@@ -1067,6 +1094,7 @@ internal fun KHRecord.toHCRecord(): Record? {
                 KHMenstruationFlowType.Medium -> MenstruationFlowRecord.FLOW_MEDIUM
                 KHMenstruationFlowType.Heavy -> MenstruationFlowRecord.FLOW_HEAVY
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Nutrition -> NutritionRecord(
@@ -1114,6 +1142,7 @@ internal fun KHRecord.toHCRecord(): Record? {
             vitaminE = vitaminE?.let(solidUnit::toNativeMassFor),
             vitaminK = vitaminK?.let(solidUnit::toNativeMassFor),
             zinc = zinc?.let(solidUnit::toNativeMassFor),
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.OvulationTest -> OvulationTestRecord(
@@ -1124,13 +1153,15 @@ internal fun KHRecord.toHCRecord(): Record? {
                 KHOvulationTestResult.Negative -> OvulationTestRecord.RESULT_NEGATIVE
                 KHOvulationTestResult.Positive -> OvulationTestRecord.RESULT_POSITIVE
                 KHOvulationTestResult.Inconclusive -> OvulationTestRecord.RESULT_INCONCLUSIVE
-            }
+            },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.OxygenSaturation -> OxygenSaturationRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            percentage = percentage.percent
+            percentage = percentage.percent,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Power -> PowerRecord(
@@ -1144,18 +1175,21 @@ internal fun KHRecord.toHCRecord(): Record? {
                     power = sample.unit toNativePowerFor sample.value
                 )
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.RespiratoryRate -> RespiratoryRateRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
-            rate = rate
+            rate = rate,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.RestingHeartRate -> RestingHeartRateRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             beatsPerMinute = beatsPerMinute,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.RunningSpeed -> null
@@ -1164,7 +1198,8 @@ internal fun KHRecord.toHCRecord(): Record? {
             time = time.toJavaInstant(),
             zoneOffset = null,
             protectionUsed = if (didUseProtection) SexualActivityRecord.PROTECTION_USED_PROTECTED
-            else SexualActivityRecord.PROTECTION_USED_UNPROTECTED
+            else SexualActivityRecord.PROTECTION_USED_UNPROTECTED,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.SleepSession -> SleepSessionRecord(
@@ -1188,6 +1223,7 @@ internal fun KHRecord.toHCRecord(): Record? {
                     }
                 )
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Speed -> SpeedRecord(
@@ -1201,6 +1237,7 @@ internal fun KHRecord.toHCRecord(): Record? {
                     speed = sample.unit toNativeVelocityFor sample.value,
                 )
             },
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.StepCount -> StepsRecord(
@@ -1209,18 +1246,21 @@ internal fun KHRecord.toHCRecord(): Record? {
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
             count = count,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Vo2Max -> Vo2MaxRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             vo2MillilitersPerMinuteKilogram = vo2MillilitersPerMinuteKilogram,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.Weight -> WeightRecord(
             time = time.toJavaInstant(),
             zoneOffset = null,
             weight = unit toNativeMassFor value,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
 
         is KHRecord.WheelChairPushes -> WheelchairPushesRecord(
@@ -1229,6 +1269,7 @@ internal fun KHRecord.toHCRecord(): Record? {
             endTime = endTime.toJavaInstant(),
             endZoneOffset = null,
             count = count,
+            metadata = Metadata.autoRecorded(device = Device(type = Device.TYPE_PHONE))
         )
     }
 }
