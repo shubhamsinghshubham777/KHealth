@@ -17,8 +17,76 @@ permissions:
   pull-requests: write
 
 jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      android: ${{ steps.filter.outputs.android }}
+      apple: ${{ steps.filter.outputs.apple }}
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect Changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            android:
+              - '.github/workflows/ci.yml'
+              - 'gradle/**'
+              - 'gradlew'
+              - 'gradlew.bat'
+              - 'gradle.properties'
+              - 'build.gradle.kts'
+              - 'settings.gradle.kts'
+              - 'khealth/build.gradle.kts'
+              - 'khealth/gradle.properties'
+              - 'khealth/src/commonMain/**'
+              - 'khealth/src/androidMain/**'
+              - 'khealth/src/androidHostTest/**'
+              - 'sampleApps/android/**'
+              - 'sampleApps/shared/**'
+            apple:
+              - '.github/workflows/ci.yml'
+              - 'gradle/**'
+              - 'gradlew'
+              - 'gradlew.bat'
+              - 'gradle.properties'
+              - 'build.gradle.kts'
+              - 'settings.gradle.kts'
+              - 'khealth/build.gradle.kts'
+              - 'khealth/gradle.properties'
+              - 'khealth/src/commonMain/**'
+              - 'khealth/src/appleMain/**'
+              - 'khealth/src/appleTest/**'
+              - 'sampleApps/apple/**'
+              - 'sampleApps/shared/**'
+            docs:
+              - '.github/workflows/ci.yml'
+              - 'gradle/**'
+              - 'gradlew'
+              - 'gradlew.bat'
+              - 'gradle.properties'
+              - 'build.gradle.kts'
+              - 'settings.gradle.kts'
+              - 'khealth/build.gradle.kts'
+              - 'khealth/gradle.properties'
+              - 'khealth/src/commonMain/**'
+              - 'khealth/dokka_assets/**'
+              - 'khealth/src/androidMain/**'
+              - 'khealth/src/appleMain/**'
+
   android-common-checks:
     name: Android & Common Checks
+    needs: changes
+    if: ${{ needs.changes.outputs.android == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -55,6 +123,8 @@ jobs:
 
   apple-checks:
     name: Apple Native Checks & Tests
+    needs: changes
+    if: ${{ needs.changes.outputs.apple == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: macos-latest
 
     steps:
@@ -85,6 +155,8 @@ jobs:
 
   docs-check:
     name: Documentation Check
+    needs: changes
+    if: ${{ needs.changes.outputs.docs == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -102,3 +174,30 @@ jobs:
 
       - name: Build Dokka Documentation
         run: ./gradlew :khealth:dokkatooGenerate
+
+  ci-status:
+    name: CI Status
+    needs: [changes, android-common-checks, apple-checks, docs-check]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify build status
+        run: |
+          echo "Checking status of jobs..."
+          echo "changes: ${{ needs.changes.result }}"
+          echo "android-common-checks: ${{ needs.android-common-checks.result }}"
+          echo "apple-checks: ${{ needs.apple-checks.result }}"
+          echo "docs-check: ${{ needs.docs-check.result }}"
+
+          if [[ "${{ needs.changes.result }}" == "failure" || \
+                "${{ needs.android-common-checks.result }}" == "failure" || \
+                "${{ needs.apple-checks.result }}" == "failure" || \
+                "${{ needs.docs-check.result }}" == "failure" || \
+                "${{ needs.changes.result }}" == "cancelled" || \
+                "${{ needs.android-common-checks.result }}" == "cancelled" || \
+                "${{ needs.apple-checks.result }}" == "cancelled" || \
+                "${{ needs.docs-check.result }}" == "cancelled" ]]; then
+            echo "One or more required jobs failed or were cancelled."
+            exit 1
+          fi
+          echo "All jobs succeeded or were safely skipped."
