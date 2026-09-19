@@ -44,7 +44,7 @@
     <resources>
         <image name="SplashFG" width="1024" height="1024"/>
         <namedColor name="SplashBG">
-            <color red="0.011764705882352941" green="0.11764705882352941" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0392156862745098" green="0.050980392156862744" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

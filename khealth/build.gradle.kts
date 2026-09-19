@@ -59,8 +59,12 @@ kotlin {
     }
 }
 
+val versionName = providers.gradleProperty("VERSION_NAME")
+    .orElse(providers.provider { findProperty("VERSION_NAME") as? String ?: "2.0.1" })
+
 dokkatoo {
     moduleName.set("KHealth")
+    moduleVersion.set(versionName)
     pluginsConfiguration.html {
         customAssets.from("dokka_assets/logo-icon.svg")
         footerMessage.set("(c) 2024 Shubham Singh")

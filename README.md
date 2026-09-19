@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-    <img src="assets/logo.svg" width="200" alt="KHealth Logo"/>
+    <img src="assets/logo.png" width="200" alt="KHealth Logo"/>
 </p>
 
 **KHealth** (_Kotlin Health_) is a modern Kotlin Multiplatform library providing a unified, type-safe API over Android's [Health Connect](https://developer.android.com/health-and-fitness/guides/health-connect) and Apple's [HealthKit](https://developer.apple.com/documentation/healthkit) (iOS and watchOS). It is designed from the ground up for seamless use in Kotlin Multiplatform (KMP) and Compose Multiplatform projects.
@@ -48,7 +48,7 @@ Add the dependency to your shared module's `build.gradle.kts`:
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.shubhamsinghshubham777:khealth:2.0.0")
+            implementation("io.github.shubhamsinghshubham777:khealth:2.0.1")
         }
     }
 }
@@ -58,7 +58,7 @@ Or using Gradle version catalogs:
 
 ```toml
 [versions]
-khealth = "2.0.0"
+khealth = "2.0.1"
 
 [libraries]
 khealth = { module = "io.github.shubhamsinghshubham777:khealth", version.ref = "khealth" }
