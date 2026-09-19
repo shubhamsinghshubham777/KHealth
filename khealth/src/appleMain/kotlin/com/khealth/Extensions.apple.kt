@@ -286,8 +286,8 @@ internal infix fun KHUnit.BloodGlucose.toNativeBloodGlucoseFor(value: Double): H
 
 internal infix fun HKQuantity.toDoubleValueFor(glucose: KHUnit.BloodGlucose): Double {
     return when (glucose) {
-        KHUnit.BloodGlucose.MilligramsPerDeciliter -> doubleValueForUnit(AppleUnits.millimolesPerLiter)
-        KHUnit.BloodGlucose.MillimolesPerLiter -> doubleValueForUnit(AppleUnits.milligramsPerDeciliter)
+        KHUnit.BloodGlucose.MilligramsPerDeciliter -> doubleValueForUnit(AppleUnits.milligramsPerDeciliter)
+        KHUnit.BloodGlucose.MillimolesPerLiter -> doubleValueForUnit(AppleUnits.millimolesPerLiter)
     }
 }
 

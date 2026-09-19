@@ -1,12 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.dokkatoo)
-    alias(libs.plugins.mavenPublish)
-    alias(libs.plugins.mokkery)
 }
 
 kotlin {
@@ -19,8 +15,7 @@ kotlin {
             }
         }
     }
-
-    val xcf = XCFramework()
+    
     listOf(
         iosArm64(),
         iosSimulatorArm64(),
@@ -31,34 +26,25 @@ kotlin {
         watchosX64()
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
-            xcf.add(this)
-            isStatic = true
+            baseName = "sampleShared"
+            isStatic = false
         }
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.healthConnectClient)
-        }
         commonMain.dependencies {
             implementation(libs.coroutines.core)
-            implementation(libs.kermit)
             implementation(libs.kotlin.dateTime)
+            implementation(projects.khealth)
         }
         commonTest.dependencies {
-            implementation(libs.coroutines.test)
             implementation(libs.kotlin.test)
         }
-    }
-
-    compilerOptions {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
 
 android {
-    namespace = "com.khealth"
+    namespace = "com.khealth.sample"
     compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
@@ -67,13 +53,5 @@ android {
         val javaVersion = JavaVersion.toVersion(libs.versions.java.get())
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
-    }
-}
-
-dokkatoo {
-    moduleName.set("KHealth")
-    pluginsConfiguration.html {
-        customAssets.from("dokka_assets/logo-icon.svg")
-        footerMessage.set("(c) 2024 Shubham Singh")
     }
 }

@@ -20,43 +20,20 @@ package com.khealth
  * APIs. It provides a set of convenient properties and methods to perform most common operations
  * easily (like checking/requesting permissions, reading/writing data, and more).
  *
- * It is an expect class whose instance can normally be created without needing to pass any
- * parameters on Apple platforms, but on Android, it requires the reference to a ComponentActivity
- * to be able to subscribe to Health Connect permission events and detect whether the user has
- * granted a permission or not. Hence, its instance needs to be created separately on different
- * platforms and then passed on to the common/shared code.
+ * It is an interface that can be easily mocked, tested, and injected. An instance can be created
+ * directly in common code using [KHealth] or [createKHealth].
  */
-expect class KHealth {
+interface KHealth {
     /**
-     * This is an Android-only method required to set up KHealth's internal mechanism to allow it
-     * to observe the user's permission selection (granted/denied) and make [checkPermissions] work
-     * as expected.
-     *
-     * On Android, invoke it before the `onResume` method of the `ComponentActivity` (that the
-     * current KHealth object is a part of) is called.
-     * For example:
-     *
-     * ```kotlin
-     * class MainActivity : ComponentActivity() {
-     *     private val kHealth = KHealth(this)
-     *
-     *     override fun onCreate(savedInstanceState: Bundle?) {
-     *         super.onCreate(savedInstanceState)
-     *         // This is REQUIRED for the library to work properly (on Android only)
-     *         kHealth.initialise()
-     *         ... // Rest of your code
-     *     }
-     * }
-     * ```
-     *
-     * > **Warning! -** Invoking this method after the ComponentActivity has reached its RESUMED
-     * state will lead to errors like: `LifecycleOwner is attempting to register while current state
-     * is STARTED. LifecycleOwners must call register before they are STARTED`. To avoid this, call
-     * this method either inside `onCreate` or `onStart` lifecycle method of the ComponentActivity.
-     *
-     * On Apple, this method does nothing and should not be invoked.
+     * Legacy initialization method on Android.
+     * With the updated API, initialization happens automatically upon instantiation,
+     * so manual invocation is no longer required.
      */
-    fun initialise()
+    @Deprecated(
+        message = "initialise() is no longer required and is kept for backward compatibility.",
+        replaceWith = ReplaceWith("")
+    )
+    fun initialise() = Unit
 
     /**
      * Returns whether the Health Connect SDK (on Android) and HealthKit SDK (on Apple) is available
@@ -75,28 +52,24 @@ expect class KHealth {
      * permissions are silently discarded from the request list and are not included in the returned
      * set.
      *
-     * > **Note:** On Android, this method will only work if [initialise] has been called before
-     * this method's invocation. On Apple, it has no such requirements.
-     *
      * Code Example:
      * ```kotlin
      * val statuses = kHealth.checkPermissions(
      *     KHPermission.ActiveCaloriesBurned(read = true, write = true),
      *     KHPermission.HeartRate(read = true, write = false),
      * )
-     * statuses.map { permWithStat ->
-     *     println(
-     *         "For permission: ${permWithStat.permission}, " +
-     *                 "the read status is: ${permWithStat.readStatus} " +
-     *                 "and write status is: ${permWithStat.writeStatus}"
-     *     )
-     * }
      * ```
      *
      * @param permissions [KHPermission]s for which the statuses will be fetched
      * @return Statuses clubbed with their requested permissions
      */
     suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermission>
+
+    /**
+     * Collection overload for [checkPermissions].
+     */
+    suspend fun checkPermissions(permissions: Collection<KHPermission>): Set<KHPermission> =
+        checkPermissions(*permissions.toTypedArray())
 
     /**
      * Initiates a request to the operating system for the input list of [KHPermission]s. Similar
@@ -109,19 +82,18 @@ expect class KHealth {
      *     KHPermission.ActiveCaloriesBurned(read = true, write = true),
      *     KHPermission.HeartRate(read = true, write = false),
      * )
-     * statuses.map { permWithStat ->
-     *     println(
-     *         "For permission: ${permWithStat.permission}, " +
-     *                 "the read status is: ${permWithStat.readStatus} " +
-     *                 "and write status is: ${permWithStat.writeStatus}"
-     *     )
-     * }
      * ```
      *
      * @param permissions [KHPermission]s for which the statuses will be fetched
      * @return Statuses clubbed with their requested permissions
      */
     suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermission>
+
+    /**
+     * Collection overload for [requestPermissions].
+     */
+    suspend fun requestPermissions(permissions: Collection<KHPermission>): Set<KHPermission> =
+        requestPermissions(*permissions.toTypedArray())
 
     /**
      * Writes the provided [KHRecord]s into the health store and returns its insertion status.
@@ -135,18 +107,7 @@ expect class KHealth {
      *          startTime = Clock.System.now().minus(10.minutes),
      *          endTime = Clock.System.now(),
      *      ),
-     *      // Add as many records as you need
      * )
-     * when (insertResponse) {
-     *     is KHWriteResponse.Failed ->
-     *         println("Data insertion failed")
-     *
-     *     KHWriteResponse.SomeFailed ->
-     *         println("Data insertion failed for some types")
-     *
-     *     KHWriteResponse.Success ->
-     *         println("Data insertion successful")
-     * }
      * ```
      *
      * @param records Data entries that needs to be written to the health store
@@ -155,11 +116,40 @@ expect class KHealth {
     suspend fun writeRecords(vararg records: KHRecord): KHWriteResponse
 
     /**
-     * Returns the list of data records for the input read request sorted in ascending order on the
-     * basis of the start date.
+     * Collection overload for [writeRecords].
+     */
+    suspend fun writeRecords(records: Collection<KHRecord>): KHWriteResponse =
+        writeRecords(*records.toTypedArray())
+
+    /**
+     * Returns the strongly-typed list of data records for the input read request sorted in ascending
+     * order on the basis of the start date.
+     *
+     * Code Example:
+     * ```kotlin
+     * val steps: List<KHRecord.StepCount> = kHealth.readRecords(
+     *     KHReadRequest.StepCount(
+     *         startTime = Clock.System.now().minus(1.days),
+     *         endTime = Clock.System.now()
+     *     )
+     * )
+     * ```
      *
      * @param request Responsible for filtering out data from the health store
      * @return The data records filtered on the basis of the input [KHReadRequest]
      */
-    suspend fun readRecords(request: KHReadRequest): List<KHRecord>
+    suspend fun <T : KHRecord> readRecords(request: KHReadRequest<T>): List<T>
 }
+
+/**
+ * Creates a platform-appropriate instance of [KHealth].
+ *
+ * - On Apple (iOS/watchOS), initializes HealthKit integration.
+ * - On Android, initializes Health Connect integration using auto-detected application context.
+ */
+expect fun KHealth(): KHealth
+
+/**
+ * Factory function to create a [KHealth] instance in common code.
+ */
+fun createKHealth(): KHealth = KHealth()

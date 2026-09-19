@@ -15,6 +15,7 @@
 
 package com.khealth
 
+import android.content.Context
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.health.connect.client.HealthConnectClient
@@ -28,11 +29,59 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.datetime.toJavaInstant
 
-actual class KHealth {
+/**
+ * Creates a [KHealth] instance on Android using auto-detected application context.
+ */
+actual fun KHealth(): KHealth = AndroidKHealth(KHealthContext.get())
+
+/**
+ * Creates a [KHealth] instance on Android using the provided [Context].
+ */
+fun KHealth(context: Context): KHealth = AndroidKHealth(context)
+
+/**
+ * Creates a [KHealth] instance on Android bound to the given [ComponentActivity].
+ */
+fun KHealth(activity: ComponentActivity): KHealth = AndroidKHealth(activity)
+
+/**
+ * Internal factory for tests.
+ */
+internal fun KHealth(
+    client: HealthConnectClient,
+    coroutineScope: CoroutineScope,
+    isHealthStoreAvailable: Boolean,
+    permissionsChannel: Channel<Set<String>>
+): KHealth = AndroidKHealth(
+    client = client,
+    coroutineScope = coroutineScope,
+    isHealthStoreAvailable = isHealthStoreAvailable,
+    permissionsChannel = permissionsChannel
+)
+
+internal class AndroidKHealth : KHealth {
+    private val appContext: Context
+    private var activity: ComponentActivity? = null
+    private lateinit var client: HealthConnectClient
+    private val coroutineScope: CoroutineScope
+    private var testIsHealthStoreAvailable: Boolean? = null
+    private val permissionsChannel: Channel<Set<String>>
+    private var isTestMode = false
+    private var permissionsLauncher: ActivityResultLauncher<Set<String>>? = null
+
+    constructor(context: Context) {
+        this.appContext = context.applicationContext
+        this.coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        this.permissionsChannel = Channel()
+        this.client = HealthConnectClient.getOrCreate(appContext)
+    }
+
     constructor(activity: ComponentActivity) {
+        this.appContext = activity.applicationContext
         this.activity = activity
         this.coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
         this.permissionsChannel = Channel()
+        this.client = HealthConnectClient.getOrCreate(appContext)
     }
 
     internal constructor(
@@ -41,6 +90,20 @@ actual class KHealth {
         isHealthStoreAvailable: Boolean,
         permissionsChannel: Channel<Set<String>>
     ) {
+        this.appContext = client.javaClass.classLoader?.let { null } ?: run {
+            try { KHealthContext.get() } catch (_: Throwable) { null }
+        } ?: run {
+            // Stub for test when context is not available
+            null as Context?
+        } ?: run {
+            null as Any?
+        }.let {
+            // In test mode, appContext is not used
+            null as Context?
+        } ?: run {
+            // fallback dummy context not needed in test mode
+            object : android.content.ContextWrapper(null) {}
+        }
         this.client = client
         this.coroutineScope = coroutineScope
         this.testIsHealthStoreAvailable = isHealthStoreAvailable
@@ -48,21 +111,23 @@ actual class KHealth {
         this.isTestMode = true
     }
 
-    private var activity: ComponentActivity? = null
+    @Deprecated("KHealth is auto-initialized on Android via ContentProvider and doesn't require explicit initialization.")
+    override fun initialise() {
+        if (!::client.isInitialized) {
+            client = HealthConnectClient.getOrCreate(appContext)
+        }
+        activity?.let { setupLauncher(it) }
+    }
 
-    private lateinit var client: HealthConnectClient
-    private val coroutineScope: CoroutineScope
-    private var testIsHealthStoreAvailable: Boolean? = null
-    private val permissionsChannel: Channel<Set<String>>
-    private var isTestMode = false
+    fun bindActivity(activity: ComponentActivity) {
+        this.activity = activity
+        setupLauncher(activity)
+    }
 
-    private lateinit var permissionsLauncher: ActivityResultLauncher<Set<String>>
-
-    actual fun initialise() {
-        if (!::client.isInitialized) client = HealthConnectClient.getOrCreate(activity!!)
-        if (!::permissionsLauncher.isInitialized) {
+    private fun setupLauncher(activity: ComponentActivity) {
+        if (permissionsLauncher == null) {
             val permissionContract = PermissionController.createRequestPermissionResultContract()
-            permissionsLauncher = activity!!.registerForActivityResult(permissionContract) {
+            permissionsLauncher = activity.registerForActivityResult(permissionContract) {
                 coroutineScope.launch {
                     permissionsChannel.send(it)
                 }
@@ -70,38 +135,44 @@ actual class KHealth {
         }
     }
 
-    actual val isHealthStoreAvailable: Boolean
+    override val isHealthStoreAvailable: Boolean
         get() = testIsHealthStoreAvailable
-            ?: (HealthConnectClient.getSdkStatus(activity!!) == HealthConnectClient.SDK_AVAILABLE)
+            ?: (HealthConnectClient.getSdkStatus(appContext) == HealthConnectClient.SDK_AVAILABLE)
 
     private fun verifyHealthStoreAvailability() {
         if (!isHealthStoreAvailable) throw HealthStoreNotAvailableException
     }
 
-    actual suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermission> {
+    override suspend fun checkPermissions(vararg permissions: KHPermission): Set<KHPermission> {
         verifyHealthStoreAvailability()
         val grantedPermissions = client.permissionController.getGrantedPermissions()
         return permissions.toPermissionsWithStatuses(grantedPermissions).toSet()
     }
 
-    actual suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermission> {
+    override suspend fun requestPermissions(vararg permissions: KHPermission): Set<KHPermission> {
         verifyHealthStoreAvailability()
         val permissionSets = permissions.map { entry -> entry.toPermissions() }
 
-        if (::permissionsLauncher.isInitialized) {
-            permissionsLauncher.launch(permissionSets.flatten().map { it.first }.toSet())
+        val launcher = permissionsLauncher
+        if (launcher != null) {
+            launcher.launch(permissionSets.flatten().map { it.first }.toSet())
         } else if (!isTestMode) {
-            logError(
-                throwable = HealthStoreNotInitialisedException,
-                methodName = "requestPermissions"
-            )
+            activity?.let {
+                setupLauncher(it)
+                permissionsLauncher?.launch(permissionSets.flatten().map { it.first }.toSet())
+            } ?: run {
+                logError(
+                    throwable = HealthStoreNotInitialisedException,
+                    methodName = "requestPermissions"
+                )
+            }
         }
 
         val grantedPermissions = permissionsChannel.receive()
         return permissions.toPermissionsWithStatuses(grantedPermissions).toSet()
     }
 
-    actual suspend fun writeRecords(vararg records: KHRecord): KHWriteResponse {
+    override suspend fun writeRecords(vararg records: KHRecord): KHWriteResponse {
         try {
             verifyHealthStoreAvailability()
             val hcRecords = records.mapNotNull { record -> record.toHCRecord() }
@@ -127,7 +198,8 @@ actual class KHealth {
         }
     }
 
-    actual suspend fun readRecords(request: KHReadRequest): List<KHRecord> {
+    @Suppress("UNCHECKED_CAST")
+    override suspend fun <T : KHRecord> readRecords(request: KHReadRequest<T>): List<T> {
         return try {
             val recordClass = request.toRecordClass() ?: return emptyList()
 
@@ -141,7 +213,7 @@ actual class KHealth {
                 )
             ).records
 
-            hcRecords.mapNotNull { record -> record.toKHRecordOrNull(request) }
+            hcRecords.mapNotNull { record -> record.toKHRecordOrNull(request) } as List<T>
         } catch (t: Throwable) {
             logError(throwable = t, methodName = "readRecords")
             emptyList()

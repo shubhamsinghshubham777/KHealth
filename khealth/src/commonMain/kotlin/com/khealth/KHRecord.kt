@@ -43,15 +43,12 @@ sealed class KHRecord {
      * Captures the BMR of a user. Each record represents the energy a user would burn if at rest
      * all day, based on their height and weight.
      *
-     * @param unit Measurement scale of this record. It is a disjoint union (named [KHEither]
-     * in this project) because Android and Apple use different units to represent this record but
-     * at the time of accessing its value in runtime, only one of these units will be available
-     * (not null) based on the current platform.
+     * @param unit Measurement scale of this record
      * @param value The value of this record
      * @param time Time instant of the interval over which the value this record was captured
      */
     data class BasalMetabolicRate(
-        val unit: KHEither<KHUnit.Power, KHUnit.Energy>,
+        val unit: KHUnit.Energy,
         val value: Double,
         val time: Instant
     ) : KHRecord()
