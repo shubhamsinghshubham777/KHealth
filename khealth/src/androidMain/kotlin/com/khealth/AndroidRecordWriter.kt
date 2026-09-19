@@ -54,7 +54,7 @@ import androidx.health.connect.client.records.WheelchairPushesRecord
 import androidx.health.connect.client.records.metadata.Metadata
 import androidx.health.connect.client.units.Percentage
 import androidx.health.connect.client.units.percent
-import kotlinx.datetime.toJavaInstant
+import kotlin.time.toJavaInstant
 
 internal object AndroidRecordWriter {
 

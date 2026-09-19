@@ -51,7 +51,7 @@ import androidx.health.connect.client.records.StepsRecord
 import androidx.health.connect.client.records.Vo2MaxRecord
 import androidx.health.connect.client.records.WeightRecord
 import androidx.health.connect.client.records.WheelchairPushesRecord
-import kotlinx.datetime.toKotlinInstant
+import kotlin.time.toKotlinInstant
 import kotlin.reflect.KClass
 
 internal object AndroidRecordReader {

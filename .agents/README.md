@@ -50,7 +50,7 @@ KHealth/
 │       │   ├── AppleRecordReader.kt       # HKSample querying and conversion to KHRecord
 │       │   ├── AppleRecordWriter.kt       # KHRecord -> HKSample conversion logic
 │       │   └── Extensions.apple.kt        # HKUnit conversions and sample merging helpers
-│       ├── androidUnitTest/               # Unit tests for Android record conversions & models
+│       ├── androidHostTest/               # Unit tests for Android record conversions & models
 │       └── iosTest/                       # Unit tests for iOS / Apple platform logic
 └── sampleApps/                            # Multiplatform sample applications
     ├── shared/                            # Shared KMP module (calls KHealth directly in commonMain)
@@ -121,10 +121,10 @@ To support a new health data type across both platforms, follow these exact step
    - Add write conversion to `HKSample` in `AppleRecordWriter.kt`.
    - Add read parsing from `HKSample` to `KHRecord` in `AppleRecordReader.kt`.
 7. **Testing**:
-   - Add conversion unit tests in `khealth/src/androidUnitTest/kotlin/com/khealth/`.
-   - Add multiplatform unit tests in `khealth/src/iosTest/kotlin/com/khealth/`.
+    - Add conversion unit tests in `khealth/src/androidHostTest/kotlin/com/khealth/`.
+    - Add multiplatform unit tests in `khealth/src/iosTest/kotlin/com/khealth/`.
 8. **Documentation**:
-   - Update the Supported Data Types table in `README.md`.
+    - Update the Supported Data Types table in `README.md`.
 
 ---
 
@@ -134,8 +134,8 @@ Always verify changes using the following Gradle and Xcode commands before compl
 
 | Scope | Command | Expected Result |
 | :--- | :--- | :--- |
-| **Android Compilation** | `./gradlew :khealth:compileDebugKotlinAndroid :khealth:compileReleaseKotlinAndroid` | Build Successful |
-| **Android Unit Tests** | `./gradlew :khealth:testDebugUnitTest :khealth:testReleaseUnitTest` | Tests Pass |
+| **Android Compilation** | `./gradlew :khealth:compileAndroidMain` | Build Successful |
+| **Android Unit Tests** | `./gradlew :khealth:testAndroidHostTest` | Tests Pass |
 | **iOS Core Compilation** | `./gradlew :khealth:compileKotlinIosSimulatorArm64 :khealth:compileKotlinIosX64` | Build Successful |
 | **watchOS Core Compilation** | `./gradlew :khealth:compileKotlinWatchosSimulatorArm64` | Build Successful |
 | **iOS Simulator Tests** | `./gradlew :khealth:iosSimulatorArm64Test` | Tests Pass |

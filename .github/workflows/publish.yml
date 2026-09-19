@@ -43,10 +43,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew assemble
 
       - name: Run Tests
-        run: ./gradlew :khealth:clean :khealth:test
+        run: ./gradlew :khealth:testAndroidHostTest :khealth:iosSimulatorArm64Test
 
       - name: Build Docs
         run: ./gradlew :khealth:dokkatooGenerate
