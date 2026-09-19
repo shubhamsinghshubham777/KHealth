@@ -1,10 +1,11 @@
 # Remember to give this permission to your workflows in repository settings: https://stackoverflow.com/a/72992289
 name: Publish Library
+
 on:
   workflow_dispatch:
     inputs:
       versionName:
-        description: 'Version Name (e.g. 1.0.3 or 1.0.3-SNAPSHOT)'
+        description: 'Version Name (e.g. 2.0.1 or 2.0.1-SNAPSHOT)'
         required: true
       releaseNotes:
         description: 'Release notes or summary of changes (optional)'
@@ -16,12 +17,16 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
-  publish_library:
-    name: Publish Library on Maven Central
+  publish-library:
+    name: Publish Library to Maven Central
     runs-on: macos-latest
 
     steps:
@@ -30,37 +35,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 21
+      - name: Set up JDK 21 (Corretto)
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'adopt'
-
-      - name: Grant Permission to Execute Gradle
-        run: chmod +x gradlew
+          distribution: 'corretto'
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build with Gradle
-        run: ./gradlew assemble
-
-      - name: Run Tests
-        run: ./gradlew :khealth:testAndroidHostTest :khealth:iosSimulatorArm64Test
-
-      - name: Build Docs
-        run: ./gradlew :khealth:dokkatooGenerate
-
-      - name: Publish Docs
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: docs
-          folder: khealth/build/dokka/html
-
       - name: Publish Library
         run: |
           echo "Publishing and Releasing library 🚀"
-          ./gradlew publish --no-configuration-cache
+          ./gradlew :khealth:publish --no-configuration-cache
           echo "Published and Released ✅"
         env:
           ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.inputs.versionName }}
@@ -74,8 +61,8 @@ jobs:
           git config --global user.email "shubhamsinghshubham777@gmail.com"
           git config --global user.name "$GITHUB_ACTOR"
 
-          git tag -a $TAG -m "Release v$TAG"
-          git push origin $TAG
+          git tag -a "$TAG" -m "Release v$TAG"
+          git push origin "$TAG"
         env:
           TAG: ${{ github.event.inputs.versionName }}
 
@@ -90,3 +77,29 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-docs:
+    name: Build & Publish Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 (Corretto)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Docs
+        run: ./gradlew :khealth:dokkatooGenerate
+
+      - name: Publish Docs to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: docs
+          folder: khealth/build/dokka/html
