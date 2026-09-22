@@ -53,6 +53,32 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Distribute PGP Public Key
+        env:
+          SIGNING_KEY: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+        run: |
+          which gpg >/dev/null 2>&1 || brew install gnupg
+          if [ -n "$SIGNING_KEY" ]; then
+            echo "Importing signing key into GPG..."
+            echo "$SIGNING_KEY" | gpg --batch --import || true
+            KEY_ID=$(gpg --list-keys --with-colons | grep '^pub:' | cut -d: -f5 | head -n 1)
+            FINGERPRINT=$(gpg --list-keys --with-colons | grep '^fpr:' | cut -d: -f10 | head -n 1)
+            if [ -n "$KEY_ID" ]; then
+              echo "Key ID: $KEY_ID (Fingerprint: $FINGERPRINT)"
+              gpg --list-keys "$KEY_ID"
+              echo "Publishing public key to keys.openpgp.org..."
+              gpg --batch --keyserver hkps://keys.openpgp.org --send-keys "$KEY_ID" || true
+              echo "Publishing public key to keyserver.ubuntu.com..."
+              gpg --batch --keyserver hkps://keyserver.ubuntu.com --send-keys "$KEY_ID" || true
+              # Give keyservers a moment to register the key before Central validation
+              sleep 5
+            else
+              echo "::warning::Could not determine GPG Key ID from signing key."
+            fi
+          else
+            echo "::warning::ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY is empty or not set."
+          fi
+
       - name: Publish Library
         run: |
           echo "Publishing and Releasing library 🚀"
