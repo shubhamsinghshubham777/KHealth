@@ -15,7 +15,7 @@
 
 package com.khealth
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Represents the kind of [KHRecord] the app wants to read.

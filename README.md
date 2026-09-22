@@ -48,7 +48,7 @@ Add the dependency to your shared module's `build.gradle.kts`:
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.shubhamsinghshubham777:khealth:2.0.1")
+            implementation("io.github.shubhamsinghshubham777:khealth:2.1.0")
         }
     }
 }
@@ -58,7 +58,7 @@ Or using Gradle version catalogs:
 
 ```toml
 [versions]
-khealth = "2.0.1"
+khealth = "2.1.0"
 
 [libraries]
 khealth = { module = "io.github.shubhamsinghshubham777:khealth", version.ref = "khealth" }

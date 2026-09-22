@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       versionName:
-        description: 'Version Name (e.g. 2.0.1 or 2.0.1-SNAPSHOT)'
+        description: 'Version Name (e.g. 2.1.0 or 2.1.0-SNAPSHOT)'
         required: true
       releaseNotes:
         description: 'Release notes or summary of changes (optional)'
@@ -105,7 +105,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build Docs
-        run: ./gradlew :khealth:dokkatooGenerate
+        run: ./gradlew :khealth:dokkaGeneratePublicationHtml
 
       - name: Publish Docs to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

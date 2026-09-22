@@ -15,7 +15,7 @@
 
 package com.khealth
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Represents a single measurement of the heart rate ([KHRecord.HeartRate]).

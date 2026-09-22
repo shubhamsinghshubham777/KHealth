@@ -15,7 +15,7 @@
 
 package com.khealth
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Represents a readable or writable entity.

@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
-    alias(libs.plugins.dokkatoo)
+    alias(libs.plugins.dokka)
     alias(libs.plugins.mavenPublish)
     alias(libs.plugins.mokkery)
 }
@@ -65,9 +65,9 @@ kotlin {
 }
 
 val versionName = providers.gradleProperty("VERSION_NAME")
-    .orElse(providers.provider { findProperty("VERSION_NAME") as? String ?: "2.0.1" })
+    .orElse(providers.provider { findProperty("VERSION_NAME") as? String ?: "2.1.0" })
 
-dokkatoo {
+dokka {
     moduleName.set("KHealth")
     moduleVersion.set(versionName)
     pluginsConfiguration.html {

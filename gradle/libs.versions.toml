@@ -4,7 +4,7 @@ androidx-activityCompose = "1.13.0"
 compileSdk = "37"
 composeBom = "2026.09.00"
 coroutines = "1.11.0"
-dokkatoo = "2.4.0"
+dokka = "2.2.0"
 healthConnectClient = "1.1.0"
 java = "21"
 kermit = "2.2.0"
@@ -34,7 +34,7 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-dokkatoo = { id = "dev.adamko.dokkatoo-html", version.ref = "dokkatoo" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

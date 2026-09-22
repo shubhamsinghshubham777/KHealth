@@ -15,7 +15,7 @@
 
 package com.khealth
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Represents a single measurement of power. For example, using a power meter when exercising on a
