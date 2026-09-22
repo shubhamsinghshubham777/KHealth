@@ -35,6 +35,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check if tag already exists
+        run: |
+          if git rev-parse "refs/tags/$TAG" >/dev/null 2>&1 || git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag '$TAG' already exists on remote or locally! Aborting workflow to avoid accidental re-release or corrupting an existing release."
+            exit 1
+          fi
+        env:
+          TAG: ${{ github.event.inputs.versionName }}
+
       - name: Set up JDK 21 (Corretto)
         uses: actions/setup-java@v4
         with:
@@ -47,7 +56,7 @@ jobs:
       - name: Publish Library
         run: |
           echo "Publishing and Releasing library 🚀"
-          ./gradlew :khealth:publish --no-configuration-cache
+          ./gradlew :khealth:publishAndReleaseToMavenCentral --no-configuration-cache
           echo "Published and Released ✅"
         env:
           ORG_GRADLE_PROJECT_VERSION_NAME: ${{ github.event.inputs.versionName }}

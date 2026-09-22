@@ -9,6 +9,11 @@ plugins {
     alias(libs.plugins.mokkery)
 }
 
+mavenPublishing {
+    publishToMavenCentral(automaticRelease = true)
+    signAllPublications()
+}
+
 kotlin {
     android {
         namespace = "com.khealth"
