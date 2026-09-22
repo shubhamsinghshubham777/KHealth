@@ -2,12 +2,12 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.khealth////PointingToDeclaration/-k-health/com.khealth/index.html
 $dokka.location:com.khealth//KHealth/#/PointingToDeclaration/-k-health/com.khealth/-k-health.html
-$dokka.location:com.khealth//KHealth/#[Error type: Unresolved type for Context]/PointingToDeclaration/-k-health/com.khealth/-k-health.html
+$dokka.location:com.khealth//KHealth/#android.content.Context/PointingToDeclaration/-k-health/com.khealth/-k-health.html
 $dokka.location:com.khealth//KHealth/#androidx.activity.ComponentActivity/PointingToDeclaration/-k-health/com.khealth/-k-health.html
-$dokka.location:com.khealth//allGranted/kotlin.collections.Set[com.khealth.KHPermission]#kotlin.Array[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/all-granted.html
+$dokka.location:com.khealth//allGranted/kotlin.collections.Set[com.khealth.KHPermission]#vararg(com.khealth.KHPermission)/PointingToDeclaration/-k-health/com.khealth/all-granted.html
 $dokka.location:com.khealth//createKHealth/#/PointingToDeclaration/-k-health/com.khealth/create-k-health.html
 $dokka.location:com.khealth//hasPermission/com.khealth.KHealth#com.khealth.KHPermission/PointingToDeclaration/-k-health/com.khealth/has-permission.html
-$dokka.location:com.khealth//hasPermissions/com.khealth.KHealth#kotlin.Array[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/has-permissions.html
+$dokka.location:com.khealth//hasPermissions/com.khealth.KHealth#vararg(com.khealth.KHPermission)/PointingToDeclaration/-k-health/com.khealth/has-permissions.html
 $dokka.location:com.khealth//isGranted/kotlin.collections.Set[com.khealth.KHPermission]#com.khealth.KHPermission/PointingToDeclaration/-k-health/com.khealth/is-granted.html
 $dokka.location:com.khealth//satisfies/com.khealth.KHPermission#com.khealth.KHPermission/PointingToDeclaration/-k-health/com.khealth/satisfies.html
 $dokka.location:com.khealth/HealthStoreNotAvailableException///PointingToDeclaration/-k-health/com.khealth/-health-store-not-available-exception/index.html
@@ -18,6 +18,7 @@ $dokka.location:com.khealth/KHCervicalMucusAppearance.EggWhite///PointingToDecla
 $dokka.location:com.khealth/KHCervicalMucusAppearance.Sticky///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-cervical-mucus-appearance/-sticky/index.html
 $dokka.location:com.khealth/KHCervicalMucusAppearance.Watery///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-cervical-mucus-appearance/-watery/index.html
 $dokka.location:com.khealth/KHCervicalMucusAppearance///PointingToDeclaration/-k-health/com.khealth/-k-h-cervical-mucus-appearance/index.html
+$dokka.location:com.khealth/KHCervicalMucusAppearance/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-cervical-mucus-appearance/entries.html
 $dokka.location:com.khealth/KHCervicalMucusAppearance/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-cervical-mucus-appearance/value-of.html
 $dokka.location:com.khealth/KHCervicalMucusAppearance/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-cervical-mucus-appearance/values.html
 $dokka.location:com.khealth/KHCyclingPedalingCadenceSample///PointingToDeclaration/-k-health/com.khealth/-k-h-cycling-pedaling-cadence-sample/index.html
@@ -137,6 +138,7 @@ $dokka.location:com.khealth/KHExerciseType.WheelchairWalkPace///PointingToDeclar
 $dokka.location:com.khealth/KHExerciseType.Wrestling///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-exercise-type/-wrestling/index.html
 $dokka.location:com.khealth/KHExerciseType.Yoga///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-exercise-type/-yoga/index.html
 $dokka.location:com.khealth/KHExerciseType///PointingToDeclaration/-k-health/com.khealth/-k-h-exercise-type/index.html
+$dokka.location:com.khealth/KHExerciseType/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-exercise-type/entries.html
 $dokka.location:com.khealth/KHExerciseType/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-exercise-type/value-of.html
 $dokka.location:com.khealth/KHExerciseType/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-exercise-type/values.html
 $dokka.location:com.khealth/KHHeartRateSample///PointingToDeclaration/-k-health/com.khealth/-k-h-heart-rate-sample/index.html
@@ -149,6 +151,7 @@ $dokka.location:com.khealth/KHMealType.Lunch///PointingToDeclaration/{"org.jetbr
 $dokka.location:com.khealth/KHMealType.Snack///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-meal-type/-snack/index.html
 $dokka.location:com.khealth/KHMealType.Unknown///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-meal-type/-unknown/index.html
 $dokka.location:com.khealth/KHMealType///PointingToDeclaration/-k-health/com.khealth/-k-h-meal-type/index.html
+$dokka.location:com.khealth/KHMealType/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-meal-type/entries.html
 $dokka.location:com.khealth/KHMealType/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-meal-type/value-of.html
 $dokka.location:com.khealth/KHMealType/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-meal-type/values.html
 $dokka.location:com.khealth/KHMenstruationFlowType.Heavy///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-menstruation-flow-type/-heavy/index.html
@@ -156,6 +159,7 @@ $dokka.location:com.khealth/KHMenstruationFlowType.Light///PointingToDeclaration
 $dokka.location:com.khealth/KHMenstruationFlowType.Medium///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-menstruation-flow-type/-medium/index.html
 $dokka.location:com.khealth/KHMenstruationFlowType.Unknown///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-menstruation-flow-type/-unknown/index.html
 $dokka.location:com.khealth/KHMenstruationFlowType///PointingToDeclaration/-k-health/com.khealth/-k-h-menstruation-flow-type/index.html
+$dokka.location:com.khealth/KHMenstruationFlowType/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-menstruation-flow-type/entries.html
 $dokka.location:com.khealth/KHMenstruationFlowType/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-menstruation-flow-type/value-of.html
 $dokka.location:com.khealth/KHMenstruationFlowType/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-menstruation-flow-type/values.html
 $dokka.location:com.khealth/KHOvulationTestResult.High///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-ovulation-test-result/-high/index.html
@@ -163,6 +167,7 @@ $dokka.location:com.khealth/KHOvulationTestResult.Inconclusive///PointingToDecla
 $dokka.location:com.khealth/KHOvulationTestResult.Negative///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-ovulation-test-result/-negative/index.html
 $dokka.location:com.khealth/KHOvulationTestResult.Positive///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-ovulation-test-result/-positive/index.html
 $dokka.location:com.khealth/KHOvulationTestResult///PointingToDeclaration/-k-health/com.khealth/-k-h-ovulation-test-result/index.html
+$dokka.location:com.khealth/KHOvulationTestResult/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-ovulation-test-result/entries.html
 $dokka.location:com.khealth/KHOvulationTestResult/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-ovulation-test-result/value-of.html
 $dokka.location:com.khealth/KHOvulationTestResult/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-ovulation-test-result/values.html
 $dokka.location:com.khealth/KHPermission.ActiveCaloriesBurned///PointingToDeclaration/-k-health/com.khealth/-k-h-permission/-active-calories-burned/index.html
@@ -780,6 +785,7 @@ $dokka.location:com.khealth/KHSleepStage.REM///PointingToDeclaration/{"org.jetbr
 $dokka.location:com.khealth/KHSleepStage.Sleeping///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-sleep-stage/-sleeping/index.html
 $dokka.location:com.khealth/KHSleepStage.Unknown///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-k-health/com.khealth/-k-h-sleep-stage/-unknown/index.html
 $dokka.location:com.khealth/KHSleepStage///PointingToDeclaration/-k-health/com.khealth/-k-h-sleep-stage/index.html
+$dokka.location:com.khealth/KHSleepStage/entries/#/PointingToDeclaration/-k-health/com.khealth/-k-h-sleep-stage/entries.html
 $dokka.location:com.khealth/KHSleepStage/valueOf/#kotlin.String/PointingToDeclaration/-k-health/com.khealth/-k-h-sleep-stage/value-of.html
 $dokka.location:com.khealth/KHSleepStage/values/#/PointingToDeclaration/-k-health/com.khealth/-k-h-sleep-stage/values.html
 $dokka.location:com.khealth/KHSleepStageSample///PointingToDeclaration/-k-health/com.khealth/-k-h-sleep-stage-sample/index.html
@@ -831,24 +837,23 @@ $dokka.location:com.khealth/KHWriteResponse.SomeFailed///PointingToDeclaration/
 $dokka.location:com.khealth/KHWriteResponse.Success///PointingToDeclaration/-k-health/com.khealth/-k-h-write-response/-success/index.html
 $dokka.location:com.khealth/KHWriteResponse///PointingToDeclaration/-k-health/com.khealth/-k-h-write-response/index.html
 $dokka.location:com.khealth/KHealth///PointingToDeclaration/-k-health/com.khealth/-k-health/index.html
-$dokka.location:com.khealth/KHealth/checkPermissions/#kotlin.Array[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/-k-health/check-permissions.html
 $dokka.location:com.khealth/KHealth/checkPermissions/#kotlin.collections.Collection[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/-k-health/check-permissions.html
+$dokka.location:com.khealth/KHealth/checkPermissions/#vararg(com.khealth.KHPermission)/PointingToDeclaration/-k-health/com.khealth/-k-health/check-permissions.html
 $dokka.location:com.khealth/KHealth/initialise/#/PointingToDeclaration/-k-health/com.khealth/-k-health/initialise.html
 $dokka.location:com.khealth/KHealth/isHealthStoreAvailable/#/PointingToDeclaration/-k-health/com.khealth/-k-health/is-health-store-available.html
 $dokka.location:com.khealth/KHealth/readRecords/#com.khealth.KHReadRequest[TypeParam(bounds=[com.khealth.KHRecord])]/PointingToDeclaration/-k-health/com.khealth/-k-health/read-records.html
-$dokka.location:com.khealth/KHealth/requestPermissions/#kotlin.Array[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/-k-health/request-permissions.html
 $dokka.location:com.khealth/KHealth/requestPermissions/#kotlin.collections.Collection[com.khealth.KHPermission]/PointingToDeclaration/-k-health/com.khealth/-k-health/request-permissions.html
-$dokka.location:com.khealth/KHealth/writeRecords/#kotlin.Array[com.khealth.KHRecord]/PointingToDeclaration/-k-health/com.khealth/-k-health/write-records.html
+$dokka.location:com.khealth/KHealth/requestPermissions/#vararg(com.khealth.KHPermission)/PointingToDeclaration/-k-health/com.khealth/-k-health/request-permissions.html
 $dokka.location:com.khealth/KHealth/writeRecords/#kotlin.collections.Collection[com.khealth.KHRecord]/PointingToDeclaration/-k-health/com.khealth/-k-health/write-records.html
+$dokka.location:com.khealth/KHealth/writeRecords/#vararg(com.khealth.KHRecord)/PointingToDeclaration/-k-health/com.khealth/-k-health/write-records.html
 $dokka.location:com.khealth/KHealthInitProvider///PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/index.html
 $dokka.location:com.khealth/KHealthInitProvider/KHealthInitProvider/#/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/-k-health-init-provider.html
-$dokka.location:com.khealth/KHealthInitProvider/delete/#[Error type: Unresolved type for Uri]#kotlin.String?#kotlin.Array[kotlin.String]?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/delete.html
-$dokka.location:com.khealth/KHealthInitProvider/getType/#[Error type: Unresolved type for Uri]/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/get-type.html
-$dokka.location:com.khealth/KHealthInitProvider/insert/#[Error type: Unresolved type for Uri]#[Error type: Unresolved type for ContentValues]?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/insert.html
+$dokka.location:com.khealth/KHealthInitProvider/delete/#android.net.Uri#kotlin.String?#kotlin.Array[kotlin.String]?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/delete.html
+$dokka.location:com.khealth/KHealthInitProvider/getType/#android.net.Uri/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/get-type.html
+$dokka.location:com.khealth/KHealthInitProvider/insert/#android.net.Uri#android.content.ContentValues?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/insert.html
 $dokka.location:com.khealth/KHealthInitProvider/onCreate/#/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/on-create.html
-$dokka.location:com.khealth/KHealthInitProvider/query/#[Error type: Unresolved type for Uri]#kotlin.Array[kotlin.String]?#kotlin.String?#kotlin.Array[kotlin.String]?#kotlin.String?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/query.html
-$dokka.location:com.khealth/KHealthInitProvider/update/#[Error type: Unresolved type for Uri]#[Error type: Unresolved type for ContentValues]?#kotlin.String?#kotlin.Array[kotlin.String]?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/update.html
+$dokka.location:com.khealth/KHealthInitProvider/query/#android.net.Uri#kotlin.Array[kotlin.String]?#kotlin.String?#kotlin.Array[kotlin.String]?#kotlin.String?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/query.html
+$dokka.location:com.khealth/KHealthInitProvider/update/#android.net.Uri#android.content.ContentValues?#kotlin.String?#kotlin.Array[kotlin.String]?/PointingToDeclaration/-k-health/com.khealth/-k-health-init-provider/update.html
 $dokka.location:com.khealth/NoWriteAccessException///PointingToDeclaration/-k-health/com.khealth/-no-write-access-exception/index.html
 $dokka.location:com.khealth/NoWriteAccessException/NoWriteAccessException/#kotlin.String?/PointingToDeclaration/-k-health/com.khealth/-no-write-access-exception/-no-write-access-exception.html
 com.khealth
-

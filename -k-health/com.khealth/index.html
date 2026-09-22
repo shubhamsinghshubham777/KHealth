@@ -1,70 +1,130 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.khealth</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
 <link href="../../images/logo-icon.svg">
 </head>
 <body>
-    <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../index.html">
-                            KHealth
-                    </a>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    KHealth
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+2.1.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":khealth/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true"
+                        data-filter=":khealth/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true"
+                        data-filter=":khealth/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":khealth/androidMain"
+                                       data-filter=":khealth/androidMain"/>
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":khealth/appleMain"
+                                       data-filter=":khealth/appleMain"/>
+                                <span class="checkbox--icon"></span>
+                                apple
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":khealth/commonMain"
+                                       data-filter=":khealth/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div class="library-version">
-2.0.1            </div>
-        </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":khealth/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":khealth/commonMain">common</button>
-        </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageIds="KHealth::com.khealth////PointingToDeclaration//2035435608">
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KHealth
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="KHealth::com.khealth////PointingToDeclaration//267227268">
   <div class="breadcrumbs"><a href="../../index.html">KHealth</a><span class="delimiter">/</span><span class="current">com.khealth</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -73,9 +133,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-375509752%2FClasslikes%2F107750912" anchor-label="HealthStoreNotAvailableException" id="-375509752%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-health-store-not-available-exception/index.html"><span>Health</span><wbr></wbr><span>Store</span><wbr></wbr><span>Not</span><wbr></wbr><span>Available</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -84,13 +144,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-health-store-not-available-exception/index.html">HealthStoreNotAvailableException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-health-store-not-available-exception/index.html">HealthStoreNotAvailableException</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-exception/index.html">Exception</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1968196236%2FClasslikes%2F107750912" anchor-label="HealthStoreNotInitialisedException" id="1968196236%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-health-store-not-initialised-exception/index.html"><span>Health</span><wbr></wbr><span>Store</span><wbr></wbr><span>Not</span><wbr></wbr><span>Initialised</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -99,13 +159,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-health-store-not-initialised-exception/index.html">HealthStoreNotInitialisedException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-health-store-not-initialised-exception/index.html">HealthStoreNotInitialisedException</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-exception/index.html">Exception</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-788950127%2FClasslikes%2F107750912" anchor-label="KHCervicalMucusAppearance" id="-788950127%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-cervical-mucus-appearance/index.html"><span>KHCervical</span><wbr></wbr><span>Mucus</span><wbr></wbr><span><span>Appearance</span></span></a></div>
@@ -114,13 +174,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-cervical-mucus-appearance/index.html">KHCervicalMucusAppearance</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-cervical-mucus-appearance/index.html">KHCervicalMucusAppearance</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Represents a self-assessed description (look and feel) of the cervical mucus for a user.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-cervical-mucus-appearance/index.html">KHCervicalMucusAppearance</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-cervical-mucus-appearance/index.html">KHCervicalMucusAppearance</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Represents a self-assessed description (look and feel) of the cervical mucus for a user.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-463803921%2FClasslikes%2F107750912" anchor-label="KHCyclingPedalingCadenceSample" id="-463803921%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-cycling-pedaling-cadence-sample/index.html"><span>KHCycling</span><wbr></wbr><span>Pedaling</span><wbr></wbr><span>Cadence</span><wbr></wbr><span><span>Sample</span></span></a></div>
@@ -129,13 +189,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-cycling-pedaling-cadence-sample/index.html">KHCyclingPedalingCadenceSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>revolutionsPerMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of <a href="-k-h-record/-cycling-pedaling-cadence/index.html">KHRecord.CyclingPedalingCadence</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-cycling-pedaling-cadence-sample/index.html">KHCyclingPedalingCadenceSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>revolutionsPerMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of <a href="-k-h-record/-cycling-pedaling-cadence/index.html">KHRecord.CyclingPedalingCadence</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-397989409%2FClasslikes%2F107750912" anchor-label="KHealth" id="-397989409%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-health/index.html"><span><span>KHealth</span></span></a></div>
@@ -150,7 +210,7 @@
             </div>
           </div>
 <a data-name="-1784841026%2FClasslikes%2F430144474" anchor-label="KHealthInitProvider" id="-1784841026%2FClasslikes%2F430144474" data-filterable-set=":khealth/androidMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/androidMain" data-filterable-set=":khealth/androidMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/androidMain" data-filterable-set=":khealth/androidMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-health-init-provider/index.html"><span>KHealth</span><wbr></wbr><span>Init</span><wbr></wbr><span><span>Provider</span></span></a></div>
@@ -161,13 +221,13 @@
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
                     <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":khealth/androidMain" data-filterable-set=":khealth/androidMain" data-active="" data-toggle=":khealth/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-k-health-init-provider/index.html">KHealthInitProvider</a></div><div class="brief "><p class="paragraph">Automatically initializes <span data-unresolved-link="com.khealth/KHealthContext///PointingToDeclaration/">KHealthContext</span> with the application context upon app launch.</p></div></div>                  </div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-k-health-init-provider/index.html">KHealthInitProvider</a> : <a href="https://developer.android.com/reference/kotlin/android/content/ContentProvider.html">ContentProvider</a></div><div class="brief "><p class="paragraph">Automatically initializes <span data-unresolved-link="com.khealth/KHealthContext///PointingToDeclaration/">KHealthContext</span> with the application context upon app launch.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1786861%2FClasslikes%2F107750912" anchor-label="KHExerciseType" id="1786861%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-exercise-type/index.html"><span>KHExercise</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -176,13 +236,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-exercise-type/index.html">KHExerciseType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-exercise-type/index.html">KHExerciseType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Depicts the category of <a href="-k-h-record/-exercise/index.html">KHRecord.Exercise</a> that the user is performing.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-exercise-type/index.html">KHExerciseType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-exercise-type/index.html">KHExerciseType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Depicts the category of <a href="-k-h-record/-exercise/index.html">KHRecord.Exercise</a> that the user is performing.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="2052469555%2FClasslikes%2F107750912" anchor-label="KHHeartRateSample" id="2052469555%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-heart-rate-sample/index.html"><span>KHHeart</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Sample</span></span></a></div>
@@ -191,13 +251,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-heart-rate-sample/index.html">KHHeartRateSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>beatsPerMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of the heart rate (<a href="-k-h-record/-heart-rate/index.html">KHRecord.HeartRate</a>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-heart-rate-sample/index.html">KHHeartRateSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>beatsPerMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of the heart rate (<a href="-k-h-record/-heart-rate/index.html">KHRecord.HeartRate</a>).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1104354078%2FClasslikes%2F107750912" anchor-label="KHMealType" id="-1104354078%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-meal-type/index.html"><span>KHMeal</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -206,13 +266,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-meal-type/index.html">KHMealType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-meal-type/index.html">KHMealType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">The type of food that the <a href="-k-h-record/-nutrition/index.html">KHRecord.Nutrition</a> object represents.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-meal-type/index.html">KHMealType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-meal-type/index.html">KHMealType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">The type of food that the <a href="-k-h-record/-nutrition/index.html">KHRecord.Nutrition</a> object represents.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1388547484%2FClasslikes%2F107750912" anchor-label="KHMenstruationFlowType" id="1388547484%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-menstruation-flow-type/index.html"><span>KHMenstruation</span><wbr></wbr><span>Flow</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -221,13 +281,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-menstruation-flow-type/index.html">KHMenstruationFlowType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-menstruation-flow-type/index.html">KHMenstruationFlowType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Refers to the pattern or characteristics of menstrual bleeding, such as light, moderate, or heavy flow, and its duration and consistency throughout the cycle.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-menstruation-flow-type/index.html">KHMenstruationFlowType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-menstruation-flow-type/index.html">KHMenstruationFlowType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Refers to the pattern or characteristics of menstrual bleeding, such as light, moderate, or heavy flow, and its duration and consistency throughout the cycle.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="960272605%2FClasslikes%2F107750912" anchor-label="KHOvulationTestResult" id="960272605%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-ovulation-test-result/index.html"><span>KHOvulation</span><wbr></wbr><span>Test</span><wbr></wbr><span><span>Result</span></span></a></div>
@@ -236,13 +296,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-ovulation-test-result/index.html">KHOvulationTestResult</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-ovulation-test-result/index.html">KHOvulationTestResult</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An ovulation test checks for a rise in a hormone called luteinizing hormone (LH) in your urine, which happens just before ovulation.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-ovulation-test-result/index.html">KHOvulationTestResult</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-ovulation-test-result/index.html">KHOvulationTestResult</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">An ovulation test checks for a rise in a hormone called luteinizing hormone (LH) in your urine, which happens just before ovulation.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1738155376%2FClasslikes%2F107750912" anchor-label="KHPermission" id="1738155376%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-permission/index.html"><span><span>KHPermission</span></span></a></div>
@@ -257,7 +317,7 @@
             </div>
           </div>
 <a data-name="-131184236%2FClasslikes%2F107750912" anchor-label="KHPowerSample" id="-131184236%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-power-sample/index.html"><span>KHPower</span><wbr></wbr><span><span>Sample</span></span></a></div>
@@ -266,13 +326,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-power-sample/index.html">KHPowerSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="-k-h-unit/-power/index.html">KHUnit.Power</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of power. For example, using a power meter when exercising on a stationary bike.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-power-sample/index.html">KHPowerSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="-k-h-unit/-power/index.html">KHUnit.Power</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of power. For example, using a power meter when exercising on a stationary bike.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="960143306%2FClasslikes%2F107750912" anchor-label="KHReadRequest" id="960143306%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-read-request/index.html"><span>KHRead</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -287,7 +347,7 @@
             </div>
           </div>
 <a data-name="-1967211474%2FClasslikes%2F107750912" anchor-label="KHRecord" id="-1967211474%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-record/index.html"><span><span>KHRecord</span></span></a></div>
@@ -302,7 +362,7 @@
             </div>
           </div>
 <a data-name="-420514856%2FClasslikes%2F107750912" anchor-label="KHSleepStage" id="-420514856%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-sleep-stage/index.html"><span>KHSleep</span><wbr></wbr><span><span>Stage</span></span></a></div>
@@ -311,13 +371,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Captures the sleep stage the user entered during a sleep session.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Captures the sleep stage the user entered during a sleep session.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-899370994%2FClasslikes%2F107750912" anchor-label="KHSleepStageSample" id="-899370994%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-sleep-stage-sample/index.html"><span>KHSleep</span><wbr></wbr><span>Stage</span><wbr></wbr><span><span>Sample</span></span></a></div>
@@ -326,13 +386,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-sleep-stage-sample/index.html">KHSleepStageSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>stage<span class="token operator">: </span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of <a href="-k-h-record/-sleep-session/index.html">KHRecord.SleepSession</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-sleep-stage-sample/index.html">KHSleepStageSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>stage<span class="token operator">: </span><a href="-k-h-sleep-stage/index.html">KHSleepStage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>endTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of <a href="-k-h-record/-sleep-session/index.html">KHRecord.SleepSession</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-52073966%2FClasslikes%2F107750912" anchor-label="KHSpeedSample" id="-52073966%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-speed-sample/index.html"><span>KHSpeed</span><wbr></wbr><span><span>Sample</span></span></a></div>
@@ -341,13 +401,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-speed-sample/index.html">KHSpeedSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="-k-h-unit/-velocity/index.html">KHUnit.Velocity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><span data-unresolved-link="kotlinx.datetime/Instant///PointingToDeclaration/">Instant</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of the speed, a scalar magnitude.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-k-h-speed-sample/index.html">KHSpeedSample</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>unit<span class="token operator">: </span><a href="-k-h-unit/-velocity/index.html">KHUnit.Velocity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>time<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/index.html">Instant</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a single measurement of the speed, a scalar magnitude.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="33157595%2FClasslikes%2F107750912" anchor-label="KHUnit" id="33157595%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-unit/index.html"><span><span>KHUnit</span></span></a></div>
@@ -362,7 +422,7 @@
             </div>
           </div>
 <a data-name="2041128963%2FClasslikes%2F107750912" anchor-label="KHWriteResponse" id="2041128963%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-h-write-response/index.html"><span>KHWrite</span><wbr></wbr><span><span>Response</span></span></a></div>
@@ -377,7 +437,7 @@
             </div>
           </div>
 <a data-name="1175722223%2FClasslikes%2F107750912" anchor-label="NoWriteAccessException" id="1175722223%2FClasslikes%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-no-write-access-exception/index.html"><span>No</span><wbr></wbr><span>Write</span><wbr></wbr><span>Access</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -386,7 +446,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-no-write-access-exception/index.html">NoWriteAccessException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">forPermission<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-no-write-access-exception/index.html">NoWriteAccessException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">forPermission<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-exception/index.html">Exception</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -394,24 +454,24 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="145537177%2FFunctions%2F107750912" anchor-label="allGranted" id="145537177%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1260487369%2FFunctions%2F107750912" anchor-label="allGranted" id="-1260487369%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-granted.html"><span>all</span><wbr></wbr><span><span>Granted</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="145537177%2FFunctions%2F107750912"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1260487369%2FFunctions%2F107750912"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="-k-h-permission/index.html">KHPermission</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="all-granted.html"><span class="token function">allGranted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>permissions<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether all requested permissions in <a href="all-granted.html">permissions</a> are granted in this set.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="-k-h-permission/index.html">KHPermission</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="all-granted.html"><span class="token function">allGranted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>permissions<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether all requested permissions in <a href="all-granted.html">permissions</a> are granted in this set.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1988059916%2FFunctions%2F107750912" anchor-label="createKHealth" id="1988059916%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-k-health.html"><span>create</span><wbr></wbr><span><span>KHealth</span></span></a></div>
@@ -426,7 +486,7 @@
             </div>
           </div>
 <a data-name="1363676065%2FFunctions%2F107750912" anchor-label="hasPermission" id="1363676065%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-permission.html"><span>has</span><wbr></wbr><span><span>Permission</span></span></a></div>
@@ -435,28 +495,28 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="-k-health/index.html">KHealth</a><span class="token punctuation">.</span><a href="has-permission.html"><span class="token function">hasPermission</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">permission<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks directly on <a href="-k-health/index.html">KHealth</a> if a specific permission is granted.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="-k-health/index.html">KHealth</a><span class="token punctuation">.</span><a href="has-permission.html"><span class="token function">hasPermission</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">permission<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks directly on <a href="-k-health/index.html">KHealth</a> if a specific permission is granted.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1830635096%2FFunctions%2F107750912" anchor-label="hasPermissions" id="-1830635096%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+<a data-name="464663942%2FFunctions%2F107750912" anchor-label="hasPermissions" id="464663942%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-permissions.html"><span>has</span><wbr></wbr><span><span>Permissions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1830635096%2FFunctions%2F107750912"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="464663942%2FFunctions%2F107750912"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="-k-health/index.html">KHealth</a><span class="token punctuation">.</span><a href="has-permissions.html"><span class="token function">hasPermissions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>permissions<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks directly on <a href="-k-health/index.html">KHealth</a> if all specified permissions are granted.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="-k-health/index.html">KHealth</a><span class="token punctuation">.</span><a href="has-permissions.html"><span class="token function">hasPermissions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>permissions<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks directly on <a href="-k-health/index.html">KHealth</a> if all specified permissions are granted.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1136728004%2FFunctions%2F107750912" anchor-label="isGranted" id="1136728004%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-granted.html"><span>is</span><wbr></wbr><span><span>Granted</span></span></a></div>
@@ -465,30 +525,30 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="-k-h-permission/index.html">KHPermission</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="is-granted.html"><span class="token function">isGranted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">permission<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether the given <a href="is-granted.html">permission</a> is granted in this <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a> of permissions.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="-k-h-permission/index.html">KHPermission</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="is-granted.html"><span class="token function">isGranted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">permission<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether the given <a href="is-granted.html">permission</a> is granted in this <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a> of permissions.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="359121435%2FFunctions%2F-1210740494" anchor-label="KHealth" id="359121435%2FFunctions%2F-1210740494" data-filterable-set=":khealth/commonMain,:khealth/androidMain"></a>
-          <div class="table-row" data-filterable-current=":khealth/commonMain,:khealth/androidMain" data-filterable-set=":khealth/commonMain,:khealth/androidMain">
+<a data-name="629368399%2FFunctions%2F267227268" anchor-label="KHealth" id="629368399%2FFunctions%2F267227268" data-filterable-set=":khealth/commonMain,:khealth/androidMain,:khealth/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":khealth/commonMain,:khealth/androidMain,:khealth/appleMain" data-filterable-set=":khealth/commonMain,:khealth/androidMain,:khealth/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-health.html"><span><span>KHealth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="359121435%2FFunctions%2F-1210740494"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="629368399%2FFunctions%2F267227268"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":khealth/androidMain" data-filterable-set=":khealth/androidMain" data-active="" data-toggle=":khealth/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain" data-toggle=":khealth/commonMain">common</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":khealth/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a <a href="-k-health/index.html">KHealth</a> instance on Android using the provided Context.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a <a href="-k-health/index.html">KHealth</a> instance on Android bound to the given <a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a>.</p></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a platform-appropriate instance of <a href="-k-health/index.html">KHealth</a>.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":khealth/androidMain" data-filterable-set=":khealth/androidMain" data-active="" data-toggle=":khealth/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":khealth/appleMain" data-filterable-set=":khealth/appleMain" data-toggle=":khealth/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain" data-toggle=":khealth/commonMain">common</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":khealth/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a <a href="-k-health.html">KHealth</a> instance on Android using auto-detected application context.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a <a href="-k-health.html">KHealth</a> instance on Android using the provided <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">activity<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a <a href="-k-health.html">KHealth</a> instance on Android bound to the given <a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a>.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":khealth/appleMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.khealth/KHealth///PointingToDeclaration/">KHealth</span></div><div class="brief "><p class="paragraph">Creates a platform-appropriate instance of <a href="-k-health.html">KHealth</a>.</p></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="-k-health.html"><span class="token function">KHealth</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-k-health/index.html">KHealth</a></div><div class="brief "><p class="paragraph">Creates a platform-appropriate instance of <a href="-k-health.html">KHealth</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-541550698%2FFunctions%2F107750912" anchor-label="satisfies" id="-541550698%2FFunctions%2F107750912" data-filterable-set=":khealth/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":khealth/commonMain" data-filterable-set=":khealth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="satisfies.html"><span><span>satisfies</span></span></a></div>
@@ -497,7 +557,7 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-h-permission/index.html">KHPermission</a><span class="token punctuation">.</span><a href="satisfies.html"><span class="token function">satisfies</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">requested<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether this granted permission satisfies all requested capabilities in <a href="satisfies.html">requested</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":khealth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-k-h-permission/index.html">KHPermission</a><span class="token punctuation">.</span><a href="satisfies.html"><span class="token function">satisfies</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">requested<span class="token operator">: </span><a href="-k-h-permission/index.html">KHPermission</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks whether this granted permission satisfies all requested capabilities in <a href="satisfies.html">requested</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -507,13 +567,22 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>(c) 2024 Shubham Singh</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) 2024 Shubham Singh</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
