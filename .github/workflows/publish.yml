@@ -53,51 +53,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Distribute PGP Public Key
-        env:
-          SIGNING_KEY: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
-        run: |
-          which gpg >/dev/null 2>&1 || brew install gnupg
-          if [ -z "$SIGNING_KEY" ]; then
-            echo "::error::ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY secret is empty or not set!"
-            exit 1
-          fi
-
-          echo "Importing signing key into GPG..."
-          echo "$SIGNING_KEY" | python3 -c "
-          import sys, base64
-          raw = sys.stdin.read().strip()
-          if '-----BEGIN PGP' not in raw:
-              try:
-                  decoded = base64.b64decode(raw).decode('utf-8', errors='ignore')
-                  if '-----BEGIN PGP' in decoded:
-                      raw = decoded
-              except Exception:
-                  pass
-          raw = raw.replace('\\\\n', '\n').replace('\\n', '\n')
-          sys.stdout.write(raw)
-          " | gpg --batch --import
-
-          KEY_ID=$(gpg --list-keys --with-colons | grep '^pub:' | cut -d: -f5 | head -n 1)
-          FINGERPRINT=$(gpg --list-keys --with-colons | grep '^fpr:' | cut -d: -f10 | head -n 1)
-
-          if [ -z "$KEY_ID" ]; then
-            echo "::error::Could not extract GPG Key ID from signing key!"
-            exit 1
-          fi
-
-          echo "Found GPG Key ID: $KEY_ID (Fingerprint: $FINGERPRINT)"
-          gpg --list-keys "$KEY_ID"
-
-          echo "Publishing public key $KEY_ID to keys.openpgp.org..."
-          gpg --batch --keyserver hkps://keys.openpgp.org --send-keys "$KEY_ID" || true
-
-          echo "Publishing public key $KEY_ID to keyserver.ubuntu.com..."
-          gpg --batch --keyserver hkps://keyserver.ubuntu.com --send-keys "$KEY_ID" || true
-
-          # Give keyservers a moment to register the key before Central validation
-          sleep 5
-
       - name: Publish Library
         run: |
           echo "Publishing and Releasing library 🚀"
@@ -134,6 +89,7 @@ jobs:
 
   publish-docs:
     name: Build & Publish Docs
+    needs: publish-library
     runs-on: ubuntu-latest
 
     steps:
